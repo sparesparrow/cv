@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta name="description" content="Resume of Vojtěch Špaček, Software Developer specializing in high-performance systems, AI, and open-source innovation.">
+ <title>Vojtěch Špaček - Software Developer Resume</title>
+ <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+ <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+ <style>
+ * { margin: 0; padding: 0; box-sizing: border-box; }
+ body {
+ font-family: 'Open Sans', sans-serif;
+ background: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?> <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">   <defs>     <pattern id="circuit" patternUnits="userSpaceOnUse" width="200" height="200">       <path d="M10 10 l180 0 M10 30 l180 0 M10 50 l180 0 M10 70 l180 0 M10 90 l180 0 M10 110 l180 0 M10 130 l180 0 M10 150 l180 0 M10 170 l180 0"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l0 180 M30 10 l0 180 M50 10 l0 180 M70 10 l0 180 M90 10 l0 180 M110 10 l0 180 M130 10 l0 180 M150 10 l0 180 M170 10 l0 180"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l180 180 M10 30 l180 150 M10 50 l180 130 M10 70 l180 110 M10 90 l180 90 M10 110 l180 70 M10 130 l180 50 M10 150 l180 30 M10 170 l180 10"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 190 l180 -180 M30 190 l150 -180 M50 190 l130 -180 M70 190 l110 -180 M90 190 l90 -180 M110 190 l70 -180 M130 190 l50 -180 M150 190 l30 -180 M170 190 l10 -180"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l180 0 M10 30 l180 0 M10 50 l180 0 M10 70 l180 0 M10 90 l180 0 M10 110 l180 0 M10 130 l180 0 M10 150 l180 0 M10 170 l180 0"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l0 180 M30 10 l0 180 M50 10 l0 180 M70 10 l0 180 M90 10 l0 180 M110 10 l0 180 M130 10 l0 180 M150 10 l0 180 M170 10 l0 180"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l180 180 M10 30 l180 150 M10 50 l180 130 M10 70 l180 110 M10 90 l180 90 M10 110 l180 70 M10 130 l180 50 M10 150 l180 30 M10 170 l180 10"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 190 l180 -180 M30 190 l150 -180 M50 190 l130 -180 M70 190 l110 -180 M90 190 l90 -180 M110 190 l70 -180 M130 190 l50 -180 M150 190 l30 -180 M170 190 l10 -180"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>     </pattern>   </defs>   <rect width="200" height="200" fill="url(#circuit)"/> </svg> ') repeat, linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+ background-size: 200px 200px;
+ background-blend-mode: overlay;
+ color: #ecf0f1;
+ line-height: 1.6;
+ padding: 20px;
+ scroll-behavior: smooth;
+ transition: background 0.3s, color 0.3s;
+ }
+ body.light {
+ background: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?> <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">   <defs>     <pattern id="circuit" patternUnits="userSpaceOnUse" width="200" height="200">       <path d="M10 10 l180 0 M10 30 l180 0 M10 50 l180 0 M10 70 l180 0 M10 90 l180 0 M10 110 l180 0 M10 130 l180 0 M10 150 l180 0 M10 170 l180 0"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l0 180 M30 10 l0 180 M50 10 l0 180 M70 10 l0 180 M90 10 l0 180 M110 10 l0 180 M130 10 l0 180 M150 10 l0 180 M170 10 l0 180"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l180 180 M10 30 l180 150 M10 50 l180 130 M10 70 l180 110 M10 90 l180 90 M10 110 l180 70 M10 130 l180 50 M10 150 l180 30 M10 170 l180 10"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 190 l180 -180 M30 190 l150 -180 M50 190 l130 -180 M70 190 l110 -180 M90 190 l90 -180 M110 190 l70 -180 M130 190 l50 -180 M150 190 l30 -180 M170 190 l10 -180"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l180 0 M10 30 l180 0 M10 50 l180 0 M10 70 l180 0 M10 90 l180 0 M10 110 l180 0 M10 130 l180 0 M10 150 l180 0 M10 170 l180 0"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l0 180 M30 10 l0 180 M50 10 l0 180 M70 10 l0 180 M90 10 l0 180 M110 10 l0 180 M130 10 l0 180 M150 10 l0 180 M170 10 l0 180"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l180 180 M10 30 l180 150 M10 50 l180 130 M10 70 l180 110 M10 90 l180 90 M10 110 l180 70 M10 130 l180 50 M10 150 l180 30 M10 170 l180 10"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 190 l180 -180 M30 190 l150 -180 M50 190 l130 -180 M70 190 l110 -180 M90 190 l90 -180 M110 190 l70 -180 M130 190 l50 -180 M150 190 l30 -180 M170 190 l10 -180"             stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>     </pattern>   </defs>   <rect width="200" height="200" fill="url(#circuit)"/> </svg> ') repeat, linear-gradient(135deg, #f4f7fa 0%, #e9ecef 100%);  
+ color: #333;  }
+ body.high-contrast {
+ background: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">  <defs>    <pattern id="circuit-hc" patternUnits="userSpaceOnUse" width="200" height="200">      <path d="M10 10 l180 0 M10 30 l180 0 M10 50 l180 0 M10 70 l180 0 M10 90 l180 0 M10 110 l180 0 M10 130 l180 0 M10 150 l180 0 M10 170 l180 0"            stroke="rgba(255,204,0,0.2)" stroke-width="1" fill="none"/>      <path d="M10 10 l0 180 M30 10 l0 180 M50 10 l0 180 M70 10 l0 180 M90 10 l0 180 M110 10 l0 180 M130 10 l0 180 M150 10 l0 180 M170 10 l0 180"            stroke="rgba(255,204,0,0.2)" stroke-width="1" fill="none"/>      <path d="M10 10 l180 180 M10 30 l180 150 M10 50 l180 130 M10 70 l180 110 M10 90 l180 90 M10 110 l180 70 M10 130 l180 50 M10 150 l180 30 M10 170 l180 10"            stroke="rgba(255,204,0,0.2)" stroke-width="1" fill="none"/>      <path d="M10 190 l180 -180 M30 190 l150 -180 M50 190 l130 -180 M70 190 l110 -180 M90 190 l90 -180 M110 190 l70 -180 M130 190 l50 -180 M150 190 l30 -180 M170 190 l10 -180"            stroke="rgba(255,204,0,0.2)" stroke-width="1" fill="none"/>    </pattern>  </defs>  <rect width="200" height="200" fill="url(#circuit-hc)"/></svg>') repeat, rgba(0, 0, 0, 0.9);
+ color: yellow;
+ }
+ .container {
+ max-width: 1200px;
+ margin: 0 auto;
+ background: #34495e;
+ padding: 40px;
+ border-radius: 12px;
+ box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+ transition: background 0.3s;
+ }
+ .light .container { background: #fff; }
+ .high-contrast .container { background: #111; }
+ .header {
+ text-align: center;
+ padding-bottom: 20px;
+ border-bottom: 2px solid #3498db;
+ position: sticky;
+ top: 0;
+ background: inherit;
+ z-index: 10;
+ }
+ .header h1 {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 2.8em;
+ color: #ecf0f1;
+ margin-bottom: 0.2em;
+ text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+ }
+ .light .header h1 { color: #2c3e50; }
+ .high-contrast .header h1 { color: #ffd700; }
+ .header p { font-size: 1.1em; color: #bdc3c7; }
+ .light .header p { color: #7f8c8d; }
+ .high-contrast .header p { color: #ff6b6b; }
+ .header a {
+ color: #3498db;
+ text-decoration: none;
+ transition: color 0.3s;
+ }
+ .header a:hover {
+ color: #2980b9;
+ text-decoration: underline;
+ }
+ .high-contrast .header a { color: #ff6b6b; }
+ .high-contrast .header a:hover { color: #ff8787; }
+ .controls {
+ margin-top: 15px;
+ display: flex;
+ justify-content: center;
+ gap: 10px;
+ }
+ .controls button, .controls select {
+ padding: 8px 16px;
+ border-radius: 20px;
+ border: none;
+ background: #3498db;
+ color: #fff;
+ cursor: pointer;
+ transition: background 0.3s;
+ }
+ .controls button:hover, .controls select:hover { background: #2980b9; }
+ section {
+ margin-top: 40px;
+ scroll-margin-top: 80px;
+ }
+ h2 {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 1.8em;
+ color: #ecf0f1;
+ margin-bottom: 15px;
+ position: relative;
+ cursor: pointer;
+ transition: color 0.3s;
+ }
+ .light h2 { color: #2c3e50; }
+ .high-contrast h2 { color: #ff0; }
+ h2::after {
+ content: '▼';
+ font-size: 0.8em;
+ position: absolute;
+ right: 10px;
+ transition: transform 0.3s ease;
+ }
+ h2.active::after { transform: rotate(180deg); }
+ h3 {
+ font-family: 'Montserrat', sans-serif;
+ font-size: 1.4em;
+ color: #3498db;
+ margin-top: 20px;
+ margin-bottom: 10px;
+ display: flex;
+ align-items: center;
+ gap: 8px;
+ }
+ .high-contrast h3 { color: #ff0; }
+ h3 i { color: #3498db; }
+ .high-contrast h3 i { color: #ff0; }
+ p, ul { font-size: 1em; color: #bdc3c7; }
+ .light p, .light ul { color: #555; }
+ .high-contrast p, .high-contrast ul { color: #ff6b6b; }        
+ ul { list-style-type: disc; margin-left: 25px; }
+ .content { display: none; animation: fadeIn 0.5s ease; }
+ .content.active { display: block; }
+ .project-card, .contribution-card, .job-card {
+ background: #3e5a74;
+ padding: 20px;
+ margin-bottom: 15px;
+ border-radius: 8px;
+ border-left: 4px solid #3498db;
+ transition: transform 0.3s ease, box-shadow 0.3s ease;
+ }
+ .light .project-card, .light .contribution-card, .light .job-card { background: #f9fbfc; }
+ .high-contrast .project-card, .high-contrast .contribution-card, .high-contrast .job-card {
+ background: #1a1a1a;
+ border-left-color: #ff6b6b;
+ }
+ .project-card:hover, .contribution-card:hover, .job-card:hover {
+ transform: translateY(-5px);
+ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+ }
+ .project-card a, .contribution-card a {
+ color: #3498db;
+ font-weight: 600;
+ transition: color 0.3s;
+ }
+ .project-card a:hover, .contribution-card a:hover { color: #2980b9; }
+ .high-contrast .project-card a, .high-contrast .contribution-card a { color: #ff6b6b; }
+ .high-contrast .project-card a:hover, .high-contrast .contribution-card a:hover { color: #ff8787; }
+ .verbose { display: none; }
+ .verbose.active { display: block; }
+ .concise.active { display: block; }
+ .mermaid-diagram { max-width: 100%; margin-top: 10px; display: none; }
+ .verbose.active + .mermaid-diagram { display: block; }
+ @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+ .skills {
+ display: flex;
+ flex-wrap: wrap;
+ gap: 10px;
+ }
+ .skill {
+ display: inline-flex;
+ align-items: center;
+ gap: 8px;
+ padding: 8px 16px;
+ margin: 4px;
+ border-radius: 20px;
+ background: #3e5a74;
+ color: #ecf0f1;
+ font-size: 0.9em;
+ transition: transform 0.2s;
+ }
+ .skill:hover { transform: scale(1.05); }
+ .light .skill { background: #f0f4f8; color: #333; }
+ .high-contrast .skill { background: #1a1a1a; color: #ff6b6b; }
+ .skill i { font-size: 1.1em; }
+ .footer {
+ text-align: center;
+ margin-top: 40px;
+ color: #bdc3c7;
+ font-size: 0.9em;
+ }
+ .light .footer { color: #7f8c8d; }
+ .high-contrast .footer { color: #bdc3c7; }
+ .progress-bar {
+ position: fixed;
+ top: 0;
+ left: 0;
+ width: 0;
+ height: 4px;
+ background: #3498db;
+ z-index: 20;
+ transition: width 0.3s ease;
+ }
+ #backToTop {
+ position: fixed;
+ bottom: 20px;
+ right: 20px;
+ background: #3498db;
+ color: #fff;
+ border: none;
+ border-radius: 50%;
+ width: 40px;
+ height: 40px;
+ font-size: 1.2em;
+ cursor: pointer;
+ display: none;
+ z-index: 30;
+ transition: opacity 0.3s, background 0.3s;
+ }
+ #backToTop:hover { background: #2980b9; }
+ @media (max-width: 768px) {
+ .container { padding: 20px; }
+ .header h1 { font-size: 2em; }
+ h2 { font-size: 1.5em; }
+ h3 { font-size: 1.2em; }
+ .controls { flex-direction: column; }
+ }
+ </style>
+</head>
+<body class="high-contrast">
+ <div class="progress-bar"></div>
+ <div class="container">
+ <!-- Header -->
+ <header class="header">
+ <h1>Vojtěch Špaček</h1>
+ <p>Software Developer | Systems Engineer | AI Specialist | Technical Writer</p>
+ <p>
+   <i class="fab fa-github"></i> <a href="https://github.com/sparesparrow">sparesparrow</a> |
+   <i class="fas fa-phone"></i> +420 776 168 749 |
+   <i class="fas fa-envelope"></i> <a href="mailto:sparesparrow@protonmail.ch">sparesparrow@protonmail.ch</a> |
+   <i class="fas fa-book"></i> <a href="https://stoky.urza.cz/autori/sparesparrow-937">Stoky SP</a> |
+   <i class="fab fa-x-twitter"></i> <a href="https://x.com/spare23sparrow">X</a> |
+   <i class="fab fa-youtube"></i> <a href="https://www.youtube.com/playlist?list=PLaWOvDBjg6WiUcQm-yEP1RskMfPeWMKTL">YouTube</a> |
+   <i class="fab fa-discord"></i> <a href="https://discord.com/channels/@sparesparrow">Discord</a>
+ </p>
+ <div class="controls">
+ <button id="verboseToggle">Verbose Mode: Off</button>
+ <select id="themeSelect">
+     <option value="high-contrast" selected>High Contrast</option>
+     <option value="dark">Dark Theme</option>
+     <option value="light">Light Theme</option>
+ </select>
+ </div>
+ </header>
+
+ <!-- About -->
+ <section>
+ <div class="summary-container">
+     <h1>About</h1>
+
+     <div class="paragraph">
+         <div class="lang-en" style="display: block;">
+             <p>I am a software developer with over 8 years diving into C++, Python, and TypeScript, focusing on high-performance systems, AI integration, and containerized deployments. I'm all about open-source innovation</p>
+         </div>
+         <div class="lang-cz" style="display: none;">
+             <p>Jsem softwarový vývojář s více než 8 lety zkušeností v C++, Pythonu a TypeScriptu, zaměřený na vysoce výkonné systémy, integraci AI a kontejnerizované nasazení. Jsem nadšený do vývoje AI nástrojů a open-source vidím jako nezbytnou větev tohoto vývoje, vzhledem k možným dopadům na svobodu a suverenitu jednotlivce.</p>
+         </div>
+     </div>
+
+     <div class="paragraph">
+         <div class="lang-en" style="display: block;">
+             <p>I'm deeply fascinated by neuroscience and brain-machine interfaces. By exploring how technology can interface directly with our neural systems, I've gained insights into the principles of how the human brain functions and the connections to evolutionary theory. My interests span from Austrian economics and praxeology (I'm currently producing a <a href="https://www.youtube.com/playlist?list=PLaWOvDBjg6WiUcQm-yEP1RskMfPeWMKTL">Czech audiobook</a> of a seminal work in this field</a>) to futurism, AI alignment, and existential risk assessment.</p>
+         </div>
+         <div class="lang-cz" style="display: none;">
+             <p>Jsem hluboce fascinován neurovědou a rozhraními mezi mozkem a stroji. Zkoumáním, jak může technologie přímo interagovat s našimi nervovými systémy, se neustále dozvídám zajímavé principy fungování lidského mozku a vazby na evoluční teorie. Mé zájmy sahají od rakouské ekonomie a praxeologie (aktuálně vytvářím <a href="https://www.youtube.com/playlist?list=PLaWOvDBjg6WiUcQm-yEP1RskMfPeWMKTL">českou audioknihu</a> zásadního díla v tomto oboru) až po futurismus, sladění AI a hodnocení existenčních rizik.</p>
+         </div>
+     </div>
+     <button id="lang-button" onclick="switchLanguage()">Česky</button>
+    </div>
+
+ <script>
+     var currentLang = 'en';
+
+     function switchLanguage() {
+         if (currentLang === 'en') {
+             setLanguage('cz');
+             currentLang = 'cz';
+             document.getElementById('lang-button').textContent = 'English';
+         } else {
+             setLanguage('en');
+             currentLang = 'en';
+             document.getElementById('lang-button').textContent = 'Czech';
+         }
+     }
+
+     function setLanguage(lang) {
+         var enDivs = document.querySelectorAll('.lang-en');
+         var czDivs = document.querySelectorAll('.lang-cz');
+         enDivs.forEach(function(div) {
+             div.style.display = lang === 'en' ? 'block' : 'none';
+         });
+         czDivs.forEach(function(div) {
+             div.style.display = lang === 'cz' ? 'block' : 'none';
+         });
+     }
+
+     function toggleParagraph(button) {
+         var paragraph = button.parentElement;
+         var enDiv = paragraph.querySelector('.lang-en');
+         var czDiv = paragraph.querySelector('.lang-cz');
+         if (enDiv.style.display === 'block') {
+             enDiv.style.display = 'none';
+             czDiv.style.display = 'block';
+             button.textContent = 'To English';
+         } else {
+             enDiv.style.display = 'block';
+             czDiv.style.display = 'none';
+             button.textContent = 'To Czech';
+         }
+     }
+ </script>
+ </section >
+
+ <!-- GitHub Projects -->
+ <section>
+ <h2>GitHub Projects</h2>
+ <div class="content">
+ <div class="project-card">
+ <h3><i class="fas fa-book"></i><a href="https://github.com/sparesparrow/human-action">human-action</a></h3>
+ <p class="concise active">A system for producing high-fidelity Czech audiobooks of Ludwig von Mises’ “Human Action” using AI voice synthesis.</p>
+ <p class="verbose">An innovative system dedicated to producing high-quality Czech-language audiobooks, with a special emphasis on Ludwig von Mises’ “Human Action.” Leveraging advanced multilingual text processing and ElevenLabs’ AI voice synthesis, it ensures precise pronunciation of intricate economic concepts, making complex ideas accessible.</p>
+ <ul>
+ <li><i class="fab fa-python"></i> Python</li>
+ <li><i class="fas fa-cogs"></i> FastAPI</li>
+ <li><i class="fas fa-robot"></i> ElevenLabs API</li>
+ <li><i class="fas fa-language"></i> Multilingual Processing</li>
+ <li><i class="fas fa-headphones"></i> ElevenLabs Audio Synthesis</li>
+ </ul>
+ </div>
+ <div class="project-card">
+ <h3><i class="fas fa-shield-alt"></i><a href="https://github.com/sparesparrow/ipmon">ipmon</a></h3>
+ <p class="concise active">A Linux daemon for real-time network monitoring and adaptive firewall management.</p>
+ <p class="verbose">A robust Linux daemon crafted for real-time network interface monitoring and proactive firewall management. Integrated with the Linux kernel via NETLINK for low-latency event detection, it uses NFTables for atomic updates, ensuring secure handling of dynamic network conditions.</p>
+ <ul>
+ <li><i class="fab fa-cpp"></i> C++</li>
+ <li><i class="fas fa-cogs"></i> Linux Kernel</li>
+ <li><i class="fas fa-lock"></i> NETLINK</li>
+ <li><i class="fas fa-cogs"></i> Multi-threading</li>
+ <li><i class="fas fa-lock"></i> NFTables</li>
+ </ul>
+ </div>
+ <div class="project-card">
+ <h3><i class="fas fa-comment"></i><a href="https://github.com/sparesparrow/mcp-prompts">mcp-prompts</a></h3>
+ <p class="concise active">A prompt management system for AI applications with semantic search and collaboration.</p>
+ <p class="verbose">A sophisticated prompt management system tailored for AI-driven applications, providing a scalable platform to organize, search, and collaborate on prompts. Utilizes vector-based semantic search with pgvector and real-time collaboration via Server-Sent Events, enhancing AI workflow efficiency.</p>
+ <ul>
+ <li><i class="fab fa-js"></i> TypeScript</li>
+ <li><i class="fas fa-server"></i> Node.js</li>
+ <li><i class="fas fa-database"></i> PostgreSQL+pgvector</li>
+ <li><i class="fas fa-docker"></i> Docker</li>
+ <li><i class="fas fa-server"></i> REST+SSE</li>
+ </ul>
+ </div>
+ <div class="project-card">
+ <h3><i class="fas fa-cube"></i><a href="https://github.com/sparesparrow/podman-desktop-extension-mcp">podman-desktop-extension-mcp</a></h3>
+ <p class="concise active">A Podman Desktop extension for secure MCP server management.</p>
+ <p class="verbose">A powerful Podman Desktop extension enabling secure and efficient management of Model Context Protocol servers in containerized environments. Features rootless runtimes, encrypted credential storage, and real-time health monitoring.</p>
+ <ul>
+ <li><i class="fab fa-js"></i> TypeScript</li>
+ <li><i class="fab fa-svelte"></i> Svelte</li>
+ <li><i class="fas fa-docker"></i> Podman</li>
+ <li><i class="fas fa-shield-alt"></i> Container Security</li>
+ </ul>
+ </div>
+ <div class="project-card">
+ <h3><i class="fas fa-cogs"></i><a href="https://github.com/sparesparrow/mcp-project-orchestrator">mcp-project-orchestrator</a></h3>
+ <p class="concise active">An AI-driven tool for generating software projects from natural language.</p>
+ <p class="verbose">A groundbreaking AI-powered tool that converts natural language requirements into fully structured software projects. Leverages LLMs and vector search to identify design patterns and generate code.</p>
+ <ul>
+ <li><i class="fab fa-js"></i> TypeScript</li>
+ <li><i class="fas fa-robot"></i> LLM Integration</li>
+ <li><i class="fas fa-search"></i> Pattern Matching</li>
+ <li><i class="fas fa-search"></i> Vector Search</li>
+ </ul>
+ </div>
+ <div class="project-card">
+ <h3><i class="fas fa-sitemap"></i><a href="https://github.com/sparesparrow/mcp-router">mcp-router</a></h3>
+ <p class="concise active">A workflow orchestration system for MCP services with a visual designer.</p>
+ <p class="verbose">A sophisticated workflow orchestration system for Model Context Protocol services, featuring a drag-and-drop visual designer for building AI pipelines. With dynamic service discovery and resilient routing, it empowers developers to create fault-tolerant, high-performance workflows.</p>
+ <ul>
+ <li><i class="fab fa-js"></i> TypeScript</li>
+ <li><i class="fas fa-server"></i> Node.js</li>
+ <li><i class="fab fa-react"></i> React</li>
+ <li><i class="fas fa-docker"></i> Docker</li>
+ <li><i class="fas fa-microchip"></i> Microservices</li>
+ </ul>
+ </div>
+ <div class="project-card">
+ <h3><i class="fas fa-code"></i><a href="https://github.com/sparesparrow/cursor-rules">cursor-rules</a></h3>
+ <p>A comprehensive rules engine for the Cursor IDE to structure AI interactions, using glob-based file matching and hierarchical organization for consistent workflows.</p>
+ <ul>
+ <li><i class="fab fa-js"></i> Markdown</li>
+ <li><i class="fas fa-file"></i> MDC Format</li>
+ <li><i class="fas fa-robot"></i> LLM Integration</li>
+ <li><i class="fas fa-search"></i> Pattern Matching</li>
+ </ul>
+ </div>
+ <div class="project-card">
+ <h3><i class="fas fa-headphones"></i><a href="https://github.com/sparesparrow/cursor-audio-notifications">cursor-audio-notifications</a></h3>
+ <p>An extension for the Cursor IDE that adds audio notifications for events like build completions, enhancing workflow awareness and reducing context switching.</p>
+ <ul>
+ <li><i class="fab fa-js"></i> TypeScript</li>
+ <li><i class="fas fa-headphones"></i> ElevenLabs Audio Synthesis</li>
+ <li><i class="fas fa-code"></i> IDE Integration</li>
+ <li><i class="fas fa-language"></i> Multilingual Processing</li>
+ </ul>
+ </div>
+ <div class="project-card">
+ <h3><i class="fas fa-lock"></i><a href="https://github.com/sparesparrow/openssl-crypto-policies-test">openssl-crypto-policies-test</a></h3>
+ <p>A test suite for validating OpenSSL cryptographic policy enforcement, with automated TLS security level verification and cipher benchmarking.</p>
+ <ul>
+ <li><i class="fab fa-bash"></i> Bash</li>
+ <li><i class="fas fa-lock"></i> Cryptography</li>
+ <li><i class="fas fa-shield-alt"></i> OpenSSL</li>
+ </ul>
+ </div>
+ <div class="project-card">
+ <h3><i class="fas fa-server"></i><a href="https://github.com/sparesparrow/mcp-servers">mcp-servers</a></h3>
+ <p class="concise active">A suite of MCP servers with visualization, persistence, and prompt management tools.</p>
+ <p class="verbose">A versatile suite of Model Context Protocol servers: `mermaid` (Mermaid diagram generator), `solid` (SOLID Code Review), `prompt-manager` (prompts orchestration, templates), and more.</p>
+ <ul >
+ <li><i class="fab fa-js"></i> TypeScript</li>
+ <li><i class="fas fa-server"></i> Node.js</li>
+ <li><i class="fas fa-docker"></i> Docker</li>
+ <li><i class="fas fa-robot"></i> LLM Integration</li>
+ <li><i class="fas fa-microchip"></i> Microservices</li>
+ </ul>
+ </div>
+ <div class="project-card">
+ <h3><i class="fab fa-bitcoin"></i><a href="https://github.com/sparesparrow/btc-pay-server">btc-pay-server</a></h3>
+ <p class="concise active">A self-hosted Bitcoin payment processor for web applications.</p>
+ <p class="verbose">A secure, self-hosted Bitcoin payment processor built with Rust, offering a RESTful API for handling payments, generating requests, and verifying transactions, designed for easy integration into web applications.</p>
+ <ul>
+ <li><i class="fab fa-rust"></i> Rust</li>
+ <li><i class="fab fa-bitcoin"></i> Bitcoin Protocol</li>
+ <li><i class="fas fa-server"></i> REST API</li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- Open Source Contributions -->
+ <section>
+ <h2>Open Source Contributions</h2>
+ <div class="content">
+ <div class="contribution-card">
+ <h3><i class="fas fa-code-branch"></i>Model Context Protocol Servers</h3>
+ <p>Enhanced GitHub integration and security authentication for LLM applications.</p>
+ <p><a href="https://github.com/modelcontextprotocol/servers/pull/630">Pull Request #630</a></p>
+ <ul>
+ <li><i class="fab fa-js"></i> TypeScript</li>
+ <li><i class="fas fa-lock"></i> API Design</li>
+ <li><i class="fas fa-robot"></i> LLM Integration</li>
+ <li><i class="fas fa-shield-alt"></i> Security</li>
+ </ul>
+ </div>
+ <div class="contribution-card">
+ <h3><i class="fas fa-code-branch"></i>Podman Desktop AI Lab</h3>
+ <p>Added secure API key management and resource optimization for AI container management.</p>
+ <p><a href="https://github.com/containers/podman-desktop-extension-ai-lab/pull/2518">Pull Request #2518</a></p>
+ <ul>
+ <li><i class="fab fa-js"></i> TypeScript</li>
+ <li><i class="fas fa-docker"></i> Podman</li>
+ <li><i class="fas fa-shield-alt"></i> Containerization</li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- Work Experience -->
+ <section>
+ <h2>Work Experience</h2>
+ <div class="content">
+ <div class="job-card">
+ <h3><i class="fas fa-briefcase"></i>Software Developer (C++) | Ixperta (for Thermo Fisher Scientific) | 2023 – 2024</h3>
+ <p>Developed high-performance server-side applications for electron microscopy systems using C++. Implemented FPGA-based data processing pipelines with gRPC and networked hardware communication. Designed backend logic for WPF applications using C# and .NET.</p>
+ <ul>
+ <li>Optimized data acquisition pipeline</li>
+ <li>Implemented robust error handling and recovery mechanisms</li>
+ <li>Collaborated in an international Agile team</li>
+ </ul>
+ </div>
+ <div class="job-card">
+ <h3><i class="fas fa-briefcase"></i>Software Engineer II | Honeywell | 2022 – 2023</h3>
+ <p>Developed real-time aircraft monitoring APIs in C++ with high-performance data processing. Created Python-based integration tests for protocol validation, ensuring aviation safety compliance.</p>
+ <ul>
+ <li>Implemented protocol validation for aviation messaging</li>
+ <li>Developed automated testing framework for safety-critical components</li>
+ <li>Optimized data stream processing with multi-threading</li>
+ </ul>
+ </div>
+ <div class="job -card">
+ <h3><i class="fas fa-briefcase"></i>Application Developer | Trusted Network Solutions | 2020 – 2022</h3>
+ <p>Implemented HTTP/TCP forward proxy with encrypted traffic inspection. Developed ipmon for dynamic firewall management and network monitoring using NETLINK and NFTables.</p>
+ <ul>
+ <li>Integrated with Suricata IDS and PostgreSQL for security logging</li>
+ <li>Designed thread-safe, event-driven architecture for IPv4/IPv6 monitoring</li>
+ </ul>
+ </div>
+ <div class="job-card">
+ <h3><i class="fas fa-briefcase"></i>Automation Developer & IT Systems Specialist | IBM | 2014 – 2016</h3>
+ <p>Developed a C++ monitoring application to reduce false positives during server maintenance. Promoted to Automation Developer, creating tools with Bash, PowerShell, and JavaScript for Linux/Windows infrastructures.</p>
+ <ul>
+ <li>Improved efficiency with custom automation solutions</li>
+ <li>Managed and optimized large-scale infrastructure</li>
+ </ul>
+ </div>
+ </div>
+ </section>
+
+ <!-- Technical Skills -->
+ <section>
+ <h2>Technical Skills</h2>
+ <div class="content">
+ <div class="skills">
+ <span class="skill"><i class="fab fa-c"></i>C</span>
+ <span class="skill"><i class="fab fa-cpp"></i>C++</span>
+ <span class="skill"><i class="fab fa-c-sharp"></i>C#</span>
+ <span class="skill"><i class="fab fa-bitcoin"></i>Blockchain</span>
+ <span class="skill"><i class="fab fa-python"></i>Python</span>
+ <span class="skill"><i class="fab fa-js"></i>JavaScript/TypeScript</span>
+ <span class="skill"><i class="fab fa-node"></i>Node.js</span>
+ <span class="skill"><i class="fab fa-bash"></i>Bash</span>
+ <span class="skill"><i class="fab fa-rust"></i>Rust (basic)</span>
+ <span class="skill"><i class="fab fa-react"></i>React (basic)</span>
+ <span class="skill"><i class="fas fa-cogs"></i>Linux System Programming</span>
+ <span class="skill"><i class="fas fa-server"></i>Containerization (Docker, Podman), Kubernetes</span>
+ <span class="skill"><i class="fas fa-robot"></i>AI & ML (OpenAI API, Anthropic API)</span>
+ <span class="skill"><i class="fas fa-lock"></i>Network Security, Message Brokers</span>
+ <span class="skill"><i class="fas fa-microchip"></i>Embedded Systems, ARM, RTOS</span>
+ <span class="skill"><i class="fas fa-database"></i>PostgreSQL, Vector DBs, MongoDB</span>
+ <span class="skill"><i class="fas fa-chart-line"></i>Data Analysis</span>
+ <span class="skill"><i class="fas fa-language"></i>NLP</span>
+ </div>
+ </div>
+ </section>
+
+ <!-- Education -->
+ <section>
+ <h2>Education</h2>
+ <div class="content">
+ <p><strong>Masaryk University - Faculty of Informatics</strong><br>Informatics - Computer Systems and Data Processing, Bachelor's Degree, 2012 – 2014</p>
+ <p><strong>Coursera.org</strong><br><a href="https://www.coursera.org/specializations/deep-learning">Deep Learning Specialization</a></p>
+ <p><strong>DeepLearning.ai</strong><br>Data Analysis, CrewAI, LangChain</p>
+ </div>
+ </section>
+
+ <!-- Additional Interests -->
+ <section>
+ <h2>Additional Interests</h2>
+ <div class="content">
+ <ul>
+ <li><strong>Ludwig von Mises, Murray Rothbard</strong></li>
+ <li><strong>Ray Kurzweil, Nick Bostrom, Max Tegmark</strong></li>
+ <li><strong>Lex Fridman, Andrew Huberman, Dario Amodei</strong></li>
+ <li><strong>Neuroscience & Brain-Machine Interfaces</strong></li>
+ </ul>
+ </div>
+ </section>
+
+ <!-- Footer -->
+ <footer class="footer">
+ <p>© 2025 Vojtěch Špaček. All rights reserved.</p>
+ </footer>
+ </div>
+ <button id="backToTop">↑</button>
+
+ <!-- JavaScript for Interactivity -->
+ <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+ <script>
+ mermaid.initialize({ startOnLoad: true });
+
+ // Collapsible Sections
+ document.querySelectorAll('h2').forEach(header => {
+ header.addEventListener('click', () => {
+ const content = header.nextElementSibling;
+ content.classList.toggle('active');
+ header.classList.toggle('active');
+ });
+ });
+
+ // Verbose Mode Toggle
+ const verboseToggle = document.getElementById('verboseToggle');
+ verboseToggle.addEventListener('click', () => {
+ const isVerbose = verboseToggle.textContent === 'Verbose Mode: Off';
+ document.querySelectorAll('.concise').forEach(el => el.classList.toggle('active', !isVerbose));
+ document.querySelectorAll('.verbose').forEach(el => el.classList.toggle('active', isVerbose));
+ document.querySelectorAll('.mermaid-diagram').forEach(el => el.style.display = isVerbose ? 'block' : 'none');
+ verboseToggle.textContent = isVerbose ? 'Verbose Mode: On' : 'Verbose Mode: Off';
+ });
+
+ // Theme Switcher
+ const themeSelect = document.getElementById('themeSelect');
+ themeSelect.addEventListener('change', (e) => {
+ document.body.className = e.target.value;
+ });
+
+ // Progress Bar and Back to Top
+ window.addEventListener('scroll', () => {
+ const scrollTop = window.scrollY;
+ const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+ const scrollPercent = (scrollTop / docHeight) * 100;
+ document.querySelector('.progress-bar').style.width = scrollPercent + '%';
+ document.getElementById('backToTop').style.display = scrollTop > 100 ? 'block' : 'none';
+ });
+
+ document.getElementById('backToTop').addEventListener('click', () => {
+ window.scrollTo({ top: 0, behavior: 'smooth' });
+ });
+ </script>
+</body>
+</html>
