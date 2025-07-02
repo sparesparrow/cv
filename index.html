@@ -7,14 +7,13 @@
  <title>Vojtěch Špaček - Software Developer Resume</title>
  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
- <link rel="icon" type="image/png" href="favicon.png">
+ <link rel="icon" type="image/png" href="/favicon.png">
  <meta name="keywords" content="Vojtěch Špaček, Software Developer, AI, Open Source, Resume, C++, TypeScript, Linux, MCP, Portfolio">
  <meta name="author" content="Vojtěch Špaček">
  <meta property="og:title" content="Vojtěch Špaček - Software Developer Resume">
  <meta property="og:description" content="Resume of Vojtěch Špaček, Software Developer specializing in high-performance systems, AI, and open-source innovation.">
+ <meta property="og:image" content="/profile.jpg">
  <meta property="og:type" content="website">
- <meta property="og:url" content="https://sparesparrow.github.io/cv/">
- <meta property="og:image" content="https://sparesparrow.github.io/cv/favicon.png">
  <meta name="twitter:card" content="summary_large_image">
  <meta name="twitter:title" content="Vojtěch Špaček - Software Developer Resume">
  <meta name="twitter:description" content="Resume of Vojtěch Špaček, Software Developer specializing in high-performance systems, AI, and open-source innovation.">
@@ -230,11 +229,15 @@
  }
  #backToTop:hover { background: #2980b9; }
  @media (max-width: 768px) {
- .container { padding: 20px; }
- .header h1 { font-size: 2em; }
- h2 { font-size: 1.5em; }
- h3 { font-size: 1.2em; }
- .controls { flex-direction: column; }
+ .container { padding: 10px; }
+ .header h1 { font-size: 1.5em; }
+ h2 { font-size: 1.2em; }
+ h3 { font-size: 1em; }
+ .controls { flex-direction: column; gap: 6px; }
+ .skills { flex-direction: column; gap: 6px; }
+ .skill { width: 100%; justify-content: center; font-size: 1em; }
+ .project-card, .contribution-card, .job-card { padding: 10px; font-size: 0.95em; }
+ .profile-photo { width: 80px !important; height: 80px !important; }
  }
  @media print {
  body { background: #fff !important; color: #000 !important; }
@@ -246,13 +249,31 @@
  .profile-summary, .open-source-contributions, .skills, .project-card, .contribution-card { page-break-inside: avoid; }
  html, body { font-size: 12pt !important; }
  }
+ .animated-bg {
+   background: linear-gradient(270deg, #f0fdfa, #e0e7ef, #f0fdfa, #e0e7ef);
+   background-size: 400% 400%;
+   animation: gradientMove 12s ease infinite;
+ }
+ @keyframes gradientMove {
+   0% {background-position:0% 50%}
+   50% {background-position:100% 50%}
+   100% {background-position:0% 50%}
+ }
+ .skill-bar {
+   width: 100%; height: 1.25em; background: #e0e7ef; border-radius: 8px; overflow: hidden; margin-bottom: 0.5em;
+ }
+ .skill-bar-inner {
+   height: 100%; border-radius: 8px; transition: width 1s; background: linear-gradient(90deg, #0d9488, #14b8a6);
+ }
+ .dark .skill-bar { background: #374151; }
+ .dark .skill-bar-inner { background: linear-gradient(90deg, #14b8a6, #0d9488); }
  </style>
 </head>
 <body class="high-contrast">
  <a href="#main-content" class="skip-to-content" tabindex="0">Skip to main content</a>
  <button id="lang-toggle" aria-label="Switch language" style="position:absolute;top:10px;right:10px;z-index:1000;">Česky / English</button>
  <div class="progress-bar"></div>
- <div class="container" id="main-content" tabindex="-1">
+ <div class="container animated-bg" id="main-content" tabindex="-1">
  <!-- Header -->
  <header class="header" aria-label="Header">
  <img src="profile.jpg" alt="Photo of Vojtěch Špaček" class="profile-photo" style="width:120px;height:120px;border-radius:50%;margin-bottom:10px;object-fit:cover;" />
@@ -570,16 +591,66 @@
  <section>
  <h2>Skills</h2>
  <div class="skills">
- <span class="skill"><i class="fab fa-python"></i> Python (Daily Use)</span>
- <span class="skill"><i class="fab fa-js"></i> TypeScript (Daily Use)</span>
- <span class="skill"><i class="fab fa-linux"></i> Linux (Expert)</span>
- <span class="skill"><i class="fab fa-cuttlefish"></i> C++ (Regular Use)</span>
- <span class="skill"><i class="fab fa-docker"></i> Docker (Regular Use)</span>
- <span class="skill"><i class="fab fa-git"></i> Git (Expert)</span>
- <span class="skill"><i class="fab fa-ubuntu"></i> Bash (Expert)</span>
- <span class="skill"><i class="fab fa-node-js"></i> Node.js (Regular Use)</span>
- <span class="skill"><i class="fab fa-react"></i> React (Working Knowledge)</span>
- <span class="skill"><i class="fab fa-rust"></i> Rust (Learning)</span>
+ <div class="skill" aria-label="JavaScript skill level">
+   <span>JavaScript</span>
+   <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+     <div class="skill-bar-inner" style="width:90%"></div>
+   </div>
+ </div>
+ <div class="skill" aria-label="Python skill level">
+   <span>Python</span>
+   <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+     <div class="skill-bar-inner" style="width:85%"></div>
+   </div>
+ </div>
+ <div class="skill" aria-label="C++ skill level">
+   <span>C++</span>
+   <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+     <div class="skill-bar-inner" style="width:80%"></div>
+   </div>
+ </div>
+ <div class="skill" aria-label="Linux skill level">
+   <span>Linux</span>
+   <div class="skill-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+     <div class="skill-bar-inner" style="width:95%"></div>
+   </div>
+ </div>
+ <div class="skill" aria-label="Docker skill level">
+   <span>Docker</span>
+   <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+     <div class="skill-bar-inner" style="width:85%"></div>
+   </div>
+ </div>
+ <div class="skill" aria-label="Git skill level">
+   <span>Git</span>
+   <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+     <div class="skill-bar-inner" style="width:90%"></div>
+   </div>
+ </div>
+ <div class="skill" aria-label="Bash skill level">
+   <span>Bash</span>
+   <div class="skill-bar" role="progressbar" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+     <div class="skill-bar-inner" style="width:95%"></div>
+   </div>
+ </div>
+ <div class="skill" aria-label="Node.js skill level">
+   <span>Node.js</span>
+   <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+     <div class="skill-bar-inner" style="width:80%"></div>
+   </div>
+ </div>
+ <div class="skill" aria-label="React skill level">
+   <span>React</span>
+   <div class="skill-bar" role="progressbar" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+     <div class="skill-bar-inner" style="width:70%"></div>
+   </div>
+ </div>
+ <div class="skill" aria-label="Rust skill level">
+   <span>Rust</span>
+   <div class="skill-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+     <div class="skill-bar-inner" style="width:60%"></div>
+   </div>
+ </div>
  </div>
  </section>
 
@@ -604,6 +675,20 @@
  <li><strong>Neuroscience & Brain-Machine Interfaces</strong></li>
  </ul>
  </div>
+ </section>
+
+ <!-- Contact Section -->
+ <section>
+   <h2 data-translate-key="contact_title">Contact</h2>
+   <form action="mailto:sparesparrow@protonmail.ch" method="POST" enctype="text/plain" style="max-width:400px;margin:auto;">
+     <label for="contact-name" style="display:block;margin-bottom:4px;" aria-label="Your name">Name</label>
+     <input id="contact-name" name="name" type="text" required style="width:100%;padding:8px;margin-bottom:8px;border-radius:6px;border:1px solid #ccc;">
+     <label for="contact-email" style="display:block;margin-bottom:4px;" aria-label="Your email">Email</label>
+     <input id="contact-email" name="email" type="email" required style="width:100%;padding:8px;margin-bottom:8px;border-radius:6px;border:1px solid #ccc;">
+     <label for="contact-message" style="display:block;margin-bottom:4px;" aria-label="Your message">Message</label>
+     <textarea id="contact-message" name="message" rows="4" required style="width:100%;padding:8px;margin-bottom:8px;border-radius:6px;border:1px solid #ccc;"></textarea>
+     <button type="submit" style="width:100%;padding:10px;background:#3498db;color:#fff;border:none;border-radius:6px;font-size:1em;">Send Email</button>
+   </form>
  </section>
 
  <!-- Footer -->
