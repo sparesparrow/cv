@@ -1,0 +1,6 @@
+/* Modularized CSS for /cv/index.html */
+.skip-to-content { position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden; z-index: 10000; background: #3498db; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 8px; }
+.skip-to-content:focus, .skip-to-content:focus-visible { left: 0; top: 0; width: auto; height: auto; outline: 2px solid #fff; }
+:focus-visible { outline: 2px solid #3498db !important; outline-offset: 2px; }
+.profile-photo { display: block; margin: 0 auto 10px auto; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+/* Place the rest of the original <style> content here, minus the skip-to-content and profile-photo rules, to preserve all original styles. */
