@@ -336,7 +336,7 @@ Self-hosted Bitcoin payment processor in Rust, offering a REST API for handling 
 
 Available as an independent contractor (Czech IČO). Brno on-site and remote. Trading on a Czech IČO.
 
-EU citizen (Czech Republic) — no permit required in the EU/EEA; B-permit eligible for Switzerland.
+EU citizen (Czech Republic) — no permit required in the EU/EEA.
 
 ---
 

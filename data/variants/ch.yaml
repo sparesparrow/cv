@@ -49,3 +49,4 @@ include:
   - ibm
   - mcp-prompts
   - rust-network-mgr
+  - rtp-midi

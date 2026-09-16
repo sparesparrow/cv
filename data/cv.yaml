@@ -686,8 +686,15 @@ languages:
   - {name: German, cefr: A1, name_cs: "Němčina"}
 
 work_authorization:
-  en: "EU citizen (Czech Republic) — no permit required in the EU/EEA; B-permit eligible for Switzerland."
-  cs: "Občan EU (Česká republika) — v EU/EHP není potřeba pracovní povolení; pro Švýcarsko splňuje podmínky povolení typu B."
+  en: "EU citizen (Czech Republic) — no permit required in the EU/EEA."
+  cs: "Občan EU (Česká republika) — v EU/EHP není potřeba pracovní povolení."
+
+# Rendered only by the Swiss variant. It is factual everywhere, but a
+# Swiss permit line on a Brno- or Kraków-targeted CV is off-message, and an
+# overlay cannot suppress half of a single string.
+swiss_permit:
+  en: "B-permit eligible (EU citizen)."
+  cs: "Splňuje podmínky pro povolení typu B (občan EU)."
 
 availability:
   ico: true

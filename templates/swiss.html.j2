@@ -33,7 +33,6 @@
   validates ``locale``), so it indexes these maps directly.
 -#}
 {% set chrome = {
-  'personal_details': {'en': 'Personal details', 'cs': 'Osobní údaje'},
   'nationality':      {'en': 'Nationality', 'cs': 'Státní příslušnost'},
   'work_permit':      {'en': 'Work permit', 'cs': 'Pracovní povolení'},
   'date_of_birth':    {'en': 'Date of birth', 'cs': 'Datum narození'},
@@ -58,7 +57,10 @@
    budget build.py asserts.  Type is a touch smaller than print.html.j2's. */
 @page { size: A4; margin: 12mm 14mm 11mm 14mm; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { font-size: 7.8pt; }
+/* Base size, tuned: this is the knob that holds the dossier to exactly two
+   A4 pages (build.py asserts page_budget [2, 2]).  Every other size below is a
+   rem multiple of it, so the whole layout scales from this one line. */
+html { font-size: 8pt; }
 body {
   font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
   color: #111;
@@ -143,7 +145,13 @@ footer.cv-foot { margin-top: 8px; padding-top: 3px; border-top: 1px solid #cfd9e
   <span class="pd"><b>{{ chrome.residence[lang] }}:</b> {{ meta.city }}{% if meta.country %}, {{ meta.country }}{% endif %}</span>
   {% endif %}
   {% if work_authorization %}
-  <span class="pd"><b>{{ chrome.work_permit[lang] }}:</b> {{ work_authorization }}</span>
+  <span class="pd"><b>{{ chrome.work_permit[lang] }}:</b> {{ work_authorization }}
+    {#- The Swiss permit clause lives in its own data field and is read raw,
+        like date_of_birth above, rather than through the i18n registry: the
+        registry feeds the online page's translation table, and a string no
+        rendered element uses does not belong in it. -#}
+    {% set sp = (variant.data.get('swiss_permit') or {}) %}
+    {% if sp %} {{ sp.get(lang) or sp.get('en') }}{% endif %}</span>
   {% endif %}
 </div>
 
@@ -174,9 +182,13 @@ footer.cv-foot { margin-top: 8px; padding-top: 3px; border-top: 1px solid #cfd9e
     <div class="job-meta">{{ job.company }}{% if job.via %} ({{ ui.via }} {{ job.via }}){% endif %}{% if job.period %} &middot; {{ job.period }}{% endif %}</div>
     <p>{{ job.summary }}</p>
     {% if job.highlights %}
+    {#- No bold on tag-matched bullets here.  The variant's emphasize_tags still
+        decide WHICH three highlights survive `experience_detail: compact`
+        (build.py ranks emphasized ones first), but a page of half-bold bullets
+        reads as shouting to a Swiss screener, so the selection is silent. -#}
     <ul>
       {% for hl in job.highlights %}
-      <li{% if hl.emphasized %} class="emphasized"{% endif %}>{{ hl.text }}</li>
+      <li>{{ hl.text }}</li>
       {% endfor %}
     </ul>
     {% endif %}
