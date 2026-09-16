@@ -693,8 +693,8 @@ work_authorization:
 # Swiss permit line on a Brno- or Kraków-targeted CV is off-message, and an
 # overlay cannot suppress half of a single string.
 swiss_permit:
-  en: "B-permit eligible (EU citizen)."
-  cs: "Splňuje podmínky pro povolení typu B (občan EU)."
+  en: "B-permit eligible."
+  cs: "Splňuje podmínky pro povolení typu B."
 
 availability:
   ico: true
