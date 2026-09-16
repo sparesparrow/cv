@@ -1,0 +1,15 @@
+# Fixture variant: the Czech contractor pitch.
+#
+# Exercises every render control build.py understands, against
+# fixtures/sample-cv.yaml rather than the real data file.
+extends: ../sample-cv.yaml
+
+name: cz-contractor
+description: Czech-language contractor one-pager, HIL/verification emphasis.
+
+locale: cs
+sections: [summary, preferred_roles, experience, skills, availability, languages]
+emphasize_tags: [hil, verification, cpp]
+experience_detail: compact
+page_budget: [1, 2]
+exclude: [ibm]

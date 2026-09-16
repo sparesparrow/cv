@@ -1,0 +1,123 @@
+{#- cv-3-page.md -- the Markdown rendering of the CV.
+
+     Whitespace rule for this file: a content line must never end with a `%}`
+     block tag, because trim_blocks would eat its newline and glue the next
+     line onto it (which silently turns `text` + `---` into a setext heading).
+     Use inline `{{ ... }}` expressions instead. -#}
+<!-- {{ generated_note }} -->
+
+# {{ meta.name }}
+
+**{{ meta.headline }}**
+{% if meta.tagline %}
+
+*{{ meta.tagline }}*
+{% endif %}
+
+{{ ui.location }}: {{ meta.city }}{{ ', ' ~ meta.country if meta.country else '' }}{{ ' · ' ~ ui.citizenship ~ ': ' ~ meta.citizenship if meta.citizenship else '' }}
+
+{{ meta.contact_links | map(attribute='md') | join(' | ') }}
+
+{% for section in sections %}
+{% if section.id != 'contact' %}
+---
+
+## {{ section.title }}
+
+{% if section.id == 'summary' %}
+{% for line in summary %}
+- {{ line }}
+{% endfor %}
+
+{% elif section.id == 'preferred_roles' %}
+{% for role in preferred_roles %}
+- **{{ role.text }}**{{ ' — ' ~ role.note if role.note else '' }}
+{% endfor %}
+
+{% elif section.id == 'experience' %}
+{% for job in experience %}
+### {{ job.role }}
+
+**{{ job.company }}**{{ ' (' ~ ui.via ~ ' ' ~ job.via ~ ')' if job.via else '' }}{% if job.period %} · {{ job.period }}{% endif %}
+
+{{ job.summary }}
+{% if job.highlights %}
+
+{% for hl in job.highlights %}
+- {{ ('**' ~ hl.text ~ '**') if hl.emphasized else hl.text }}
+{% endfor %}
+{% endif %}
+{% if job.skills_learned %}
+
+**{{ ui.skills_learned }}:** {{ job.skills_learned | join(', ') }}
+{% endif %}
+
+{% endfor %}
+{% elif section.id == 'skills' %}
+{% for group in skills %}
+### {{ group.title }}
+
+{% for item in group['items'] %}
+- {{ item.name }} — *{{ item.level_label }}*{{ ' (' ~ item.bar ~ '/100)' if item.bar is not none else '' }}
+{% endfor %}
+
+{% endfor %}
+{% elif section.id == 'open_source' %}
+{% for project in open_source %}
+### [{{ project.name }}]({{ project.url }}){{ ' — ' ~ project.stars ~ ' ' ~ ui.stars if project.stars is not none else '' }}{{ ', ' ~ project.forks ~ ' ' ~ ui.forks if project.forks is not none else '' }}
+
+{{ project.summary }}
+{% if project.tech %}
+
+*{{ project.tech | join(' · ') }}*
+{% endif %}
+{% if project.links %}
+
+{% for link in project.links %}[{{ link.label }}]({{ link.url }}){{ ' · ' if not loop.last else '' }}{% endfor %}
+
+{% endif %}
+
+{% endfor %}
+{% elif section.id == 'education' %}
+{% for item in education %}
+- **{{ item.institution }}** — {{ item.field }}{% if item.period %} · {{ item.period }}{% endif %}
+{% if not item.degree_awarded %}
+  - *{{ ui.coursework_only }}*
+{% endif %}
+{% if item.note %}
+  - {{ item.note }}
+{% endif %}
+{% endfor %}
+
+{% elif section.id == 'languages' %}
+{% for language in languages %}
+- {{ language.name }} — {{ language.cefr }}
+{% endfor %}
+
+{% elif section.id == 'availability' %}
+{% if availability %}
+{{ availability.text }}{{ ' ' ~ ui.ico_yes ~ '.' if availability.ico else '' }}
+
+{% endif %}
+{% if work_authorization %}
+{{ work_authorization }}
+
+{% endif %}
+{% elif section.id == 'interests' %}
+{% for interest in interests %}
+- {{ interest }}
+{% endfor %}
+
+{% elif section.id == 'testimonials' %}
+{% for item in testimonials %}
+> {{ item.quote }}
+>
+> — {{ item.attribution }}
+
+{% endfor %}
+{% endif %}
+{% endif %}
+{% endfor %}
+---
+
+{{ ui.online_version }}: <{{ site_url }}>
