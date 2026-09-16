@@ -52,6 +52,17 @@ SITE_URL = "https://sparesparrow.github.io/cv/"
 
 TODO_MARKER = "TODO(user)"
 
+#: Print template used by every variant that does not name its own.
+DEFAULT_PRINT_TEMPLATE = "print.html.j2"
+
+#: Variant name -> print template, for the rare variant whose conventions are
+#: structurally different rather than merely differently worded.  Switzerland is
+#: one: photo, a personal-details block (nationality, work permit, date of
+#: birth) and a references-on-request closing have no place in the generic A4
+#: layout, so `ch` renders through templates/swiss.html.j2 instead.  A lookup
+#: rather than a new overlay key, so the overlay contract stays closed.
+PRINT_TEMPLATES = {"ch": "swiss.html.j2"}
+
 #: Deterministic stand-in for Chromium's ``/CreationDate``.  Same byte length as
 #: the real stamp, so the xref table stays valid after substitution.
 FIXED_PDF_DATE = b"D:20200101000000+00'00'"
@@ -1183,7 +1194,7 @@ class Builder:
 
     def render_print(self, variant: Variant) -> str:
         ctx = build_context(variant, variant.locale, embed_assets=True, source_label=self.source_label)
-        html = render(self.env, "print.html.j2", ctx)
+        html = render(self.env, PRINT_TEMPLATES.get(variant.name, DEFAULT_PRINT_TEMPLATE), ctx)
         self.rendered[f"print:{variant.name}"] = html
         return html
 

@@ -1,0 +1,256 @@
+{#-
+  Swiss (CH) print/PDF layout.  Self-contained: no JS, no network requests, one
+  language -- same contract as print.html.j2, whose CSS and block structure this
+  deliberately follows so the two stay easy to diff.
+
+  Why a separate template at all: a Swiss application dossier is structurally
+  different from the generic A4 CV, not just differently worded.
+
+    * A photo is conventional and expected (meta.photo).
+    * A "Personal details" block carries nationality/citizenship and work-permit
+      status up front, where a Swiss screener looks for it.
+    * Date of birth is conventional in Switzerland.  It is NOT in data/cv.yaml
+      and must not be invented, so the block renders that row only if the field
+      ``meta.date_of_birth`` ever appears in the data (read straight off
+      ``variant.data`` -- see the comment at the row itself).
+    * Languages are listed with their CEFR level, exactly as recorded.
+    * "References available on request" (plus the Arbeitszeugnis note) closes the
+      dossier: Swiss employers expect referees and a work certificate, but those
+      are supplied on request, not printed here.
+    * No salary expectations anywhere -- these belong in the cover letter, if
+      asked for at all, never in the CV.
+    * Education states the coursework-only position explicitly via
+      ``ui.coursework_only``; there is no degree to claim and no equivalence
+      statement to make.
+
+  Restraint is the point: Swiss screeners read this, designers do not.
+-#}
+{#-
+  Static, user-visible chrome that has no home in data/cv.yaml.  build.py keeps
+  such strings bilingual in its UI_STRINGS table; that table lives in build.py,
+  which this variant may not extend, so the same {en, cs} pattern is applied
+  locally here instead.  `lang` is guaranteed to be 'en' or 'cs' (build.py
+  validates ``locale``), so it indexes these maps directly.
+-#}
+{% set chrome = {
+  'personal_details': {'en': 'Personal details', 'cs': 'Osobní údaje'},
+  'nationality':      {'en': 'Nationality', 'cs': 'Státní příslušnost'},
+  'work_permit':      {'en': 'Work permit', 'cs': 'Pracovní povolení'},
+  'date_of_birth':    {'en': 'Date of birth', 'cs': 'Datum narození'},
+  'residence':        {'en': 'Place of residence', 'cs': 'Bydliště'},
+  'references':       {'en': 'References', 'cs': 'Reference'},
+  'references_line':  {
+    'en': 'References available on request — two to three referees and work certificates (Arbeitszeugnisse) can be provided on request.',
+    'cs': 'Reference na vyžádání — dva až tři referenti a pracovní posudky (Arbeitszeugnis) k dispozici na vyžádání.'
+  }
+} %}
+{#- Raw merged data, used only for fields build.py does not lift into `meta`. -#}
+{% set raw_meta = (variant.data.get('meta') or {}) %}
+<!-- {{ generated_note }} -->
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="UTF-8">
+<title>{{ meta.name }} — CV ({{ variant.name }})</title>
+<style>
+{% raw %}
+/* Sized to hold the dossier to exactly two A4 pages -- the Swiss norm, and a
+   budget build.py asserts.  Type is a touch smaller than print.html.j2's. */
+@page { size: A4; margin: 12mm 14mm 11mm 14mm; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { font-size: 8.2pt; }
+body {
+  font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
+  color: #111;
+  background: #fff;
+  line-height: 1.3;
+}
+a { color: #14506e; text-decoration: none; }
+
+/* --- header: photo + identity, the conventional Swiss opening ------------ */
+header.cv-head { border-bottom: 2px solid #14506e; padding-bottom: 6px; margin-bottom: 8px; display: flex; gap: 12px; align-items: flex-start; }
+.cv-head img { width: 82px; height: 82px; border-radius: 3px; object-fit: cover; border: 1px solid #b9c6ce; flex: none; }
+.cv-head-text { flex: 1; }
+h1 { font-size: 1.74rem; line-height: 1.12; margin-bottom: 2px; color: #14506e; }
+.headline { font-size: 0.96rem; font-weight: bold; }
+.tagline { font-size: 0.91rem; font-style: italic; color: #444; }
+.contact { font-size: 0.87rem; margin-top: 3px; color: #333; }
+.contact span.sep { color: #999; padding: 0 3px; }
+
+/* --- personal-details block --------------------------------------------- */
+.personal { display: flex; flex-wrap: wrap; gap: 2px 14px; font-size: 0.89rem; margin-bottom: 7px; }
+.personal .pd { flex: 0 0 auto; }
+.personal .pd b { color: #14506e; font-weight: bold; }
+
+h2 {
+  font-size: 1.09rem; color: #14506e; margin-top: 7px; margin-bottom: 3px;
+  border-bottom: 1px solid #cfd9e0; padding-bottom: 1px;
+  page-break-after: avoid; break-after: avoid;
+}
+h3 { font-size: 0.98rem; margin-bottom: 1px; page-break-after: avoid; break-after: avoid; }
+p { margin-bottom: 2px; }
+ul { margin: 1px 0 3px 14px; }
+li { margin-bottom: 1px; }
+.job, .project, .edu { margin-bottom: 5px; page-break-inside: avoid; break-inside: avoid; }
+.job-meta, .meta { font-size: 0.87rem; color: #555; margin-bottom: 2px; }
+.emphasized { font-weight: bold; }
+.tags { font-size: 0.80rem; color: #666; margin-top: 1px; }
+.project.compact { font-size: 0.89rem; margin-bottom: 3px; }
+.project.compact .sep { color: #999; padding: 0 2px; }
+.skill-groups { display: flex; flex-wrap: wrap; gap: 0 16px; }
+.skill-group { flex: 1 1 46%; min-width: 46%; page-break-inside: avoid; break-inside: avoid; }
+.skill-row { display: flex; align-items: baseline; gap: 5px; font-size: 0.89rem; margin-bottom: 0.5px; }
+.skill-row .name { flex: 1; }
+.skill-row .level { color: #666; font-size: 0.83rem; flex: none; }
+.inline-list { font-size: 0.91rem; }
+.references { font-size: 0.91rem; }
+footer.cv-foot { margin-top: 8px; padding-top: 3px; border-top: 1px solid #cfd9e0; font-size: 0.80rem; color: #666; }
+{% endraw %}
+</style>
+</head>
+<body>
+
+<header class="cv-head">
+  {% if meta.photo %}
+  {# Professional photo: conventional in a Swiss dossier, unusual elsewhere. #}
+  <img src="{{ meta.photo }}" alt="{{ meta.photo_alt }}">
+  {% endif %}
+  <div class="cv-head-text">
+    <h1>{{ meta.name }}</h1>
+    <div class="headline">{{ meta.headline }}</div>
+    {% if meta.tagline %}<div class="tagline">{{ meta.tagline }}</div>{% endif %}
+    <div class="contact">
+      {% for link in meta.contact_links %}
+      {{ link.label }}: <a href="{{ link.href }}">{{ link.short }}</a>{% if not loop.last %}<span class="sep">|</span>{% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</header>
+
+{#- Personal details: nationality and permit status where a Swiss reader expects
+    them.  Date of birth is conventional here but absent from data/cv.yaml; it is
+    read off the raw data so that adding `meta.date_of_birth:` to the YAML is all
+    it takes to render the row, and nothing is invented until then. -#}
+<div class="personal">
+  {% if meta.citizenship %}
+  <span class="pd"><b>{{ chrome.nationality[lang] }}:</b> {{ meta.citizenship }}</span>
+  {% endif %}
+  {% if raw_meta.get('date_of_birth') %}
+  <span class="pd"><b>{{ chrome.date_of_birth[lang] }}:</b> {{ raw_meta.get('date_of_birth') }}</span>
+  {% endif %}
+  {% if meta.city %}
+  <span class="pd"><b>{{ chrome.residence[lang] }}:</b> {{ meta.city }}{% if meta.country %}, {{ meta.country }}{% endif %}</span>
+  {% endif %}
+  {% if work_authorization %}
+  <span class="pd"><b>{{ chrome.work_permit[lang] }}:</b> {{ work_authorization }}</span>
+  {% endif %}
+</div>
+
+{% for section in sections %}
+{#- The availability/work-authorization section is folded into the personal
+    details block above, so it is not repeated as a section of its own. -#}
+{% if section.id not in ['contact', 'availability'] %}
+<h2>{{ section.title }}</h2>
+
+{% if section.id == 'summary' %}
+  {% for line in summary %}<p>{{ line }}</p>{% endfor %}
+
+{% elif section.id == 'preferred_roles' %}
+  <ul>
+    {% for role in preferred_roles %}
+    <li{% if role.emphasized %} class="emphasized"{% endif %}>{{ role.text }}{% if role.note %} — {{ role.note }}{% endif %}</li>
+    {% endfor %}
+  </ul>
+
+{% elif section.id == 'experience' %}
+  {#- Reverse-chronological, as the master data already is.  Dates are shown as
+      the data holds them; an entry whose dates are still the TODO(user)
+      sentinel renders with no range at all (build.py's fmt_period), which is
+      deliberate and asserted -- never a guessed date. -#}
+  {% for job in experience %}
+  <div class="job">
+    <h3>{{ job.role }}</h3>
+    <div class="job-meta">{{ job.company }}{% if job.via %} ({{ ui.via }} {{ job.via }}){% endif %}{% if job.period %} &middot; {{ job.period }}{% endif %}</div>
+    <p>{{ job.summary }}</p>
+    {% if job.highlights %}
+    <ul>
+      {% for hl in job.highlights %}
+      <li{% if hl.emphasized %} class="emphasized"{% endif %}>{{ hl.text }}</li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  </div>
+  {% endfor %}
+
+{% elif section.id == 'skills' %}
+  <div class="skill-groups">
+    {% for group in skills %}
+    <div class="skill-group">
+      <h3>{{ group.title }}</h3>
+      {% for item in group['items'] %}
+      {#- Plain level labels, no progress bars: a self-scored bar chart reads as
+          decoration to a Swiss screener. -#}
+      <div class="skill-row">
+        <span class="name">{{ item.name }}</span>
+        <span class="level">{{ item.level_label }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endfor %}
+  </div>
+
+{% elif section.id == 'open_source' %}
+  {#- One compact entry per project: name, reach, stack and URL.  The long
+      project descriptions from the data are left to the online version linked
+      in the footer -- two A4 pages is the Swiss budget, and the work history
+      has the stronger claim on the space. -#}
+  {% for project in open_source %}
+  <div class="project compact">
+    <strong>{{ project.name }}</strong>{% if project.stars is not none %} — {{ project.stars }} {{ ui.stars }}{% if project.forks is not none %}, {{ project.forks }} {{ ui.forks }}{% endif %}{% endif %}
+    <span class="sep">|</span> <a href="{{ project.url }}">{{ project.url | replace('https://', '') }}</a>
+    {% if project.tech %}<div class="tags">{{ project.tech | join(' · ') }}</div>{% endif %}
+  </div>
+  {% endfor %}
+
+{% elif section.id == 'education' %}
+  {#- ui.coursework_only states the no-degree position in words. No degree was
+      awarded, so there is nothing to have recognised abroad either: no SERI /
+      swissuniversities equivalence line belongs here, and build.py's
+      assert_no_degree_claim fails the build if one appears. -#}
+  {% for item in education %}
+  <div class="edu">
+    <strong>{{ item.institution }}</strong> — {{ item.field }}{% if item.period %} &middot; {{ item.period }}{% endif %}<br>
+    {% if not item.degree_awarded %}<em>{{ ui.coursework_only }}</em>{% if item.note %} — {% endif %}{% endif %}
+    {% if item.note %}{{ item.note }}{% endif %}
+  </div>
+  {% endfor %}
+
+{% elif section.id == 'languages' %}
+  {#- CEFR levels exactly as recorded in the data, including the weak ones.
+      Overstating German in a Swiss application is found out at the interview. -#}
+  <p class="inline-list">{% for language in languages %}{{ language.name }} ({{ language.cefr }}){% if not loop.last %} &middot; {% endif %}{% endfor %}</p>
+
+{% elif section.id == 'interests' %}
+  <p class="inline-list">{% for interest in interests %}{{ interest }}{% if not loop.last %} &middot; {% endif %}{% endfor %}</p>
+
+{% elif section.id == 'testimonials' %}
+  {% for item in testimonials %}
+  <p>“{{ item.quote }}” — {{ item.attribution }}</p>
+  {% endfor %}
+{% endif %}
+
+{% endif %}
+{% endfor %}
+
+{#- Closing convention: referees and Arbeitszeugnisse on request.  No names,
+    no contact details and no salary expectations are printed. -#}
+<h2>{{ chrome.references[lang] }}</h2>
+<p class="references">{{ chrome.references_line[lang] }}</p>
+
+<footer class="cv-foot">
+  {{ ui.online_version }}: <a href="{{ site_url }}">{{ site_url }}</a>
+  &middot; &copy; {{ meta.name }}. {{ ui.rights }}
+</footer>
+
+</body>
+</html>
