@@ -52,6 +52,11 @@ SITE_URL = "https://sparesparrow.github.io/cv/"
 
 TODO_MARKER = "TODO(user)"
 
+#: The pre-restructure CV lived at this path and the old index.html linked to
+#: it, so the URL is likely to have been shared. Keeping a current copy there
+#: means an old link serves today's CV instead of the superseded one.
+LEGACY_MASTER_PDF = "vs-cv-sparesparrow.pdf"
+
 #: Print template used by every variant that does not name its own.
 DEFAULT_PRINT_TEMPLATE = "print.html.j2"
 
@@ -114,6 +119,7 @@ LEVEL_LABELS = {
 #: has to be translatable too.
 UI_STRINGS = {
     "skip_to_content": ("Skip to main content", "Přejít k hlavnímu obsahu"),
+    "related_project": ("Related", "Související"),
     "lang_switch_to_cs": ("Česky", "Česky"),
     "lang_switch_to_en": ("English", "English"),
     "lang_toggle_aria": ("Switch language", "Přepnout jazyk"),
@@ -1248,7 +1254,13 @@ class Builder:
             self.log(f"  {self.rel(self.out_dir / 'index.html')}")
             write_if_changed(self.out_dir / "cv-3-page.md", markdown)
             self.log(f"  {self.rel(self.out_dir / 'cv-3-page.md')}")
-            self.build_pdf(master, work)
+            master_pdf = self.build_pdf(master, work)
+            if master_pdf is not None:
+                legacy = self.out_dir / LEGACY_MASTER_PDF
+                data = master_pdf.read_bytes()
+                if not legacy.exists() or legacy.read_bytes() != data:
+                    legacy.write_bytes(data)
+                self.log(f"  {self.rel(legacy)}  (legacy alias)")
 
         self.assert_on_rendered(master)
         self.checker.raise_if_failed()

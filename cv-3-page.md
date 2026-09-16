@@ -35,6 +35,7 @@ Location: Brno, CZ · Citizenship: EU (Czech Republic)
 ### Test Automation Engineer (Python, C#)
 
 **Resideo (Ademco)** (via CoolPeople (contractor))
+
 Hardware-in-the-loop verification of a safety-certified two-stage gas furnace ignition controller (UL/CSA, ANSI Z21.20, NFPA 54), as sole owner of the verification test suite and of the automated bench that drives it. Owned delivery end to end: requirement traceability, issue tracking, branch and pull-request workflow, Conan packaging, CI integration and monthly client reporting.
 
 - Designed an Arrange/Act/Assert validation pipeline in Python with eight independent gates covering preconditions, stimulus timing, state sequence, alarms, signal history, cross-layer consistency, timer accuracy and requirement traceability.
@@ -53,6 +54,7 @@ Hardware-in-the-loop verification of a safety-certified two-stage gas furnace ig
 ### Software Developer (C++)
 
 **Thermo Fisher Scientific** (via Ixperta (contractor)) · 2023 – 2024
+
 Electron microscopy software for high-resolution detector hardware operation and image acquisition. Built server-side C++ applications, FPGA-based data processing pipelines with gRPC networking, and backend logic for a C#/.NET WPF image processing and display application. Worked in an international Agile team with bi-weekly stakeholder demos.
 
 - Implemented server-side software in C++, including hardware abstraction layers (HAL) and inter-process communication (IPC) using COM and MIDL on Windows.
@@ -67,6 +69,7 @@ Electron microscopy software for high-resolution detector hardware operation and
 ### Software Engineer II
 
 **Honeywell** · 2022 – 2023
+
 Onboard Maintenance System that monitors the condition of aircraft and diagnoses issues during flight. Architected and implemented the DiagTest framework, a state machine-based diagnostic test engine in C++ managing 15+ operational states for aircraft member system testing during flight and maintenance operations.
 
 - Designed a job-based execution system with DiagTestJob and DiagTestMsgQueProc for asynchronous test orchestration, implementing message queue processing patterns for reliable real-time diagnostics.
@@ -81,6 +84,7 @@ Onboard Maintenance System that monitors the condition of aircraft and diagnoses
 ### Application Developer
 
 **Trusted Network Solutions** · 2020 – 2022
+
 Kernun Adaptive Firewall. Implemented a forward proxy in C++ on Linux featuring HTTP/HTTPS proxying with TLS/SSL inspection, OCSP integration for certificate validation, Kerberos authentication and LDAP user/group lookup, plus the ipmon network monitoring daemon driving nftables firewall rules from real-time IPv4/IPv6 address changes.
 
 - Built comprehensive proxy infrastructure with certificate generation and management (CA, client certificates), a dynamic configuration builder/parser system, and a manager/partition architecture for modular daemon design.
@@ -97,6 +101,7 @@ Kernun Adaptive Firewall. Implemented a forward proxy in C++ on Linux featuring 
 ### Independent IT Contractor
 
 **Self-employed**
+
 Independent contracting for business and consumer clients: CI/CD automation pipelines and Linux server administration for B2B customers, and IT support, consumer hardware retail and security consulting for B2C customers.
 
 - B2B: CI/CD automation pipelines and Linux server administration.
@@ -107,6 +112,7 @@ Independent contracting for business and consumer clients: CI/CD automation pipe
 ### Automation Developer & IT Systems Specialist
 
 **IBM** · 2014 – 2016
+
 Enterprise IT operations: infrastructure monitoring, incident management and an automation solution that replaced manual ticketing and server administration work.
 
 - Developed an automation application that replaced manual workload in ticketing operations and basic server administration, using Bash, PowerShell and JavaScript for cross-platform server management and applying automata theory to design state-driven workflows.
@@ -178,7 +184,9 @@ Model Context Protocol server for managing prompt templates and LLM interactions
 
 *TypeScript · Node.js · PostgreSQL + pgvector · Docker · REST + SSE · AWS*
 
-[GitHub](https://github.com/sparesparrow/mcp-prompts) · [npm](https://www.npmjs.com/package/@sparesparrow/mcp-prompts) · [Docker Hub](https://hub.docker.com/layers/sparesparrow/mcp-prompts/) · [Merged PRs](https://github.com/sparesparrow/mcp-prompts/pulls?q=is%3Apr+author%3Asparesparrow+is%3Amerged) · [Glama.ai](https://glama.ai/mcp/servers/@sparesparrow/mcp-prompts) · [Glama (Fly.dev)](https://glama.fly.dev/mcp/servers/@sparesparrow/mcp-prompts/) · [MCP Market](https://mcpmarket.com/server/prompts-server) · [MagicSlides](https://www.magicslides.app/mcps/sparesparrow-prompt-manager) · [MCPHub](https://mcphub.com/mcp-servers/sparesparrow/mcp-prompts-rs) · [Skywork](https://skywork.ai/skypage/en/project-orchestrator-ai-engineer-dive/1980494897356251136) · [PulseMCP](https://www.pulsemcp.com/servers/sparesparrow-project-orchestrator) · [AIBASE](https://mcp.aibase.com/server/1916334459480600578)
+[GitHub](https://github.com/sparesparrow/mcp-prompts) · [npm](https://www.npmjs.com/package/@sparesparrow/mcp-prompts) · [Docker Hub](https://hub.docker.com/r/sparesparrow/mcp-prompts) · [Merged PRs](https://github.com/sparesparrow/mcp-prompts/pulls?q=is%3Apr+author%3Asparesparrow+is%3Amerged) · [Glama.ai](https://glama.ai/mcp/servers/@sparesparrow/mcp-prompts) · [MCP Market](https://mcpmarket.com/server/prompts-server) · [MCPHub](https://mcphub.com/mcp-servers/sparesparrow/mcp-prompts-rs) · [Skywork](https://skywork.ai/skypage/en/project-orchestrator-ai-engineer-dive/1980494897356251136) · [PulseMCP](https://www.pulsemcp.com/servers/sparesparrow-project-orchestrator) · [AIBASE](https://mcp.aibase.com/server/1916334459480600578)
+*Related: [mcp-prompts-rs](https://github.com/sparesparrow/mcp-prompts-rs) — Rust reimplementation optimized for memory efficiency and high concurrency while maintaining full MCP protocol compatibility.*
+
 
 ### [rust-network-mgr](https://github.com/sparesparrow/rust-network-mgr)
 
@@ -312,13 +320,17 @@ Self-hosted Bitcoin payment processor in Rust, offering a REST API for handling 
 
 ## Education & Training
 
-- **Masaryk University, Faculty of Informatics** — Computer Science  - *Coursework only — no academic title*
+- **Masaryk University, Faculty of Informatics** — Computer Science
+  - *Coursework only — no academic title*
   - Coursework in programming, Linux and networking.
-- **Coursera.org / DeepLearning.AI** — Machine learning and LLM engineering  - *Coursework only — no academic title*
+- **Coursera.org / DeepLearning.AI** — Machine learning and LLM engineering
+  - *Coursework only — no academic title*
   - Deep Learning Specialization (four machine learning courses by Andrew Ng), plus data analysis, prompt engineering and building LLM agents.
-- **Self-directed study** — Design patterns, software architecture and offensive security  - *Coursework only — no academic title*
+- **Self-directed study** — Design patterns, software architecture and offensive security
+  - *Coursework only — no academic title*
   - Design Patterns (refactoring.guru) and Hack The Box cybersecurity training; self-studied the Certified Ethical Hacker syllabus (exam not taken).
-- **Professional development reading** — Software engineering practice  - *Coursework only — no academic title*
+- **Professional development reading** — Software engineering practice
+  - *Coursework only — no academic title*
   - Software Engineering at Google, The Pragmatic Programmer, Clean Architecture.
 
 ---

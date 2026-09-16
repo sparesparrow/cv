@@ -392,7 +392,7 @@ li.verbose.active { display: list-item; }
       <div class="skills">
         {% for item in group['items'] %}
         <div class="skill">
-          <span>{{ item.name }} <em>({{ item.level_label }})</em></span>
+          <span>{{ item.name }} <em>(<span data-i18n="{{ item.level_label.key }}">{{ item.level_label }}</span>)</em></span>
           {% if item.bar is not none %}
           <div class="skill-bar" role="progressbar" aria-label="{{ item.name }} — {{ item.level_label }}" aria-valuenow="{{ item.bar }}" aria-valuemin="0" aria-valuemax="100" tabindex="0">
             <div class="skill-bar-inner" style="width:{{ item.bar }}%"></div>
@@ -423,6 +423,13 @@ li.verbose.active { display: list-item; }
         {% endif %}
         {% if project.links %}
         <p class="verbose">{% for link in project.links %}<a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}</p>
+        {% endif %}
+        {% if project.related %}
+        {% for r in project.related %}
+        <p class="verbose"><em><span data-i18n="ui.related_project">{{ ui.related_project }}</span>:
+          <a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.name }}</a> —
+          {{ r.summary.get(lang) or r.summary.get('en') }}</em></p>
+        {% endfor %}
         {% endif %}
       </div>
       {% endfor %}

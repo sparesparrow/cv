@@ -38,7 +38,7 @@
 {% for job in experience %}
 ### {{ job.role }}
 
-**{{ job.company }}**{{ ' (' ~ ui.via ~ ' ' ~ job.via ~ ')' if job.via else '' }}{% if job.period %} · {{ job.period }}{% endif %}
+**{{ job.company }}**{{ ' (' ~ ui.via ~ ' ' ~ job.via ~ ')' if job.via else '' }}{{ ' · ' ~ job.period if job.period else '' }}
 
 {{ job.summary }}
 {% if job.highlights %}
@@ -76,11 +76,17 @@
 {% for link in project.links %}[{{ link.label }}]({{ link.url }}){{ ' · ' if not loop.last else '' }}{% endfor %}
 
 {% endif %}
+{% if project.related %}
+{% for r in project.related %}
+*{{ ui.related_project }}: [{{ r.name }}]({{ r.url }}) — {{ r.summary.get(lang) or r.summary.get('en') }}*
+{% endfor %}
+
+{% endif %}
 
 {% endfor %}
 {% elif section.id == 'education' %}
 {% for item in education %}
-- **{{ item.institution }}** — {{ item.field }}{% if item.period %} · {{ item.period }}{% endif %}
+- **{{ item.institution }}** — {{ item.field }}{{ ' · ' ~ item.period if item.period else '' }}
 {% if not item.degree_awarded %}
   - *{{ ui.coursework_only }}*
 {% endif %}
