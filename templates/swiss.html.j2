@@ -58,7 +58,7 @@
    budget build.py asserts.  Type is a touch smaller than print.html.j2's. */
 @page { size: A4; margin: 12mm 14mm 11mm 14mm; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { font-size: 8.2pt; }
+html { font-size: 7.8pt; }
 body {
   font-family: "DejaVu Sans", "Liberation Sans", Arial, Helvetica, sans-serif;
   color: #111;
@@ -97,11 +97,8 @@ li { margin-bottom: 1px; }
 .tags { font-size: 0.80rem; color: #666; margin-top: 1px; }
 .project.compact { font-size: 0.89rem; margin-bottom: 3px; }
 .project.compact .sep { color: #999; padding: 0 2px; }
-.skill-groups { display: flex; flex-wrap: wrap; gap: 0 16px; }
-.skill-group { flex: 1 1 46%; min-width: 46%; page-break-inside: avoid; break-inside: avoid; }
-.skill-row { display: flex; align-items: baseline; gap: 5px; font-size: 0.89rem; margin-bottom: 0.5px; }
-.skill-row .name { flex: 1; }
-.skill-row .level { color: #666; font-size: 0.83rem; flex: none; }
+.skill-line { font-size: 0.89rem; margin-bottom: 2px; page-break-inside: avoid; break-inside: avoid; }
+.skill-line b { color: #14506e; }
 .inline-list { font-size: 0.91rem; }
 .references { font-size: 0.91rem; }
 footer.cv-foot { margin-top: 8px; padding-top: 3px; border-top: 1px solid #cfd9e0; font-size: 0.80rem; color: #666; }
@@ -119,8 +116,12 @@ footer.cv-foot { margin-top: 8px; padding-top: 3px; border-top: 1px solid #cfd9e
     <h1>{{ meta.name }}</h1>
     <div class="headline">{{ meta.headline }}</div>
     {% if meta.tagline %}<div class="tagline">{{ meta.tagline }}</div>{% endif %}
+    {#- Only the channels a Swiss employer expects to see.  Signal, Discord,
+        YouTube and the booking link stay on the online version; a dossier CV
+        lists a way to write, a way to call, and the professional profiles. -#}
+    {% set contact_keys = ['email', 'phone', 'linkedin', 'github', 'website'] %}
     <div class="contact">
-      {% for link in meta.contact_links %}
+      {% for link in meta.contact_links if link.key in contact_keys %}
       {{ link.label }}: <a href="{{ link.href }}">{{ link.short }}</a>{% if not loop.last %}<span class="sep">|</span>{% endif %}
       {% endfor %}
     </div>
@@ -183,21 +184,15 @@ footer.cv-foot { margin-top: 8px; padding-top: 3px; border-top: 1px solid #cfd9e
   {% endfor %}
 
 {% elif section.id == 'skills' %}
-  <div class="skill-groups">
-    {% for group in skills %}
-    <div class="skill-group">
-      <h3>{{ group.title }}</h3>
-      {% for item in group['items'] %}
-      {#- Plain level labels, no progress bars: a self-scored bar chart reads as
-          decoration to a Swiss screener. -#}
-      <div class="skill-row">
-        <span class="name">{{ item.name }}</span>
-        <span class="level">{{ item.level_label }}</span>
-      </div>
-      {% endfor %}
-    </div>
-    {% endfor %}
+  {#- One flowing line per group, each skill followed by its self-assessed
+      level.  No progress bars: a self-scored bar chart reads as decoration to a
+      Swiss screener, and the compact form buys the page space that the work
+      history needs. -#}
+  {% for group in skills %}
+  <div class="skill-line"><b>{{ group.title }}:</b>
+    {% for item in group['items'] %}{{ item.name }} ({{ item.level_label }}){% if not loop.last %} &middot; {% endif %}{% endfor %}
   </div>
+  {% endfor %}
 
 {% elif section.id == 'open_source' %}
   {#- One compact entry per project: name, reach, stack and URL.  The long
