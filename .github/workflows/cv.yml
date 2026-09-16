@@ -1,0 +1,50 @@
+name: CV
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pyyaml jinja2
+
+      # build.py drives Chromium directly to print the PDFs; find_chromium()
+      # picks up whichever of these names lands on PATH.
+      - name: Install Chromium
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y chromium-browser || sudo apt-get install -y chromium
+
+      # Chronology, dates present, no degree claim, no TODO(user) leak, every
+      # experience entry rendered, and each variant PDF within its page budget.
+      - name: Run every build assertion
+        run: python3 build.py --check
+
+      # The committed text outputs are generated, so a build must reproduce
+      # them exactly. A diff means someone hand-edited a generated file or
+      # changed the data without rebuilding -- the drift this repo is
+      # structured to prevent.
+      #
+      # Only the text outputs are byte-compared. The PDFs are produced by
+      # whatever Chromium the runner has, and its bytes differ between
+      # versions, so comparing them would fail on an upstream browser update
+      # rather than on anything in this repo. --check already rebuilds every
+      # PDF and asserts its page count and validity, which is the part that
+      # carries meaning.
+      - name: Committed output matches a fresh build
+        run: |
+          python3 build.py --all --skip-pdf
+          if ! git diff --quiet -- index.html cv-3-page.md; then
+            echo "::error::index.html / cv-3-page.md are out of date. Run 'python3 build.py --all' and commit the result."
+            git diff --stat -- index.html cv-3-page.md
+            exit 1
+          fi
