@@ -30,6 +30,9 @@ locale: en
 # the two-page budget pays for experience instead.
 sections: [summary, experience, skills, open_source, education, languages]
 
+# These tags only decide WHICH highlights survive `experience_detail: compact`
+# (build.py ranks tag-matched ones first).  templates/swiss.html.j2 renders no
+# bold for them -- a page of half-bold bullets reads as shouting in Switzerland.
 emphasize_tags: [cpp, embedded, safety-critical, verification, linux]
 
 # Three highlights per role: enough to carry the evidence, few enough for two
