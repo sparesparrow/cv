@@ -1,0 +1,66 @@
+name: CV
+
+on:
+  push:
+    branches: ["**"]
+  pull_request:
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install pyyaml jinja2
+
+      # build.py drives a browser directly to print the PDFs. Use the Chrome
+      # that ships on the runner image, and pin it via CV_CHROMIUM so discovery
+      # cannot pick something else up off PATH.
+      #
+      # Do NOT apt-get chromium here: on ubuntu-latest that resolves to the
+      # Canonical snap, and a confined snap cannot write to the temp directory
+      # build.py prints into, so Chromium exits having produced no PDF
+      # ("Failed to write file ...: No such file or directory").
+      - name: Locate Chrome
+        run: |
+          chrome="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          if [ -z "$chrome" ]; then
+            # Not on the image: pull the .deb straight from Google rather than
+            # falling back to the snap.
+            echo "No Chrome on the image; installing the Google .deb"
+            wget -q -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            sudo apt-get update
+            sudo apt-get install -y /tmp/chrome.deb
+            chrome="$(command -v google-chrome || command -v google-chrome-stable)"
+          fi
+          echo "Using $chrome ($("$chrome" --version))"
+          echo "CV_CHROMIUM=$chrome" >> "$GITHUB_ENV"
+
+      # Chronology, dates present, no degree claim, no TODO(user) leak, every
+      # experience entry rendered, and each variant PDF within its page budget.
+      - name: Run every build assertion
+        run: python3 build.py --check
+
+      # The committed text outputs are generated, so a build must reproduce
+      # them exactly. A diff means someone hand-edited a generated file or
+      # changed the data without rebuilding -- the drift this repo is
+      # structured to prevent.
+      #
+      # Only the text outputs are byte-compared. The PDFs are produced by
+      # whatever Chromium the runner has, and its bytes differ between
+      # versions, so comparing them would fail on an upstream browser update
+      # rather than on anything in this repo. --check already rebuilds every
+      # PDF and asserts its page count and validity, which is the part that
+      # carries meaning.
+      - name: Committed output matches a fresh build
+        run: |
+          python3 build.py --all --skip-pdf
+          if ! git diff --quiet -- index.html cv-3-page.md; then
+            echo "::error::index.html / cv-3-page.md are out of date. Run 'python3 build.py --all' and commit the result."
+            git diff --stat -- index.html cv-3-page.md
+            exit 1
+          fi

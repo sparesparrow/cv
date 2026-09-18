@@ -1,0 +1,90 @@
+# Variant: Brno / Czech contractor market.
+#
+# Readers: hiring managers and agency recruiters at Honeywell Aerospace Brno,
+# Thermo Fisher, Red Hat, Siemens, NXP, ABB, and at the agencies that staff them
+# (CoolPeople, Ixperta, Hays CZ). They screen fast and they already recognise the
+# local brands on this CV, so this overlay's whole job is to put Resideo /
+# Thermo Fisher / Honeywell in front of them inside two pages and to state
+# plainly that he is available on an IČO.
+#
+# This file only *shapes* data/cv.yaml -- it is a rendering overlay, not content.
+# Every sentence the PDF prints comes from the canonical data file.
+extends: ../cv.yaml
+
+name: cz-contractor
+description: >-
+  Two-page English contractor CV for the Brno market: Resideo, Thermo Fisher and
+  Honeywell foregrounded, HIL and safety-critical embedded C++ emphasised, IČO
+  availability stated. Czech stays available through the website toggle.
+
+# English. Even Brno roles are screened by international hiring managers and by
+# agency consultants who forward the PDF to them; the Czech rendering is one
+# click away on the web version, so the PDF is the English artefact.
+locale: en
+
+# Order is reading order. The summary sets the pitch, experience carries the
+# recognisable employers, skills gives a recruiter something to keyword-match
+# against, and availability -- the reason this variant exists -- states the IČO
+# framing and EU work authorization before languages closes the document.
+#
+# Dropped against the default section list:
+#   preferred_roles -- the summary and the role titles already say it, and a
+#     contractor is booked for what he has delivered, not for a wish list.
+#     (Measured: adding it back pushes the PDF to three pages.)
+#   open_source -- the three featured projects cost roughly a full page of
+#     prose; measured at three pages with them in. The website carries the full
+#     list, and MCP-Prompts is already named in the summary.
+#   education -- no degree was awarded, so the block spends space to say little
+#     to this audience.
+#   interests -- dilutes a senior contractor pitch.
+#   contact -- not a section in the print template; contact details always
+#     render in the header.
+sections:
+  - summary
+  - experience
+  - skills
+  - availability
+  - languages
+
+# These tags bold matching highlights and, more importantly, decide which
+# highlights survive `experience_detail: compact`: build.py keeps emphasised
+# ones first, in original order. Chosen for what they actually select:
+#   resideo      -> bench device layer, 95.6% conformance, 25+ firmware defects
+#   thermofisher -> HAL + COM/MIDL IPC, FPGA with gRPC, WPF backend
+#   honeywell    -> job-based execution, test-interference safety, test modes
+# `hil` and `verification` are deliberately absent: they sit on nearly every
+# Resideo highlight, so adding them makes the tag non-selective and the 95.6%
+# conformance result loses its slot to two earlier bullets. HIL and verification
+# are carried by the profile summary and by the bullets these tags select.
+emphasize_tags:
+  - safety-critical
+  - embedded
+  - cpp
+
+# Three highlights per role. `full` renders four pages for this section set;
+# `minimal` would strip the evidence a technical screener actually reads.
+experience_detail: compact
+
+# Hard requirement for this market: one to two pages. build.py asserts it and
+# fails the build if the PDF grows past it.
+page_budget: [1, 2]
+
+# `include` is an allow-list applied to BOTH experience ids and open-source ids,
+# so anything that should survive has to be named here and everything else is
+# dropped -- which is also what keeps the open-source entries out.
+#
+# Kept: the three employers this market recognises. `tns` (Trusted Network
+# Solutions, 2020-2022) is the one painful cut: with it the PDF is three pages,
+# and the skills section is the better use of that space for agency screening.
+# The Linux/networking/security work is still stated -- the profile summary
+# names Trusted Network Solutions and the skills section carries Netlink,
+# nftables, TLS inspection and proxy design. If a reader is specifically a
+# networking shop (Red Hat, Siemens), swap `skills` out of `sections` and add
+# `tns` back here: that combination also fits two pages.
+# Also dropped: `selfemployed` (two thin, undated bullets -- the contractor
+# framing is carried by the availability section and by Resideo's "via
+# CoolPeople (contractor)" line) and `ibm` (2014-2016 IT operations).
+include:
+  - resideo
+  - thermofisher
+  - honeywell

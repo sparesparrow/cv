@@ -1,0 +1,267 @@
+# Test fixture for build.py -- NOT the real CV.
+#
+# It mirrors the schema of data/cv.yaml exactly (same key names, same shapes,
+# same TODO(user) placeholders) but with short, obviously-fake content, so the
+# build pipeline can be exercised and the assertions can be deliberately broken
+# without touching the real document.
+#
+#   python3 build.py --check --data fixtures/sample-cv.yaml
+#   python3 build.py --all   --data fixtures/sample-cv.yaml --out-dir /tmp/out --dist /tmp/out/dist
+
+page_budget: [1, 3]
+
+meta:
+  name:
+    en: Test Person
+    cs: Testovací Osoba
+  headline:
+    en: Fixture engineer — embedded systems and test automation
+    cs: Fixture inženýr — embedded systémy a automatizace testování
+  tagline:
+    en: Sample tagline used only by the build fixture.
+    cs: Ukázkový podtitulek používaný pouze buildovacím fixture.
+  location:
+    city: Brno
+    country: CZ
+  citizenship: EU (Czech Republic)
+  contact:
+    email: fixture@example.invalid
+    phone: "+420 000 000 000"
+    github: https://github.com/example
+    linkedin: https://www.linkedin.com/in/example
+    x: https://x.com/example
+    calendly: https://calendly.com/example
+  photo: sparesparrow.png
+  badges:
+    - label: Fixture badge
+      url: https://example.invalid/badge
+      image: https://example.invalid/badge.svg
+
+summary:
+  en:
+    - Fixture summary line one, describing embedded and verification work.
+    - Fixture summary line two, describing Linux and networking work.
+  cs:
+    - Ukázkový souhrn, řádek jedna, popisující embedded a verifikační práci.
+    - Ukázkový souhrn, řádek dvě, popisující práci s Linuxem a sítěmi.
+
+preferred_roles:
+  - en: Test Automation / Verification Engineer
+    cs: Inženýr automatizace testování a verifikace
+    tags: [hil, verification]
+    note:
+      en: Hardware-in-the-loop benches and requirement traceability.
+      cs: Testovací standy hardware-in-the-loop a trasovatelnost požadavků.
+  - en: Senior C++ Engineer
+    cs: Senior C++ inženýr
+    tags: [cpp, embedded]
+
+skills:
+  - group:
+      en: Embedded & RTOS
+      cs: Embedded a RTOS
+    items:
+      - name: C++ (C++17/C++20)
+        level: senior
+        bar: 95
+      - name: ARM / RTOS
+        level: medior
+        bar: 80
+  - group:
+      en: Linux & Networking
+      cs: Linux a sítě
+    items:
+      - name: Linux systems programming
+        level: senior
+        bar: 92
+      - name: Rust
+        level: working
+        bar: 55
+
+experience:
+  - id: resideo
+    company: Resideo (Ademco)
+    via: CoolPeople (contractor)
+    role:
+      en: Test Automation Engineer
+      cs: Inženýr automatizace testování
+    start: TODO(user)
+    end: TODO(user)
+    tags: [hil, verification, python]
+    summary:
+      en: Fixture description of hardware-in-the-loop test automation work.
+      cs: Ukázkový popis práce na automatizaci HIL testování.
+    highlights:
+      - en: Fixture highlight about an Arrange/Act/Assert validation pipeline.
+        cs: Ukázkový bod o validační pipeline typu Arrange/Act/Assert.
+        tags: [hil, verification]
+        metric: true
+      - en: Fixture highlight about instrument control over SCPI.
+        cs: Ukázkový bod o řízení přístrojů přes SCPI.
+        tags: [hil]
+      - en: Fixture highlight about a data-driven test-case generator.
+        cs: Ukázkový bod o generátoru testovacích případů řízeném daty.
+        tags: [python]
+      - en: Fixture highlight about requirement traceability reporting.
+        cs: Ukázkový bod o reportování trasovatelnosti požadavků.
+        tags: [verification]
+    skills_learned: [HIL benches, SCPI, pytest]
+
+  - id: thermofisher
+    company: Thermo Fisher Scientific
+    via: Ixperta (contractor)
+    role:
+      en: Software Developer (C++)
+      cs: Vývojář softwaru (C++)
+    start: "2023"
+    end: "2024"
+    tags: [cpp, embedded, grpc]
+    summary:
+      en: Fixture description of electron-microscopy server-side software work.
+      cs: Ukázkový popis serverového softwaru pro elektronovou mikroskopii.
+    highlights:
+      - en: Fixture highlight about a data-acquisition pipeline.
+        cs: Ukázkový bod o pipeline pro sběr dat.
+        tags: [cpp]
+      - en: Fixture highlight about FPGA communication over gRPC.
+        cs: Ukázkový bod o komunikaci s FPGA přes gRPC.
+        tags: [grpc, embedded]
+    skills_learned: [gRPC, COM/MIDL, FPGA bring-up]
+
+  - id: honeywell
+    company: Honeywell
+    role:
+      en: Software Engineer II
+      cs: Softwarový inženýr II
+    start: "2022"
+    end: "2023"
+    tags: [cpp, safety-critical, rtos]
+    summary:
+      en: Fixture description of an avionics diagnostic test engine.
+      cs: Ukázkový popis diagnostického testovacího enginu pro avioniku.
+    highlights:
+      - en: Fixture highlight about a state-machine diagnostic framework.
+        cs: Ukázkový bod o diagnostickém frameworku se stavovým automatem.
+        tags: [safety-critical]
+    skills_learned: [ARM, RTOS, Flatbuffers]
+
+  - id: tns
+    company: Trusted Network Solutions
+    role:
+      en: Application Developer
+      cs: Vývojář aplikací
+    start: "2020"
+    end: "2022"
+    tags: [cpp, linux, networking]
+    summary:
+      en: Fixture description of a forward proxy and network monitoring daemon.
+      cs: Ukázkový popis forward proxy a démona pro monitoring sítě.
+    highlights:
+      - en: Fixture highlight about TLS inspection and nftables rule management.
+        cs: Ukázkový bod o inspekci TLS a správě pravidel nftables.
+        tags: [linux, networking]
+    skills_learned: [Netlink, nftables, TLS 1.3]
+
+  # Deliberately carries TODO(user): exempt from the ordering comparison, but
+  # the assertion still requires the entry itself to be present.
+  - id: selfemployed
+    company: Self-employed
+    role:
+      en: Freelance Developer & IT Consultant
+      cs: Vývojář a IT konzultant na volné noze
+    start: TODO(user)
+    end: TODO(user)
+    tags: [linux, consulting]
+    summary:
+      en: Fixture description of freelance Linux and CI/CD consulting.
+      cs: Ukázkový popis konzultací pro Linux a CI/CD na volné noze.
+    highlights: []
+    skills_learned: [Docker, TeamCity]
+
+  - id: ibm
+    company: IBM
+    role:
+      en: Automation Developer & IT Systems Specialist
+      cs: Vývojář automatizace a specialista IT systémů
+    start: "2014"
+    end: "2016"
+    tags: [automation, scripting]
+    summary:
+      en: Fixture description of enterprise IT automation work.
+      cs: Ukázkový popis automatizace podnikového IT.
+    highlights:
+      - en: Fixture highlight about replacing manual ticketing operations.
+        cs: Ukázkový bod o nahrazení manuálních ticketovacích operací.
+        tags: [automation]
+    skills_learned: [Bash, PowerShell, Active Directory]
+
+open_source:
+  - id: fixture-alpha
+    name: fixture-alpha
+    featured: true
+    url: https://github.com/example/fixture-alpha
+    stars: 97
+    forks: 21
+    tech: [TypeScript, Node.js, Docker]
+    summary:
+      en: Fixture project alpha, a sample MCP server used by the build tests.
+      cs: Ukázkový projekt alpha, vzorový MCP server pro buildovací testy.
+    links:
+      - label: GitHub
+        url: https://github.com/example/fixture-alpha
+      - label: npm
+        url: https://www.npmjs.com/package/fixture-alpha
+  - id: fixture-beta
+    name: fixture-beta
+    featured: false
+    url: https://github.com/example/fixture-beta
+    stars: 2
+    forks: 0
+    tech: [Rust, Netlink]
+    summary:
+      en: Fixture project beta, a sample networking daemon.
+      cs: Ukázkový projekt beta, vzorový síťový démon.
+    links:
+      - label: GitHub
+        url: https://github.com/example/fixture-beta
+
+education:
+  - institution: Masaryk University, Faculty of Informatics
+    field: Computer Science
+    start: TODO(user)
+    end: TODO(user)
+    degree_awarded: false
+    note:
+      en: Coursework in programming, Linux and networking.
+      cs: Studium zaměřené na programování, Linux a počítačové sítě.
+  - institution: Coursera.org / DeepLearning.AI
+    field: Machine learning and LLM engineering
+    start: TODO(user)
+    end: TODO(user)
+    degree_awarded: false
+    note:
+      en: Deep Learning Specialization plus prompt engineering coursework.
+      cs: Deep Learning Specialization a kurzy prompt engineeringu.
+
+languages:
+  - name: Czech
+    name_cs: Čeština
+    cefr: native
+  - name: English
+    name_cs: Angličtina
+    cefr: C1
+
+work_authorization:
+  en: EU citizen (Czech Republic) — no permit required in the EU/EEA.
+  cs: Občan EU (Česká republika) — v EU/EHP není potřeba pracovní povolení.
+
+availability:
+  ico: true
+  en: Available as an independent contractor. Brno on-site and remote.
+  cs: K dispozici jako samostatný kontraktor. Brno na místě i vzdáleně.
+
+interests:
+  - en: Neuroscience and brain-machine interfaces
+    cs: Neurovědy a rozhraní mozek-stroj
+  - en: Music production
+    cs: Hudební produkce

@@ -1,0 +1,712 @@
+# Single source of truth for the CV.
+# Consumed by build.py to render index.html, the print/PDF layout and cv-3-page.md.
+#
+# Conventions:
+#   * Every user-facing string is a {en: ..., cs: ...} map. Where a faithful Czech
+#     translation was not available the `cs` key is omitted and the renderer falls
+#     back to `en`.
+#   * Anything that is not supported by a verifiable source is the literal string
+#     "TODO(user)". Do not replace those with guesses.
+#   * Date ranges use en-dashes in prose ("2023 – 2024"); structured start/end keys
+#     hold the raw values.
+
+meta:
+  name:
+    en: "Vojtěch Špaček"
+    cs: "Vojtěch Špaček"
+  headline:
+    en: "Senior C++ engineer — safety-critical embedded & HIL test automation | Linux/networking | agentic-AI (MCP) tooling"
+    cs: "Senior C++ inženýr — bezpečnostně kritický embedded vývoj a automatizace HIL testování | Linux a sítě | agentní AI (MCP) nástroje"
+  tagline:
+    en: "Pragmatic programmer and creative problem solver — systems, verification and open source."
+    cs: "Pragmatický programátor a kreativní řešitel problémů — systémy, verifikace a open source."
+  location:
+    city: Brno
+    country: CZ
+  citizenship: "EU (Czech Republic)"
+  contact:
+    email: "sparesparrow@protonmail.ch"
+    phone: "+420 776 168 749"
+    github: "https://github.com/sparesparrow"
+    linkedin: "https://www.linkedin.com/in/sparesparrow"
+    x: "https://x.com/spare23sparrow"
+    calendly: "https://calendly.com/dallheimal"
+    # Additional channels present in index.html only; kept so no fact is lost.
+    signal: "https://signal.me/#eu/-i6EcG8dz6FtV6U2yytXPe4UESGjNMxGTw4Xf8AWbR3b5dD3lyBKd53IEKi5AJ6N"
+    youtube: "https://www.youtube.com/playlist?list=PLaWOvDBjg6WiUcQm-yEP1RskMfPeWMKTL"
+    discord: "https://discord.com/channels/@sparesparrow"
+    website: "https://sparesparrow.github.io/cv/"
+  photo: sparesparrow.png
+  badges:
+    - label: "MCP Server Developer (Glama)"
+      url: "https://glama.ai/mcp/servers/i0z4f3pr82/"
+      image: "https://glama.ai/mcp/servers/i0z4f3pr82/badge"
+
+summary:
+  en:
+    - "Senior C++ engineer working on safety-critical and real-time systems: aircraft onboard diagnostics at Honeywell, electron-microscopy detector software at Thermo Fisher Scientific, and a Linux inspection proxy and firewall at Trusted Network Solutions."
+    - "Most recently sole owner of the hardware-in-the-loop verification suite and automated bench for a safety-certified two-stage gas furnace ignition controller (UL/CSA, ANSI Z21.20, NFPA 54), raising measured conformance to 259 of 271 tracked state transitions (95.6%)."
+    - "Linux, networking and security specialist — Netlink, nftables, TLS inspection, Kerberos/LDAP/OCSP — with C++20 daemons shipped as Debian packages and a Rust reimplementation published on crates.io."
+    - "Builds agentic-AI tooling on the Model Context Protocol: an agent harness adopted into a daily client delivery workflow, and MCP-Prompts, published to npm, Docker Hub and the MCP directories (Glama, MCP Market, PulseMCP) with 97 stars and 21 forks."
+  cs:
+    - "Senior C++ inženýr se zaměřením na bezpečnostně kritické systémy reálného času: palubní diagnostika letadel v Honeywellu, software pro detektory elektronových mikroskopů ve Thermo Fisher Scientific a inspekční proxy a firewall na Linuxu v Trusted Network Solutions."
+    - "Naposledy jediný vlastník verifikační sady typu hardware-in-the-loop a automatizovaného testovacího standu pro bezpečnostně certifikovanou řídicí jednotku zapalování dvoustupňové plynové teplovzdušné jednotky (UL/CSA, ANSI Z21.20, NFPA 54); naměřenou shodu zvýšil na 259 z 271 sledovaných přechodů (95,6 %)."
+    - "Specialista na Linux, sítě a bezpečnost — Netlink, nftables, inspekce TLS, Kerberos/LDAP/OCSP — s démony v C++20 dodávanými jako balíčky pro Debian a s reimplementací v Rustu publikovanou na crates.io."
+    - "Staví agentní AI nástroje nad Model Context Protocolem: agentní harness přijatý do každodenního dodávkového procesu u klienta a projekt MCP-Prompts publikovaný na npm, Docker Hub a v adresářích MCP serverů (Glama, MCP Market, PulseMCP) s 97 hvězdami a 21 forky."
+
+preferred_roles:
+  - en: "Test Automation / Verification Engineer (HIL, safety-critical)"
+    cs: "Inženýr automatizace testování a verifikace (HIL, bezpečnostně kritické systémy)"
+    tags: [hil, verification, safety-critical]
+    note:
+      en: "Hardware-in-the-loop benches, requirement traceability, instrument control and test evidence reporting."
+      cs: "Testovací standy hardware-in-the-loop, trasovatelnost požadavků, řízení přístrojů a reporting testovacích důkazů."
+  - en: "Senior C++ Engineer — embedded, RTOS and real-time systems"
+    cs: "Senior C++ inženýr — embedded systémy, RTOS a systémy reálného času"
+    tags: [cpp, embedded, rtos]
+    note:
+      en: "State-machine engines, hardware abstraction layers, inter-process communication, high availability."
+      cs: "Enginy nad stavovými automaty, hardwarové abstrakční vrstvy, meziprocesová komunikace, vysoká dostupnost."
+  - en: "Linux Systems, Networking and Security Engineer"
+    cs: "Inženýr pro linuxové systémy, sítě a bezpečnost"
+    tags: [linux, networking, security]
+    note:
+      en: "TCP/IP, Netlink, nftables, encrypted traffic inspection, daemon design and packaging."
+      cs: "TCP/IP, Netlink, nftables, inspekce šifrovaného provozu, návrh a balíčkování démonů."
+  - en: "AI/LLM Integration Engineer — MCP servers and agentic tooling"
+    cs: "Integrační inženýr pro AI/LLM — MCP servery a agentní nástroje"
+    tags: [ai, mcp, agentic-ai]
+    note:
+      en: "Model Context Protocol servers, prompt and agent workflow design, LLM provider APIs, CI/CD for AI-assisted delivery."
+      cs: "Servery Model Context Protocolu, návrh promptů a agentních workflow, API poskytovatelů LLM, CI/CD pro dodávky s podporou AI."
+
+skills:
+  - group:
+      en: "Embedded & RTOS"
+      cs: "Embedded a RTOS"
+    items:
+      - {name: "C++ (C++17/C++20)", level: senior, bar: 95}
+      - {name: "Embedded software / ARM / RTOS", level: medior, bar: 80}
+      - {name: "State machine design patterns", level: senior, bar: 90}
+      - {name: "Hardware abstraction layers & IPC (COM/MIDL, Unix sockets)", level: medior, bar: 85}
+      - {name: "FPGA-adjacent development & gRPC", level: medior, bar: 75}
+      - {name: "Flatbuffers (binary serialization)", level: medior, bar: 75}
+      - {name: "Qt/QML", level: working, bar: 55}
+  - group:
+      en: "Verification & HIL"
+      cs: "Verifikace a HIL"
+    items:
+      - {name: "Python", level: medior, bar: 85}
+      - {name: "Hardware-in-the-loop test design", level: senior, bar: 90}
+      - {name: "pyvisa / USBTMC / SCPI instrument control", level: medior, bar: 80}
+      - {name: "Modbus I/O cards & CAN serial-bus diagnostics", level: medior, bar: 75}
+      - {name: "Safety-certified product verification (UL/CSA, ANSI Z21.20, NFPA 54)", level: medior, bar: 80}
+      - {name: "Requirement traceability & test evidence reporting (openpyxl, HTML, Mermaid)", level: medior, bar: 85}
+      - {name: "C# / .NET", level: medior, bar: 80}
+      - {name: "Perl test frameworks", level: medior, bar: 70}
+  - group:
+      en: "Networking & Security"
+      cs: "Sítě a bezpečnost"
+    items:
+      - {name: "Linux", level: senior, bar: 95}
+      - {name: "Linux networking, TCP/IP, Netlink, nftables", level: senior, bar: 90}
+      - {name: "Encrypted traffic inspection (TLS 1.3, OCSP)", level: medior, bar: 85}
+      - {name: "Kerberos/Heimdal, LDAP, PostgreSQL, Suricata IDS", level: medior, bar: 80}
+      - {name: "Forward/TCP/HTTP proxy design", level: senior, bar: 85}
+      - {name: "Rust", level: working, bar: 60}
+  - group:
+      en: "AI / LLM / MCP"
+      cs: "AI / LLM / MCP"
+    items:
+      - {name: "Model Context Protocol server development", level: senior, bar: 90}
+      - {name: "Agentic workflow design & governance (agents, skills, policy hooks)", level: medior, bar: 85}
+      - {name: "Prompt engineering (RAG, few-shot, prompt caching, structured outputs, tool calling)", level: medior, bar: 85}
+      - {name: "LLM provider APIs & SDK integration", level: medior, bar: 85}
+      - {name: "JavaScript / TypeScript", level: medior, bar: 80}
+      - {name: "Node.js", level: medior, bar: 80}
+  - group:
+      en: "Tooling"
+      cs: "Nástroje"
+    items:
+      - {name: "Git", level: senior, bar: 90}
+      - {name: "Bash", level: senior, bar: 90}
+      - {name: "Docker / Podman", level: medior, bar: 85}
+      - {name: "Conan (C/C++ dependency management)", level: medior, bar: 80}
+      - {name: "CI/CD (Jenkins, TeamCity, GitLab CI, GitHub Actions)", level: medior, bar: 85}
+      - {name: "PowerShell", level: medior, bar: 70}
+      - {name: "Enterprise Architect (UML)", level: working, bar: 60}
+      - {name: "GDB, Wireshark, VirtualBox", level: medior, bar: 80}
+
+experience:
+  - id: resideo
+    company: "Resideo (Ademco)"
+    via: "CoolPeople (contractor)"
+    role:
+      en: "Test Automation Engineer (Python, C#)"
+      cs: "Inženýr automatizace testování (Python, C#)"
+    start: "TODO(user)"
+    end: "TODO(user)"
+    tags: [hil, safety-critical, verification, agentic-ai, python, csharp]
+    summary:
+      en: "Hardware-in-the-loop verification of a safety-certified two-stage gas furnace ignition controller (UL/CSA, ANSI Z21.20, NFPA 54), as sole owner of the verification test suite and of the automated bench that drives it. Owned delivery end to end: requirement traceability, issue tracking, branch and pull-request workflow, Conan packaging, CI integration and monthly client reporting."
+      cs: "Verifikace typu hardware-in-the-loop pro bezpečnostně certifikovanou řídicí jednotku zapalování dvoustupňové plynové teplovzdušné jednotky (UL/CSA, ANSI Z21.20, NFPA 54) jako jediný vlastník verifikační testovací sady i automatizovaného standu, který ji řídí. Odpovědnost za celou dodávku: trasovatelnost požadavků, evidence chyb, práce s větvemi a pull requesty, balíčkování v Conanu, integrace do CI a měsíční reporting pro klienta."
+    highlights:
+      - en: "Designed an Arrange/Act/Assert validation pipeline in Python with eight independent gates covering preconditions, stimulus timing, state sequence, alarms, signal history, cross-layer consistency, timer accuracy and requirement traceability."
+        cs: "Navrhl validační pipeline typu Arrange/Act/Assert v Pythonu s osmi nezávislými branami pokrývajícími předpoklady, časování stimulů, posloupnost stavů, alarmy, historii signálů, konzistenci napříč vrstvami, přesnost časovačů a trasovatelnost požadavků."
+        tags: [hil, verification]
+        metric: true
+      - en: "Built a data-driven generator expanding a YAML catalogue of 270+ state transitions, 38 states and 33 events into roughly 290 executable tests, removing hand-written duplication."
+        cs: "Vytvořil datově řízený generátor, který z YAML katalogu 270+ stavových přechodů, 38 stavů a 33 událostí rozvine zhruba 290 spustitelných testů a odstraní ručně psanou duplicitu."
+        tags: [hil, verification]
+        metric: true
+      - en: "Engineered the bench device layer so each instrument is owned by a single thread against a shared monotonic clock, covering a pyvisa/USBTMC/SCPI programmable AC source, CAN serial-bus monitoring and Modbus relay and probe I/O."
+        cs: "Navrhl přístrojovou vrstvu standu tak, že každý přístroj vlastní jediné vlákno proti sdílenému monotónnímu času; pokrývá programovatelný zdroj střídavého napětí přes pyvisa/USBTMC/SCPI, monitorování sběrnice CAN a reléové a sondové I/O přes Modbus."
+        tags: [hil, embedded]
+        metric: false
+      - en: "Implemented a correlated JSONL timeline placing every instrument command, signal edge and bus message on one axis, enabling root-cause analysis across three independent devices."
+        cs: "Implementoval korelovanou časovou osu v JSONL, která staví každý příkaz přístroje, hranu signálu i zprávu na sběrnici na jednu osu a umožňuje analýzu příčin napříč třemi nezávislými zařízeními."
+        tags: [hil, verification]
+        metric: true
+      - en: "Diagnosed and fixed a leaked USB handle that had been misreported as a hardware fault for months, restoring an entire blocked test family."
+        cs: "Diagnostikoval a opravil uniklý USB handle, který byl měsíce mylně hlášen jako hardwarová závada, a odblokoval tím celou rodinu testů."
+        tags: [hil, debugging]
+        metric: false
+      - en: "Raised measured conformance to 259 of 271 tracked transitions (95.6%) and closed a ~148-case gap in which stimulus windows were never actually measured, bringing it to zero."
+        cs: "Zvýšil naměřenou shodu na 259 z 271 sledovaných přechodů (95,6 %) a uzavřel mezeru zhruba 148 případů, u nichž se okna stimulů nikdy skutečně neměřila, na nulu."
+        tags: [hil, verification, safety-critical]
+        metric: true
+      - en: "Delivered an unattended nightly bench pipeline with per-key locking, crash and abort recovery, result journalling, Excel evidence workbooks, bilingual HTML dashboards and Mermaid failure graphs, cutting report generation from 15.7 s to 1.6 s."
+        cs: "Dodal bezobslužnou noční pipeline standu se zamykáním po klíčích, zotavením po pádu i přerušení, žurnálováním výsledků, důkazními sešity v Excelu, dvojjazyčnými HTML dashboardy a Mermaid grafy selhání; generování reportu zkrátil z 15,7 s na 1,6 s."
+        tags: [hil, tooling]
+        metric: true
+      - en: "Investigated 25+ firmware and harness defects against the C/C++ firmware sources, shipping a standalone reproduction script for each."
+        cs: "Prošetřil 25+ defektů firmwaru a testovací sady proti zdrojovým kódům firmwaru v C/C++ a ke každému dodal samostatný reprodukční skript."
+        tags: [embedded, verification]
+        metric: true
+      - en: "Migrated a C#/.NET WinForms serial-bus monitor into version control, fixed a log-parser crash and reduced its build and deployment to one command."
+        cs: "Převedl monitor sériové sběrnice v C#/.NET WinForms do správy verzí, opravil pád parseru logů a zkrátil jeho build i nasazení na jediný příkaz."
+        tags: [csharp, tooling]
+        metric: false
+      - en: "Created an agentic AI harness of specialised agents, skills, prompt workflows, policy hooks and Model Context Protocol servers, adopted as a daily part of the delivery workflow."
+        cs: "Vytvořil agentní AI harness ze specializovaných agentů, dovedností, promptových workflow, politikových hooků a serverů Model Context Protocolu, který byl přijat jako každodenní součást dodávkového procesu."
+        tags: [agentic-ai, mcp]
+        metric: false
+    skills_learned:
+      - "Hardware-in-the-Loop Test Design"
+      - "Safety-Certified Product Verification (UL/CSA, ANSI Z21.20, NFPA 54)"
+      - "Ignition State-Machine Domain Knowledge"
+      - "pyvisa / USBTMC / SCPI Instrument Control"
+      - "Modbus I/O Cards"
+      - "CAN Serial-Bus Diagnostics"
+      - "Deterministic Multi-Threaded Device Ownership"
+      - "Test-Evidence & Traceability Reporting (openpyxl, HTML dashboards, Mermaid)"
+      - "Model Context Protocol Server Development"
+      - "Agentic Workflow Design & Governance"
+
+  - id: thermofisher
+    company: "Thermo Fisher Scientific"
+    via: "Ixperta (contractor)"
+    role:
+      en: "Software Developer (C++)"
+      cs: "Vývojář softwaru (C++)"
+    start: "2023"
+    end: "2024"
+    tags: [cpp, embedded, windows, imaging, ai-tooling]
+    summary:
+      en: "Electron microscopy software for high-resolution detector hardware operation and image acquisition. Built server-side C++ applications, FPGA-based data processing pipelines with gRPC networking, and backend logic for a C#/.NET WPF image processing and display application. Worked in an international Agile team with bi-weekly stakeholder demos."
+      cs: "Software pro elektronovou mikroskopii — obsluha detektorového hardwaru s vysokým rozlišením a akvizice obrazu. Vyvíjel serverové aplikace v C++, datové pipeline nad FPGA s komunikací přes gRPC a backendovou logiku pro aplikaci v C#/.NET WPF pro zpracování a zobrazení obrazu. Práce v mezinárodním agilním týmu s demonstracemi pro zadavatele jednou za dva týdny."
+    highlights:
+      - en: "Implemented server-side software in C++, including hardware abstraction layers (HAL) and inter-process communication (IPC) using COM and MIDL on Windows."
+        cs: "Implementoval serverový software v C++ včetně hardwarových abstrakčních vrstev (HAL) a meziprocesové komunikace (IPC) pomocí COM a MIDL na Windows."
+        tags: [cpp, windows]
+        metric: false
+      - en: "Developed embedded software for FPGA hardware, using gRPC network communication in C++, Python and Linux environments."
+        cs: "Vyvíjel embedded software pro FPGA hardware s využitím síťové komunikace přes gRPC v prostředí C++, Pythonu a Linuxu."
+        tags: [embedded, cpp]
+        metric: false
+      - en: "Contributed to WPF application development on the backend using C# and COM/MIDL IPC with the HAL, and ensured graceful degradation of the application."
+        cs: "Podílel se na backendu aplikace ve WPF pomocí C# a IPC přes COM/MIDL s HAL a zajistil řízenou degradaci funkcí aplikace."
+        tags: [csharp, windows]
+        metric: false
+      - en: "Optimized the data acquisition pipeline and implemented robust error handling."
+        cs: "Optimalizoval pipeline pro akvizici dat a implementoval robustní ošetření chyb."
+        tags: [cpp]
+        metric: false
+      - en: "Developed vscode-automation, an enterprise-grade VSCode extension integrating TICS code quality analysis with the OpenAI API for automated violation detection and AI-powered remediation, using TypeScript, the VSCode Extension API and Git API integration."
+        cs: "Vyvinul vscode-automation, rozšíření pro VSCode podnikové úrovně, které propojuje analýzu kvality kódu TICS s OpenAI API pro automatickou detekci porušení pravidel a jejich nápravu s podporou AI; postaveno na TypeScriptu, VSCode Extension API a integraci Git API."
+        tags: [ai-tooling, typescript]
+        metric: false
+      - en: "Led 3 knowledge sharing sessions on GitHub Copilot best practices and presented bi-weekly stakeholder demos, including the final presentation of the vscode-automation innovation sprint."
+        cs: "Vedl 3 sdílecí sezení o osvědčených postupech pro GitHub Copilot a prezentoval dvoutýdenní dema pro zadavatele včetně závěrečné prezentace inovačního sprintu vscode-automation."
+        tags: [communication]
+        metric: true
+    skills_learned:
+      - "Image Acquisition & Processing"
+      - "C#, .NET"
+      - "Component Object Model"
+      - "Software Development for Windows"
+      - "gRPC"
+      - "FPGA development"
+      - "VSCode Extension Development"
+      - "TypeScript"
+      - "OpenAI API Integration"
+      - "Technical Presentation & Stakeholder Communication"
+
+  - id: honeywell
+    company: "Honeywell"
+    role:
+      en: "Software Engineer II"
+      cs: "Softwarový inženýr II"
+    start: "2022"
+    end: "2023"
+    tags: [cpp, embedded, rtos, safety-critical, aviation]
+    summary:
+      en: "Onboard Maintenance System that monitors the condition of aircraft and diagnoses issues during flight. Architected and implemented the DiagTest framework, a state machine-based diagnostic test engine in C++ managing 15+ operational states for aircraft member system testing during flight and maintenance operations."
+      cs: "Palubní údržbový systém, který sleduje stav letadla a diagnostikuje závady za letu. Navrhl a implementoval framework DiagTest, diagnostický testovací engine v C++ postavený na stavovém automatu, který spravuje 15+ provozních stavů pro testování podřízených systémů letadla za letu i při údržbě."
+    highlights:
+      - en: "Designed a job-based execution system with DiagTestJob and DiagTestMsgQueProc for asynchronous test orchestration, implementing message queue processing patterns for reliable real-time diagnostics."
+        cs: "Navrhl vykonávací systém založený na úlohách s komponentami DiagTestJob a DiagTestMsgQueProc pro asynchronní orchestraci testů s využitím vzorů zpracování front zpráv pro spolehlivou diagnostiku v reálném čase."
+        tags: [cpp, rtos]
+        metric: false
+      - en: "Engineered a test interference management system preventing conflicting diagnostic tests from running simultaneously, ensuring aircraft system safety and data integrity."
+        cs: "Vytvořil systém řízení interference testů, který brání současnému běhu kolidujících diagnostických testů a zajišťuje bezpečnost systémů letadla i integritu dat."
+        tags: [safety-critical]
+        metric: false
+      - en: "Implemented four diagnostic test modes (data collection, passive monitoring, interactive, non-interactive) with timeout management, precondition handling and aviation-standard command/response protocols."
+        cs: "Implementoval čtyři režimy diagnostických testů (sběr dat, pasivní monitorování, interaktivní a neinteraktivní) se správou timeoutů, ošetřením předpokladů a protokoly příkaz/odpověď dle leteckých standardů."
+        tags: [safety-critical, rtos]
+        metric: true
+      - en: "Developed comprehensive integration tests in Python to validate communication protocols, state transitions and system stability under various failure scenarios."
+        cs: "Vyvinul rozsáhlé integrační testy v Pythonu pro ověření komunikačních protokolů, stavových přechodů a stability systému v různých scénářích selhání."
+        tags: [verification, python]
+        metric: false
+      - en: "Built a real-time parameter monitoring system (MonitorManager) tracking aircraft system values during test execution with maintenance message correlation."
+        cs: "Postavil systém monitorování parametrů v reálném čase (MonitorManager), který během běhu testů sleduje hodnoty systémů letadla a koreluje je s údržbovými zprávami."
+        tags: [rtos, cpp]
+        metric: false
+      - en: "Optimized data stream processing with multi-threading and timeout management, and ensured aviation safety standards compliance."
+        cs: "Optimalizoval zpracování datových toků pomocí vícevláknového zpracování a správy timeoutů a zajistil soulad s leteckými bezpečnostními standardy."
+        tags: [safety-critical, cpp]
+        metric: false
+    skills_learned:
+      - "Embedded Software"
+      - "ARM"
+      - "RTOS"
+      - "Clang"
+      - "Cross-platform Compilation"
+      - "Flatbuffers (binary data serialization, C++ headers generation)"
+      - "Conan (dependency management)"
+      - "Enterprise Architect (UML diagrams)"
+      - "Aviation Safety Standards"
+      - "State Machine Design Patterns"
+      - "TeamCity"
+      - "GitLab CI/CD"
+
+  - id: tns
+    company: "Trusted Network Solutions"
+    role:
+      en: "Application Developer"
+      cs: "Vývojář aplikací"
+    start: "2020"
+    end: "2022"
+    tags: [cpp, linux, networking, security]
+    summary:
+      en: "Kernun Adaptive Firewall. Implemented a forward proxy in C++ on Linux featuring HTTP/HTTPS proxying with TLS/SSL inspection, OCSP integration for certificate validation, Kerberos authentication and LDAP user/group lookup, plus the ipmon network monitoring daemon driving nftables firewall rules from real-time IPv4/IPv6 address changes."
+      cs: "Kernun Adaptive Firewall. Implementoval dopřednou proxy v C++ na Linuxu s proxy HTTP/HTTPS a inspekcí TLS/SSL, integrací OCSP pro validaci certifikátů, autentizací přes Kerberos a vyhledáváním uživatelů a skupin v LDAP, a dále démona ipmon pro monitorování sítě, který podle změn adres IPv4/IPv6 v reálném čase řídí pravidla firewallu nftables."
+    highlights:
+      - en: "Built comprehensive proxy infrastructure with certificate generation and management (CA, client certificates), a dynamic configuration builder/parser system, and a manager/partition architecture for modular daemon design."
+        cs: "Postavil kompletní proxy infrastrukturu s generováním a správou certifikátů (CA, klientské certifikáty), dynamickým systémem pro sestavení a parsování konfigurace a architekturou manager/partition pro modulární návrh démonů."
+        tags: [security, cpp]
+        metric: false
+      - en: "Integrated security components including Suricata (intrusion detection) and nftables (static firewall), aggregating logs and managing connection information in PostgreSQL."
+        cs: "Integroval bezpečnostní komponenty včetně Suricaty (detekce průniků) a nftables (statický firewall), agregoval logy a spravoval informace o spojeních v PostgreSQL."
+        tags: [security, linux]
+        metric: false
+      - en: "Developed DNS resolution and caching mechanisms, domain categorization and client authentication methods."
+        cs: "Vyvinul mechanismy DNS rozpouštění a cachování, kategorizaci domén a metody autentizace klientů."
+        tags: [networking]
+        metric: false
+      - en: "Implemented real-time network interface monitoring in ipmon using NETLINK sockets, handling both IPv4 and IPv6 address management, with Unix domain sockets for IPC and dynamic nftables rule management."
+        cs: "Implementoval v ipmonu monitorování síťových rozhraní v reálném čase přes NETLINK sockety se správou adres IPv4 i IPv6, s unixovými sockety pro IPC a dynamickou správou pravidel nftables."
+        tags: [networking, linux, cpp]
+        metric: false
+      - en: "Implemented thread-safe, event-driven networking using modern C++ (mutexes, RAII, atomic file operations) with JSON-based configuration management and configurable delay mechanisms."
+        cs: "Implementoval vláknově bezpečné, událostmi řízené síťové operace v moderním C++ (mutexy, RAII, atomické souborové operace) se správou konfigurace v JSON a nastavitelnými zpožďovacími mechanismy."
+        tags: [cpp, linux]
+        metric: false
+      - en: "Developed reporter_log, a C++ replacement of a Perl command, with PostgreSQL integration, structured log parsing and processing, Perl interoperability for legacy compatibility and database schema management."
+        cs: "Vyvinul reporter_log, náhradu perlového příkazu v C++, s integrací PostgreSQL, strukturovaným parsováním a zpracováním logů, interoperabilitou s Perlem kvůli zpětné kompatibilitě a správou databázového schématu."
+        tags: [cpp]
+        metric: false
+      - en: "Built a configuration generation system in TypeScript/JavaScript with YAML-based high-level configuration processing, certificate generation automation and integration with the web backend for dynamic proxy configuration."
+        cs: "Postavil systém generování konfigurace v TypeScriptu/JavaScriptu se zpracováním vysokoúrovňové konfigurace v YAML, automatizací generování certifikátů a napojením na webový backend pro dynamickou konfiguraci proxy."
+        tags: [typescript]
+        metric: false
+      - en: "Developed comprehensive testing infrastructure with a Perl test framework covering HTTP/HTTPS protocol testing, TLS/SSL inspection, Kerberos/LDAP authentication and OCSP validation."
+        cs: "Vyvinul rozsáhlou testovací infrastrukturu v perlovém testovacím frameworku pokrývající testování protokolů HTTP/HTTPS, inspekci TLS/SSL, autentizaci Kerberos/LDAP a validaci OCSP."
+        tags: [verification, security]
+        metric: false
+    skills_learned:
+      - "TCP Proxy"
+      - "HTTP Proxy"
+      - "Encrypted Traffic Inspection"
+      - "TLS 1.3"
+      - "C++20, C++17"
+      - "Boost Libraries"
+      - "JSON-CPP"
+      - "Kerberos/Heimdal"
+      - "OCSP"
+      - "LDAP"
+      - "SQLite"
+      - "Perl"
+      - "JavaScript/TypeScript"
+      - "YAML"
+      - "Jenkins"
+      - "Linux Networking"
+      - "Netlink"
+      - "UNIX Sockets"
+      - "SSH Tunneling"
+      - "Port Forwarding"
+      - "VirtualBox, GDB"
+
+  - id: selfemployed
+    company: "Self-employed"
+    role:
+      en: "Independent IT Contractor"
+      cs: "Samostatný IT kontraktor"
+    start: "TODO(user)"
+    end: "TODO(user)"
+    tags: [linux, security, devops]
+    summary:
+      en: "Independent contracting for business and consumer clients: CI/CD automation pipelines and Linux server administration for B2B customers, and IT support, consumer hardware retail and security consulting for B2C customers."
+      cs: "Samostatná spolupráce s firemními i koncovými zákazníky: automatizační CI/CD pipeline a správa linuxových serverů pro B2B, IT podpora, prodej spotřebního hardwaru a bezpečnostní poradenství pro B2C."
+    highlights:
+      - en: "B2B: CI/CD automation pipelines and Linux server administration."
+        cs: "B2B: automatizační CI/CD pipeline a správa linuxových serverů."
+        tags: [devops, linux]
+        metric: false
+      - en: "B2C: IT support freelancing, consumer hardware retail and security consulting."
+        cs: "B2C: IT podpora na volné noze, prodej spotřebního hardwaru a bezpečnostní poradenství."
+        tags: [security]
+        metric: false
+    skills_learned:
+      - "Kali Linux"
+      - "Wireshark"
+      - "TeamCity"
+      - "Docker"
+      - "Self-studied the Certified Ethical Hacker syllabus (exam not taken)"
+
+  - id: ibm
+    company: "IBM"
+    role:
+      en: "Automation Developer & IT Systems Specialist"
+      cs: "Vývojář automatizace a specialista IT systémů"
+    start: "2014"
+    end: "2016"
+    tags: [automation, linux, windows]
+    summary:
+      en: "Enterprise IT operations: infrastructure monitoring, incident management and an automation solution that replaced manual ticketing and server administration work."
+      cs: "Podnikový IT provoz: monitorování infrastruktury, řešení incidentů a automatizační řešení, které nahradilo manuální práci s tikety a správou serverů."
+    highlights:
+      - en: "Developed an automation application that replaced manual workload in ticketing operations and basic server administration, using Bash, PowerShell and JavaScript for cross-platform server management and applying automata theory to design state-driven workflows."
+        cs: "Vyvinul automatizační aplikaci, která nahradila manuální práci při zpracování tiketů a základní správě serverů; využil Bash, PowerShell a JavaScript pro správu serverů napříč platformami a teorii automatů pro návrh stavově řízených workflow."
+        tags: [automation]
+        metric: false
+      - en: "Monitored Unix/Windows servers and resolved production incidents, working hands-on with Active Directory and VMware virtualization."
+        cs: "Monitoroval unixové a windowsové servery a řešil produkční incidenty; prakticky pracoval s Active Directory a virtualizací VMware."
+        tags: [linux, windows]
+        metric: false
+    skills_learned:
+      - "RedHat Linux"
+      - "Windows Server"
+      - "Active Directory"
+      - "VMware"
+      - "Bash"
+      - "PowerShell"
+      - "JavaScript"
+      - "Practical usage of automata theory"
+
+open_source:
+  - id: mcp-prompts
+    name: "MCP-Prompts"
+    featured: true
+    url: "https://github.com/sparesparrow/mcp-prompts"
+    stars: 97
+    forks: 21
+    tech: ["TypeScript", "Node.js", "PostgreSQL + pgvector", "Docker", "REST + SSE", "AWS"]
+    summary:
+      en: "Model Context Protocol server for managing prompt templates and LLM interactions, with four core MCP implementations (filesystem operations, memory management, AWS integration and generic MCP configurations). Implemented a hexagonal architecture and integration tests; ships Docker images across multiple server types, AWS deployment examples (S3, Lambda, DynamoDB, CloudWatch, IAM, ECR), vector-based semantic search with pgvector and real-time collaboration over Server-Sent Events. Published to npm and Docker Hub and listed across the MCP server directories."
+      cs: "Server Model Context Protocolu pro správu promptových šablon a interakcí s LLM se čtyřmi základními MCP implementacemi (operace se souborovým systémem, správa paměti, integrace s AWS a obecné MCP konfigurace). Postaven na hexagonální architektuře s integračními testy; dodává Docker image pro několik typů serverů, příklady nasazení na AWS (S3, Lambda, DynamoDB, CloudWatch, IAM, ECR), sémantické vyhledávání nad vektory v pgvector a spolupráci v reálném čase přes Server-Sent Events. Publikováno na npm a Docker Hub a zařazeno do adresářů MCP serverů."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/mcp-prompts"}
+      - {label: "npm", url: "https://www.npmjs.com/package/@sparesparrow/mcp-prompts"}
+      - {label: "Docker Hub", url: "https://hub.docker.com/r/sparesparrow/mcp-prompts"}
+      - {label: "Merged PRs", url: "https://github.com/sparesparrow/mcp-prompts/pulls?q=is%3Apr+author%3Asparesparrow+is%3Amerged"}
+      - {label: "Glama.ai", url: "https://glama.ai/mcp/servers/@sparesparrow/mcp-prompts"}
+      - {label: "MCP Market", url: "https://mcpmarket.com/server/prompts-server"}
+      - {label: "MCPHub", url: "https://mcphub.com/mcp-servers/sparesparrow/mcp-prompts-rs"}
+      - {label: "Skywork", url: "https://skywork.ai/skypage/en/project-orchestrator-ai-engineer-dive/1980494897356251136"}
+      - {label: "PulseMCP", url: "https://www.pulsemcp.com/servers/sparesparrow-project-orchestrator"}
+      - {label: "AIBASE", url: "https://mcp.aibase.com/server/1916334459480600578"}
+    related:
+      - id: mcp-prompts-rs
+        name: "mcp-prompts-rs"
+        url: "https://github.com/sparesparrow/mcp-prompts-rs"
+        summary:
+          en: "Rust reimplementation optimized for memory efficiency and high concurrency while maintaining full MCP protocol compatibility."
+          cs: "Reimplementace v Rustu optimalizovaná na paměťovou efektivitu a vysokou souběžnost při zachování plné kompatibility s protokolem MCP."
+
+  - id: rust-network-mgr
+    name: "rust-network-mgr"
+    featured: true
+    url: "https://github.com/sparesparrow/rust-network-mgr"
+    tech: ["Rust", "Netlink", "nftables", "epoll", "Lock-free data structures"]
+    summary:
+      en: "Redesign and reimplementation of ipmon as a Rust daemon orchestrating dynamic firewall rules via Netlink with a minimal memory footprint. Event-driven architecture for real-time network state changes, with atomic firewall updates that prevent race conditions and inconsistent rulesets during topology changes, lock-free data structures and epoll-based multiplexing for high-throughput event processing."
+      cs: "Přepracování a reimplementace ipmonu jako démona v Rustu, který přes Netlink řídí dynamická pravidla firewallu s minimální paměťovou stopou. Událostmi řízená architektura pro změny stavu sítě v reálném čase s atomickými aktualizacemi firewallu, které při změnách topologie brání souběhům a nekonzistentním sadám pravidel, s bezzámkovými datovými strukturami a multiplexováním přes epoll pro vysokou propustnost událostí."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/rust-network-mgr"}
+      - {label: "crates.io", url: "https://crates.io/crates/rust-network-mgr"}
+
+  - id: rtp-midi
+    name: "rtp-midi"
+    featured: true
+    url: "https://github.com/sparesparrow/rtp-midi"
+    stars: 2
+    tech: ["Rust (66.5%)", "RTP-MIDI", "OSC", "Android NDK (Kotlin)", "ESP32 / FreeRTOS", "Docker"]
+    summary:
+      en: "Modular Rust architecture for real-time MIDI, audio and LED control. Low-latency MIDI routing connects music production hardware to DAWs and addressable LED systems over network protocols. Includes an Android hub (Kotlin + Rust NDK) with a foreground service, AMidi NDK and mDNS discovery, plus an ESP32 visualizer using FastLED and dual-core FreeRTOS, in a dual-protocol design: RTP-MIDI for DAWs, OSC for LED devices."
+      cs: "Modulární architektura v Rustu pro MIDI, zvuk a řízení LED v reálném čase. Směrování MIDI s nízkou latencí propojuje hudební hardware s DAW i adresovatelnými LED systémy přes síťové protokoly. Součástí je android hub (Kotlin + Rust NDK) s popředí běžící službou, AMidi NDK a objevováním přes mDNS a vizualizér na ESP32 s FastLED a dvoujádrovým FreeRTOS; dvouprotokolový návrh: RTP-MIDI pro DAW, OSC pro LED zařízení."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/rtp-midi"}
+
+  - id: ipmon
+    name: "ipmon"
+    featured: false
+    url: "https://github.com/sparesparrow/ipmon"
+    tech: ["C++20", "Linux kernel / NETLINK", "nftables", "Multi-threading", "systemd", "Debian packaging"]
+    summary:
+      en: "Netlink socket monitoring daemon that detects real-time IPv4/IPv6 address changes and updates nftables firewall rules accordingly. Built with modern C++20 using RAII, move semantics, thread-safe and atomic operations, an event-driven architecture, Unix domain sockets for IPC and JSON configuration management. Packaged for Debian-based systems with complete systemd hardening profiles for production deployment."
+      cs: "Démon monitorující Netlink sockety, který detekuje změny adres IPv4/IPv6 v reálném čase a podle nich aktualizuje pravidla firewallu nftables. Postaven v moderním C++20 s RAII, přesouvací sémantikou, vláknově bezpečnými a atomickými operacemi, událostmi řízenou architekturou, unixovými sockety pro IPC a konfigurací v JSON. Balíčkováno pro systémy založené na Debianu s kompletními zpevňujícími profily systemd pro produkční nasazení."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/ipmon"}
+
+  - id: mcp-project-orchestrator
+    name: "mcp-project-orchestrator"
+    featured: false
+    url: "https://github.com/sparesparrow/mcp-project-orchestrator"
+    tech: ["TypeScript", "LLM integration", "Pattern matching", "Vector search", "Mermaid"]
+    summary:
+      en: "Template orchestration with pattern recognition and code generation. JSON-driven orchestration analyses user input to identify design patterns and create initial project files from templates, with project/component template management, variable substitution, prompt template rendering and Mermaid diagram generation (flowcharts, sequence and class diagrams) rendered to SVG/PNG."
+      cs: "Orchestrace šablon s rozpoznáváním vzorů a generováním kódu. Orchestrace řízená JSONem analyzuje vstup uživatele, identifikuje návrhové vzory a ze šablon vytvoří počáteční soubory projektu; obsahuje správu projektových a komponentových šablon, dosazování proměnných, vykreslování promptových šablon a generování Mermaid diagramů (vývojové, sekvenční a třídní) do SVG/PNG."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/mcp-project-orchestrator"}
+
+  - id: podman-desktop-extension-mcp
+    name: "podman-desktop-extension-mcp"
+    featured: false
+    url: "https://github.com/sparesparrow/podman-desktop-extension-mcp"
+    tech: ["TypeScript", "Svelte", "Podman", "Container security"]
+    summary:
+      en: "Podman Desktop extension for secure MCP server management in containerized environments, combining multiple agent containers for collaboration and routing between them. Supports rootless runtimes, encrypted credential storage and real-time health monitoring."
+      cs: "Rozšíření pro Podman Desktop pro bezpečnou správu MCP serverů v kontejnerovém prostředí, které kombinuje více agentních kontejnerů pro spolupráci a směrování mezi nimi. Podporuje běh bez roota, šifrované uložení přihlašovacích údajů a monitorování stavu v reálném čase."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/podman-desktop-extension-mcp"}
+
+  - id: mcp-router
+    name: "mcp-router"
+    featured: false
+    url: "https://github.com/sparesparrow/mcp-router"
+    tech: ["TypeScript", "Node.js", "React", "Docker", "Microservices"]
+    summary:
+      en: "Workflow orchestration system for Model Context Protocol services, with a drag-and-drop visual designer for building AI pipelines, dynamic service discovery and resilient routing for fault-tolerant workflows."
+      cs: "Systém orchestrace workflow pro služby Model Context Protocolu s vizuálním návrhářem typu drag-and-drop pro stavbu AI pipeline, dynamickým objevováním služeb a odolným směrováním pro workflow tolerantní k chybám."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/mcp-router"}
+
+  - id: mcp-servers
+    name: "mcp-servers"
+    featured: false
+    url: "https://github.com/sparesparrow/mcp-servers"
+    tech: ["TypeScript", "Node.js", "Docker", "LLM integration", "Microservices"]
+    summary:
+      en: "A suite of Model Context Protocol servers: mermaid (diagram generator), solid (SOLID code review), prompt-manager (prompt orchestration and templates) and more, with visualization, persistence and prompt management tools."
+      cs: "Sada serverů Model Context Protocolu: mermaid (generátor diagramů), solid (revize kódu dle SOLID), prompt-manager (orchestrace promptů a šablony) a další, s nástroji pro vizualizaci, perzistenci a správu promptů."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/mcp-servers"}
+
+  - id: hard-coder
+    name: "hard-coder"
+    featured: false
+    url: "https://github.com/sparesparrow/hard-coder"
+    tech: ["Python", "AI agent framework", "Reasoning engine", "Code generation"]
+    summary:
+      en: "Early adoption of agentic design patterns and multi-step reasoning in AI code generation: a reasoning-engine assistant with explicit reasoning and planning capability, designed when LLMs lacked advanced reasoning without agentic frameworks. Transforms ideas into working code including tests and documentation. Evolution path: OpenAI GPT Store → Anthropic migration → CrewAI refactoring → Cursor IDE Composer Notepad."
+      cs: "Rané využití agentních návrhových vzorů a vícekrokového uvažování při generování kódu pomocí AI: asistent s explicitní schopností uvažování a plánování, navržený v době, kdy LLM bez agentních frameworků pokročilé uvažování neměly. Mění nápady v funkční kód včetně testů a dokumentace. Vývojová cesta: OpenAI GPT Store → migrace na Anthropic → refaktoring na CrewAI → Composer Notepad v Cursor IDE."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/hard-coder"}
+
+  - id: github-events
+    name: "github-events"
+    featured: false
+    url: "https://github.com/sparesparrow/github-events"
+    tech: ["Python", "FastAPI", "SQLite + DynamoDB", "MCP server", "Analytics dashboard"]
+    summary:
+      en: "Python service monitoring 23+ GitHub event types with analytics: repository health scoring, developer productivity analysis and security anomaly detection. FastAPI REST API with 15+ endpoints, an interactive dashboard with live data, MCP server support and dual backends (SQLite and AWS DynamoDB) with ecosystem monitoring for cross-domain cooperation."
+      cs: "Služba v Pythonu monitorující 23+ typů událostí GitHubu s analytikou: skórování zdraví repozitářů, analýza produktivity vývojářů a detekce bezpečnostních anomálií. REST API ve FastAPI s 15+ endpointy, interaktivní dashboard s živými daty, podpora MCP serveru a dvojí backend (SQLite a AWS DynamoDB) s monitorováním ekosystému pro spolupráci napříč doménami."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/github-events"}
+
+  - id: human-action
+    name: "human-action"
+    featured: false
+    url: "https://github.com/sparesparrow/human-action"
+    tech: ["Python", "FastAPI", "ElevenLabs API", "Voice synthesis", "Multilingual processing"]
+    summary:
+      en: "Audiobook generation pipeline built on the ElevenLabs Python SDK, producing a Czech TTS narration of Ludwig von Mises' Human Action. Processes dense academic text into high-quality audio narration while maintaining natural intonation and pronunciation."
+      cs: "Pipeline pro generování audioknih postavená na Python SDK od ElevenLabs; vzniká v ní české TTS načtení Misesova Lidského jednání. Zpracovává hutný akademický text do kvalitního zvukového vyprávění se zachováním přirozené intonace a výslovnosti."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/human-action"}
+      - {label: "YouTube playlist", url: "https://www.youtube.com/playlist?list=PLaWOvDBjg6WiUcQm-yEP1RskMfPeWMKTL"}
+
+  - id: sparetools
+    name: "sparetools"
+    featured: false
+    url: "https://github.com/sparesparrow/sparetools"
+    tech: ["Python", "C/C++", "Conan", "Cross-platform CI/CD"]
+    summary:
+      en: "Monorepo aggregating shared Python tools and Conan recipes, demonstrating C/C++ dependency management, modern Python packaging and cross-platform CI/CD."
+      cs: "Monorepo sdružující sdílené nástroje v Pythonu a recepty pro Conan; ukazuje správu závislostí v C/C++, moderní balíčkování Pythonu a CI/CD napříč platformami."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/sparetools"}
+
+  - id: cpy
+    name: "cpy"
+    featured: false
+    url: "https://github.com/sparesparrow/cpy"
+    tech: ["Python", "CPython packaging"]
+    summary:
+      en: "Bundled CPython runtime for sparetools."
+      cs: "Přibalený běhový CPython pro sparetools."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/cpy"}
+
+  - id: cursor-rules
+    name: "cursor-rules"
+    featured: false
+    url: "https://github.com/sparesparrow/cursor-rules"
+    tech: ["Markdown", "MDC format", "LLM integration", "Pattern matching"]
+    summary:
+      en: "Rules engine for the Cursor IDE that structures AI interactions, using glob-based file matching and hierarchical organization for consistent workflows."
+      cs: "Systém pravidel pro Cursor IDE, který strukturuje interakce s AI pomocí párování souborů přes glob vzory a hierarchického uspořádání pro konzistentní workflow."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/cursor-rules"}
+
+  - id: cursor-audio-notifications
+    name: "cursor-audio-notifications"
+    featured: false
+    url: "https://github.com/sparesparrow/cursor-audio-notifications"
+    tech: ["TypeScript", "ElevenLabs audio synthesis", "IDE integration"]
+    summary:
+      en: "Cursor IDE extension adding audio notifications for events such as build completion, improving workflow awareness and reducing context switching."
+      cs: "Rozšíření pro Cursor IDE přidávající zvuková upozornění na události, jako je dokončení buildu; zlepšuje přehled o průběhu práce a omezuje přepínání kontextu."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/cursor-audio-notifications"}
+
+  - id: openssl-crypto-policies-test
+    name: "openssl-crypto-policies-test"
+    featured: false
+    url: "https://github.com/sparesparrow/openssl-crypto-policies-test"
+    tech: ["Bash", "OpenSSL", "Cryptography"]
+    summary:
+      en: "Test suite validating OpenSSL cryptographic policy enforcement, with automated TLS security level verification and cipher benchmarking."
+      cs: "Testovací sada ověřující vynucování kryptografických politik v OpenSSL s automatickou kontrolou bezpečnostních úrovní TLS a benchmarkingem šifer."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/openssl-crypto-policies-test"}
+
+  - id: btc-pay-server
+    name: "btc-pay-server"
+    featured: false
+    url: "https://github.com/sparesparrow/btc-pay-server"
+    tech: ["Rust", "Bitcoin protocol", "REST API"]
+    summary:
+      en: "Self-hosted Bitcoin payment processor in Rust, offering a REST API for handling payments, generating payment requests and verifying transactions for easy integration into web applications."
+      cs: "Samostatně hostovaný procesor bitcoinových plateb v Rustu s REST API pro zpracování plateb, generování platebních požadavků a ověřování transakcí se snadnou integrací do webových aplikací."
+    links:
+      - {label: "GitHub", url: "https://github.com/sparesparrow/btc-pay-server"}
+
+education:
+  - institution: "Masaryk University, Faculty of Informatics"
+    field: "Computer Science"
+    start: "TODO(user)"
+    end: "TODO(user)"
+    degree_awarded: false
+    note:
+      en: "Coursework in programming, Linux and networking."
+      cs: "Studium zaměřené na programování, Linux a počítačové sítě."
+  - institution: "Coursera.org / DeepLearning.AI"
+    field: "Machine learning and LLM engineering"
+    start: "TODO(user)"
+    end: "TODO(user)"
+    degree_awarded: false
+    note:
+      en: "Deep Learning Specialization (four machine learning courses by Andrew Ng), plus data analysis, prompt engineering and building LLM agents."
+      cs: "Deep Learning Specialization (čtyři kurzy strojového učení od Andrewa Nga), dále analýza dat, prompt engineering a stavba LLM agentů."
+    url: "https://www.coursera.org/specializations/deep-learning"
+  - institution: "Self-directed study"
+    field: "Design patterns, software architecture and offensive security"
+    start: "TODO(user)"
+    end: "TODO(user)"
+    degree_awarded: false
+    note:
+      en: "Design Patterns (refactoring.guru) and Hack The Box cybersecurity training; self-studied the Certified Ethical Hacker syllabus (exam not taken)."
+      cs: "Návrhové vzory (refactoring.guru) a bezpečnostní trénink na Hack The Box; samostudium osnov Certified Ethical Hacker (zkouška nesložena)."
+    links:
+      - {label: "refactoring.guru", url: "https://refactoring.guru/"}
+      - {label: "Hack The Box", url: "https://www.hackthebox.com/"}
+  - institution: "Professional development reading"
+    field: "Software engineering practice"
+    start: "TODO(user)"
+    end: "TODO(user)"
+    degree_awarded: false
+    note:
+      en: "Software Engineering at Google, The Pragmatic Programmer, Clean Architecture."
+      cs: "Software Engineering at Google, The Pragmatic Programmer, Clean Architecture."
+    links:
+      - {label: "Software Engineering at Google", url: "https://www.audible.com/pd/Software-Engineering-at-Google-Audiobook/B08VLS9Y95"}
+      - {label: "The Pragmatic Programmer", url: "https://www.audible.com/pd/The-Pragmatic-Programmer-20th-Anniversary-Edition-2nd-Edition-Audiobook/B0833FMYH9"}
+      - {label: "Clean Architecture", url: "https://www.audible.com/pd/Clean-Architecture-Audiobook/B08X8L9MJZ"}
+
+languages:
+  - {name: Czech, cefr: native, name_cs: "Čeština"}
+  - {name: Slovak, cefr: native, name_cs: "Slovenština"}
+  - {name: English, cefr: C1, name_cs: "Angličtina"}
+  - {name: German, cefr: A1, name_cs: "Němčina"}
+
+work_authorization:
+  en: "EU citizen (Czech Republic) — no permit required in the EU/EEA."
+  cs: "Občan EU (Česká republika) — v EU/EHP není potřeba pracovní povolení."
+
+# Rendered only by the Swiss variant. It is factual everywhere, but a
+# Swiss permit line on a Brno- or Kraków-targeted CV is off-message, and an
+# overlay cannot suppress half of a single string.
+swiss_permit:
+  en: "B-permit eligible."
+  cs: "Splňuje podmínky pro povolení typu B."
+
+availability:
+  ico: true
+  en: "Available as an independent contractor (Czech IČO). Brno on-site and remote."
+  cs: "K dispozici jako samostatný kontraktor (české IČO). Brno na místě i vzdáleně."
+
+interests:
+  - en: "Ludwig von Mises, Murray Rothbard"
+    cs: "Ludwig von Mises, Murray Rothbard"
+  - en: "Ray Kurzweil, Nick Bostrom, Max Tegmark"
+    cs: "Ray Kurzweil, Nick Bostrom, Max Tegmark"
+  - en: "Lex Fridman, Andrew Huberman, Dario Amodei"
+    cs: "Lex Fridman, Andrew Huberman, Dario Amodei"
+  - en: "Neuroscience & Brain-Machine Interfaces"
+    cs: "Neurověda a rozhraní mozek–stroj"
+  - en: "Music production, and producing a Czech audiobook — a TTS narration of Mises' Human Action"
+    cs: "Hudební produkce a tvorba české audioknihy — TTS načtení Misesova Lidského jednání"

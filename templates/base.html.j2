@@ -1,0 +1,652 @@
+{#- index.html: the GitHub Pages entry point. Rendered by build.py. -#}
+<!-- {{ generated_note }} -->
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{ meta.name }} — CV</title>
+<meta name="description" content="{{ meta.headline }}">
+<meta name="author" content="{{ meta.name }}">
+<meta name="keywords" content="{{ meta.name }}{% for group in skills %}{% for item in group['items'] %}, {{ item.name }}{% endfor %}{% endfor %}">
+<link rel="canonical" href="{{ site_url }}">
+<meta property="og:type" content="website">
+<meta property="og:title" content="{{ meta.name }} — CV">
+<meta property="og:description" content="{{ meta.headline }}">
+{% if meta.photo %}
+<meta property="og:image" content="{{ site_url }}{{ meta.photo }}">
+{% endif %}
+<meta property="og:url" content="{{ site_url }}">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{{ meta.name }} — CV">
+<meta name="twitter:description" content="{{ meta.headline }}">
+{% if meta.photo %}
+<meta name="twitter:image" content="{{ site_url }}{{ meta.photo }}">
+{% endif %}
+<link rel="icon" type="image/png" href="favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+<style>
+{% raw %}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Open Sans', sans-serif;
+  background: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?> <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">   <defs>     <pattern id="circuit" patternUnits="userSpaceOnUse" width="200" height="200">       <path d="M10 10 l180 0 M10 30 l180 0 M10 50 l180 0 M10 70 l180 0 M10 90 l180 0 M10 110 l180 0 M10 130 l180 0 M10 150 l180 0 M10 170 l180 0" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l0 180 M30 10 l0 180 M50 10 l0 180 M70 10 l0 180 M90 10 l0 180 M110 10 l0 180 M130 10 l0 180 M150 10 l0 180 M170 10 l0 180" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 10 l180 180 M10 30 l180 150 M10 50 l180 130 M10 70 l180 110 M10 90 l180 90 M10 110 l180 70 M10 130 l180 50 M10 150 l180 30 M10 170 l180 10" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>       <path d="M10 190 l180 -180 M30 190 l150 -180 M50 190 l130 -180 M70 190 l110 -180 M90 190 l90 -180 M110 190 l70 -180 M130 190 l50 -180 M150 190 l30 -180 M170 190 l10 -180" stroke="rgba(255,255,255,0.1)" stroke-width="1" fill="none"/>     </pattern>   </defs>   <rect width="200" height="200" fill="url(%23circuit)"/> </svg> ') repeat, linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+  background-size: 200px 200px;
+  background-blend-mode: overlay;
+  color: #ecf0f1;
+  line-height: 1.6;
+  padding: 20px;
+  scroll-behavior: smooth;
+  transition: background 0.3s, color 0.3s;
+}
+body.light {
+  background: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?> <svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">   <defs>     <pattern id="circuit" patternUnits="userSpaceOnUse" width="200" height="200">       <path d="M10 10 l180 0 M10 30 l180 0 M10 50 l180 0 M10 70 l180 0 M10 90 l180 0 M10 110 l180 0 M10 130 l180 0 M10 150 l180 0 M10 170 l180 0" stroke="rgba(0,0,0,0.06)" stroke-width="1" fill="none"/>       <path d="M10 10 l0 180 M30 10 l0 180 M50 10 l0 180 M70 10 l0 180 M90 10 l0 180 M110 10 l0 180 M130 10 l0 180 M150 10 l0 180 M170 10 l0 180" stroke="rgba(0,0,0,0.06)" stroke-width="1" fill="none"/>       <path d="M10 10 l180 180 M10 30 l180 150 M10 50 l180 130 M10 70 l180 110 M10 90 l180 90 M10 110 l180 70 M10 130 l180 50 M10 150 l180 30 M10 170 l180 10" stroke="rgba(0,0,0,0.06)" stroke-width="1" fill="none"/>       <path d="M10 190 l180 -180 M30 190 l150 -180 M50 190 l130 -180 M70 190 l110 -180 M90 190 l90 -180 M110 190 l70 -180 M130 190 l50 -180 M150 190 l30 -180 M170 190 l10 -180" stroke="rgba(0,0,0,0.06)" stroke-width="1" fill="none"/>     </pattern>   </defs>   <rect width="200" height="200" fill="url(%23circuit)"/> </svg> ') repeat, linear-gradient(135deg, #f4f7fa 0%, #e9ecef 100%);
+  color: #333;
+}
+body.high-contrast {
+  background: url('data:image/svg+xml;utf8,<?xml version="1.0" encoding="UTF-8"?><svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">  <defs>    <pattern id="circuit-hc" patternUnits="userSpaceOnUse" width="200" height="200">      <path d="M10 10 l180 0 M10 30 l180 0 M10 50 l180 0 M10 70 l180 0 M10 90 l180 0 M10 110 l180 0 M10 130 l180 0 M10 150 l180 0 M10 170 l180 0" stroke="rgba(255,204,0,0.2)" stroke-width="1" fill="none"/>      <path d="M10 10 l0 180 M30 10 l0 180 M50 10 l0 180 M70 10 l0 180 M90 10 l0 180 M110 10 l0 180 M130 10 l0 180 M150 10 l0 180 M170 10 l0 180" stroke="rgba(255,204,0,0.2)" stroke-width="1" fill="none"/>      <path d="M10 10 l180 180 M10 30 l180 150 M10 50 l180 130 M10 70 l180 110 M10 90 l180 90 M10 110 l180 70 M10 130 l180 50 M10 150 l180 30 M10 170 l180 10" stroke="rgba(255,204,0,0.2)" stroke-width="1" fill="none"/>      <path d="M10 190 l180 -180 M30 190 l150 -180 M50 190 l130 -180 M70 190 l110 -180 M90 190 l90 -180 M110 190 l70 -180 M130 190 l50 -180 M150 190 l30 -180 M170 190 l10 -180" stroke="rgba(255,204,0,0.2)" stroke-width="1" fill="none"/>    </pattern>  </defs>  <rect width="200" height="200" fill="url(%23circuit-hc)"/></svg>') repeat, rgba(0, 0, 0, 0.9);
+  color: #ffd700;
+}
+
+/* --- skip link, focus ring and photo (were in the cv.css stub) --- */
+.skip-to-content { position: absolute; left: -999px; top: auto; width: 1px; height: 1px; overflow: hidden; z-index: 10000; background: #3498db; color: #fff; padding: 8px 16px; border-radius: 0 0 8px 8px; }
+.skip-to-content:focus, .skip-to-content:focus-visible { left: 0; top: 0; width: auto; height: auto; outline: 2px solid #fff; }
+:focus-visible { outline: 2px solid #3498db !important; outline-offset: 2px; }
+.profile-photo { display: block; margin: 0 auto 10px auto; border: 3px solid #3498db; box-shadow: 0 2px 8px rgba(0,0,0,0.08); width: 120px; height: 120px; border-radius: 50%; object-fit: cover; }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: #34495e;
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s;
+}
+.light .container { background: #fff; }
+.high-contrast .container { background: #111; }
+.header {
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #3498db;
+  background: inherit;
+  z-index: 10;
+}
+.header h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.8em;
+  color: #ecf0f1;
+  margin-bottom: 0.2em;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+.light .header h1 { color: #2c3e50; }
+.high-contrast .header h1 { color: #ffd700; }
+.header p { font-size: 1.1em; color: #bdc3c7; }
+.light .header p { color: #7f8c8d; }
+.high-contrast .header p { color: #ff6b6b; }
+.header a { color: #3498db; text-decoration: none; transition: color 0.3s; }
+.header a:hover { color: #2980b9; text-decoration: underline; }
+.high-contrast .header a { color: #ff6b6b; }
+.high-contrast .header a:hover { color: #ff8787; }
+.headline { font-weight: 600; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.contact-line { margin-top: 10px; line-height: 2.2; }
+.contact-line a { white-space: nowrap; }
+.controls { margin-top: 15px; display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap; }
+.controls button, .controls select {
+  padding: 8px 16px;
+  border-radius: 20px;
+  border: none;
+  background: #3498db;
+  color: #fff;
+  cursor: pointer;
+  transition: background 0.3s;
+  font: inherit;
+}
+.controls button:hover, .controls select:hover { background: #2980b9; }
+#lang-toggle {
+  position: absolute; top: 10px; right: 10px; z-index: 1000;
+  padding: 8px 16px; border: none; border-radius: 20px;
+  background: #3498db; color: #fff; cursor: pointer; font: inherit;
+}
+#lang-toggle:hover { background: #2980b9; }
+section { margin-top: 40px; scroll-margin-top: 80px; }
+h2 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.8em;
+  color: #ecf0f1;
+  margin-bottom: 15px;
+  position: relative;
+  cursor: pointer;
+  padding-right: 32px;
+  transition: color 0.3s;
+}
+.light h2 { color: #2c3e50; }
+.high-contrast h2 { color: #ff0; }
+h2::after {
+  content: '\25BC';
+  font-size: 0.8em;
+  position: absolute;
+  right: 10px;
+  transition: transform 0.3s ease;
+}
+h2.active::after { transform: rotate(180deg); }
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 1.4em;
+  color: #3498db;
+  margin-top: 20px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.high-contrast h3 { color: #ff0; }
+h3 i { color: #3498db; }
+.high-contrast h3 i { color: #ff0; }
+h4 { font-family: 'Montserrat', sans-serif; font-size: 1em; margin-top: 12px; }
+p, ul { font-size: 1em; color: #bdc3c7; }
+.light p, .light ul { color: #555; }
+.high-contrast p, .high-contrast ul { color: #ff6b6b; }
+ul { list-style-type: disc; margin-left: 25px; }
+li { margin-bottom: 4px; }
+.content { display: none; animation: fadeIn 0.5s ease; }
+.content.active { display: block; }
+.project-card, .contribution-card, .job-card {
+  background: #3e5a74;
+  padding: 20px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  border-left: 4px solid #3498db;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.light .project-card, .light .contribution-card, .light .job-card { background: #f9fbfc; }
+.high-contrast .project-card, .high-contrast .contribution-card, .high-contrast .job-card {
+  background: #1a1a1a;
+  border-left-color: #ff6b6b;
+}
+.project-card:hover, .contribution-card:hover, .job-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+.project-card a, .contribution-card a { color: #3498db; font-weight: 600; transition: color 0.3s; }
+.project-card a:hover, .contribution-card a:hover { color: #2980b9; }
+.high-contrast .project-card a, .high-contrast .contribution-card a { color: #ff6b6b; }
+.high-contrast .project-card a:hover, .high-contrast .contribution-card a:hover { color: #ff8787; }
+.job-card.emphasized, .project-card.emphasized { border-left-width: 8px; }
+li.emphasized { font-weight: 600; }
+.meta-line { font-size: 0.92em; opacity: 0.85; margin-bottom: 6px; }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.tag {
+  font-size: 0.75em; padding: 2px 10px; border-radius: 12px;
+  background: rgba(52, 152, 219, 0.18); color: inherit; border: 1px solid rgba(52, 152, 219, 0.4);
+}
+.verbose { display: none; }
+.verbose.active { display: block; }
+li.verbose.active { display: list-item; }
+.concise.active { display: block; }
+.mermaid-diagram { max-width: 100%; margin-top: 10px; display: none; }
+.verbose.active + .mermaid-diagram { display: block; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+.skills { display: flex; flex-wrap: wrap; gap: 10px; }
+.skill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  margin: 4px;
+  border-radius: 20px;
+  background: #3e5a74;
+  color: #ecf0f1;
+  font-size: 0.9em;
+  transition: transform 0.2s;
+  min-width: 260px;
+}
+.skill:hover { transform: scale(1.05); }
+.light .skill { background: #f0f4f8; color: #333; }
+.high-contrast .skill { background: #1a1a1a; color: #ff6b6b; }
+.skill i { font-size: 1.1em; }
+.skill > span { flex: 1; }
+.footer { text-align: center; margin-top: 40px; color: #bdc3c7; font-size: 0.9em; }
+.light .footer { color: #7f8c8d; }
+.high-contrast .footer { color: #bdc3c7; }
+.progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 4px;
+  background: #3498db;
+  z-index: 20;
+  transition: width 0.3s ease;
+}
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 1.2em;
+  cursor: pointer;
+  display: none;
+  z-index: 30;
+  transition: opacity 0.3s, background 0.3s;
+}
+#backToTop:hover { background: #2980b9; }
+@media (max-width: 768px) {
+  .container { padding: 10px; }
+  .header h1 { font-size: 1.5em; }
+  h2 { font-size: 1.2em; }
+  h3 { font-size: 1em; }
+  .controls { flex-direction: column; gap: 6px; }
+  .skills { flex-direction: column; gap: 6px; }
+  .skill { width: 100%; justify-content: center; font-size: 1em; min-width: 0; }
+  .project-card, .contribution-card, .job-card { padding: 10px; font-size: 0.95em; }
+  .profile-photo { width: 80px !important; height: 80px !important; }
+}
+@media print {
+  body { background: #fff !important; color: #000 !important; padding: 0 !important; }
+  .container { background: #fff !important; color: #000 !important; box-shadow: none !important; max-width: none; padding: 0; }
+  .header, .footer, .controls, #backToTop, .progress-bar, button, nav, .download-btn, #lang-toggle, .contact-form { display: none !important; }
+  section, .skills, .job-card, .project-card, .contribution-card { background: #fff !important; color: #000 !important; border: none !important; box-shadow: none !important; }
+  h1, h2, h3, p, ul, li { color: #000 !important; }
+  h2::after { content: '' !important; }
+  a { color: #000 !important; text-decoration: underline; }
+  .skills, .project-card, .contribution-card, .job-card { page-break-inside: avoid; }
+  /* Sections are collapsed on screen; printing must not inherit that. */
+  .content { display: block !important; }
+  .verbose { display: none !important; }
+  html, body { font-size: 11pt !important; }
+}
+.animated-bg {
+  background: linear-gradient(270deg, #f0fdfa, #e0e7ef, #f0fdfa, #e0e7ef);
+  background-size: 400% 400%;
+  animation: gradientMove 12s ease infinite;
+}
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .animated-bg { animation: none; }
+  * { transition: none !important; }
+}
+.skill-bar { width: 120px; height: 1.25em; background: #e0e7ef; border-radius: 8px; overflow: hidden; }
+.skill-bar-inner { height: 100%; border-radius: 8px; transition: width 1s; background: linear-gradient(90deg, #0d9488, #14b8a6); }
+.dark .skill-bar, .high-contrast .skill-bar { background: #374151; }
+.dark .skill-bar-inner, .high-contrast .skill-bar-inner { background: linear-gradient(90deg, #14b8a6, #0d9488); }
+#print-qr { display: none; text-align: center; margin: 20px 0; }
+@media print { #print-qr { display: block !important; } }
+@media screen { #print-qr { display: none !important; } }
+{% endraw %}
+</style>
+</head>
+<body class="high-contrast">
+<a href="#main-content" class="skip-to-content" data-i18n="{{ ui.skip_to_content.key }}">{{ ui.skip_to_content }}</a>
+<button id="lang-toggle" aria-label="{{ ui.lang_toggle_aria }}" data-i18n-aria="{{ ui.lang_toggle_aria.key }}">{{ ui.lang_switch_to_cs }}</button>
+<div class="progress-bar" role="presentation"></div>
+
+<div class="container animated-bg" id="main-content" tabindex="-1">
+
+  <header class="header" aria-label="Header">
+    {% if meta.photo %}
+    <img src="{{ meta.photo }}" alt="{{ meta.photo_alt }}" class="profile-photo" width="120" height="120">
+    {% endif %}
+    <h1 data-i18n="{{ meta.name.key }}">{{ meta.name }}</h1>
+    <p class="headline" data-i18n="{{ meta.headline.key }}">{{ meta.headline }}</p>
+    {% if meta.tagline %}
+    <p data-i18n="{{ meta.tagline.key }}">{{ meta.tagline }}</p>
+    {% endif %}
+    <p class="meta-line">
+      <span data-i18n="{{ ui.location.key }}">{{ ui.location }}</span>: {{ meta.city }}{{ ', ' ~ meta.country if meta.country else '' }}
+      {% if meta.citizenship %}
+      &middot; <span data-i18n="{{ ui.citizenship.key }}">{{ ui.citizenship }}</span>: {{ meta.citizenship }}
+      {% endif %}
+    </p>
+    <p class="contact-line">
+      {% for link in meta.contact_links %}
+      <i class="{{ link.icon }}" aria-hidden="true"></i>
+      <a href="{{ link.href }}" aria-label="{{ link.label }}">{{ link.display }}</a>{% if not loop.last %} | {% endif %}
+      {% endfor %}
+    </p>
+    {% for badge in meta.badges %}
+    <p><a href="{{ badge.url }}" aria-label="{{ badge.label }}"><img src="{{ badge.image }}" alt="{{ badge.label }}" width="380" height="200" loading="lazy"></a></p>
+    {% endfor %}
+    <div class="controls">
+      <button id="verboseToggle" aria-pressed="false" data-i18n-off="{{ ui.verbose_off.key }}" data-i18n-on="{{ ui.verbose_on.key }}" data-i18n="{{ ui.verbose_off.key }}">{{ ui.verbose_off }}</button>
+      <label for="themeSelect" class="visually-hidden" data-i18n="{{ ui.theme_label.key }}">{{ ui.theme_label }}</label>
+      <select id="themeSelect" aria-label="{{ ui.theme_label }}">
+        <option value="high-contrast" selected data-i18n="{{ ui.theme_high_contrast.key }}">{{ ui.theme_high_contrast }}</option>
+        <option value="dark" data-i18n="{{ ui.theme_dark.key }}">{{ ui.theme_dark }}</option>
+        <option value="light" data-i18n="{{ ui.theme_light.key }}">{{ ui.theme_light }}</option>
+      </select>
+    </div>
+  </header>
+
+  <div style="text-align:right; margin:16px 0;">
+    <a class="download-btn" href="dist/vs-cv-master.pdf" download style="padding:8px 16px; border-radius:8px; background:#3498db; color:#fff; text-decoration:none; display:inline-block;" data-i18n="{{ ui.download_pdf.key }}">{{ ui.download_pdf }}</a>
+  </div>
+
+{% for section in sections %}
+  <section id="section-{{ section.id }}">
+    <h2 role="button" tabindex="0" aria-expanded="true" aria-controls="content-{{ section.id }}" class="active" data-i18n="{{ section.title.key }}">{{ section.title }}</h2>
+    <div class="content active" id="content-{{ section.id }}">
+
+    {% if section.id == 'summary' %}
+      {% for line in summary %}
+      <p data-i18n="{{ line.key }}">{{ line }}</p>
+      {% endfor %}
+
+    {% elif section.id == 'preferred_roles' %}
+      <ul>
+        {% for role in preferred_roles %}
+        <li{% if role.emphasized %} class="emphasized"{% endif %}>
+          <strong data-i18n="{{ role.text.key }}">{{ role.text }}</strong>
+          {% if role.note %}<br><span data-i18n="{{ role.note.key }}">{{ role.note }}</span>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+
+    {% elif section.id == 'experience' %}
+      {% for job in experience %}
+      <div class="job-card{% if job.emphasized %} emphasized{% endif %}">
+        <h3><i class="fas fa-briefcase" aria-hidden="true"></i><span data-i18n="{{ job.role.key }}">{{ job.role }}</span></h3>
+        <p class="meta-line">
+          <strong>{{ job.company }}</strong>
+          {% if job.via %}<span data-i18n="{{ ui.via.key }}">{{ ui.via }}</span> {{ job.via }}{% endif %}
+          {% if job.period %}&middot; {{ job.period }}{% endif %}
+        </p>
+        <p class="concise active" data-i18n="{{ job.summary.key }}">{{ job.summary }}</p>
+        {% if job.highlights or job.highlights_extra %}
+        <ul>
+          {% for hl in job.highlights %}
+          <li{% if hl.emphasized %} class="emphasized"{% endif %} data-i18n="{{ hl.text.key }}">{{ hl.text }}</li>
+          {% endfor %}
+          {% for hl in job.highlights_extra %}
+          <li class="verbose{% if hl.emphasized %} emphasized{% endif %}" data-i18n="{{ hl.text.key }}">{{ hl.text }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
+        {% if job.tags %}
+        <div class="tags">{% for tag in job.tags %}<span class="tag">{{ tag }}</span>{% endfor %}</div>
+        {% endif %}
+        {% if job.skills_learned %}
+        <div class="verbose">
+          <h4 data-i18n="{{ ui.skills_learned.key }}">{{ ui.skills_learned }}</h4>
+          <p>{{ job.skills_learned | join(', ') }}</p>
+        </div>
+        {% endif %}
+      </div>
+      {% endfor %}
+
+    {% elif section.id == 'skills' %}
+      {% for group in skills %}
+      <h3><i class="fas fa-layer-group" aria-hidden="true"></i><span data-i18n="{{ group.title.key }}">{{ group.title }}</span></h3>
+      <div class="skills">
+        {% for item in group['items'] %}
+        <div class="skill">
+          <span>{{ item.name }} <em>(<span data-i18n="{{ item.level_label.key }}">{{ item.level_label }}</span>)</em></span>
+          {% if item.bar is not none %}
+          <div class="skill-bar" role="progressbar" aria-label="{{ item.name }} — {{ item.level_label }}" aria-valuenow="{{ item.bar }}" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+            <div class="skill-bar-inner" style="width:{{ item.bar }}%"></div>
+          </div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endfor %}
+
+    {% elif section.id == 'open_source' %}
+      {% for project in open_source %}
+      <div class="project-card">
+        <h3>
+          <i class="fab fa-github" aria-hidden="true"></i>
+          <a href="{{ project.url }}" target="_blank" rel="noopener">{{ project.name }}</a>
+          {% if project.featured %}<span class="tag" data-i18n="{{ ui.featured.key }}">{{ ui.featured }}</span>{% endif %}
+        </h3>
+        {% if project.stars is not none or project.forks is not none %}
+        <p class="meta-line">
+          {% if project.stars is not none %}{{ project.stars }} <span data-i18n="{{ ui.stars.key }}">{{ ui.stars }}</span>{% endif %}
+          {% if project.forks is not none %}&middot; {{ project.forks }} <span data-i18n="{{ ui.forks.key }}">{{ ui.forks }}</span>{% endif %}
+        </p>
+        {% endif %}
+        <p class="concise active" data-i18n="{{ project.summary.key }}">{{ project.summary }}</p>
+        {% if project.tech %}
+        <ul>{% for tech in project.tech %}<li>{{ tech }}</li>{% endfor %}</ul>
+        {% endif %}
+        {% if project.links %}
+        <p class="verbose">{% for link in project.links %}<a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}</p>
+        {% endif %}
+        {% if project.related %}
+        {% for r in project.related %}
+        <p class="verbose"><em><span data-i18n="ui.related_project">{{ ui.related_project }}</span>:
+          <a href="{{ r.url }}" target="_blank" rel="noopener">{{ r.name }}</a> —
+          {{ r.summary.get(lang) or r.summary.get('en') }}</em></p>
+        {% endfor %}
+        {% endif %}
+      </div>
+      {% endfor %}
+
+    {% elif section.id == 'education' %}
+      {% for item in education %}
+      <p>
+        <strong>{{ item.institution }}</strong><br>
+        {{ item.field }}{% if item.period %} &middot; {{ item.period }}{% endif %}<br>
+        {% if not item.degree_awarded %}
+        <em data-i18n="{{ ui.coursework_only.key }}">{{ ui.coursework_only }}</em><br>
+        {% endif %}
+        {% if item.note %}<span data-i18n="{{ item.note.key }}">{{ item.note }}</span>{% endif %}
+        {% if item.links %}<br>{% for link in item.links %}<a href="{{ link.url }}" target="_blank" rel="noopener">{{ link.label }}</a>{% if not loop.last %} &middot; {% endif %}{% endfor %}{% endif %}
+      </p>
+      {% endfor %}
+
+    {% elif section.id == 'languages' %}
+      <ul>
+        {% for language in languages %}
+        <li><span data-i18n="{{ language.name.key }}">{{ language.name }}</span> — {{ language.cefr }}</li>
+        {% endfor %}
+      </ul>
+
+    {% elif section.id == 'availability' %}
+      {% if availability %}
+      <p data-i18n="{{ availability.text.key }}">{{ availability.text }}</p>
+      {% if availability.ico %}<p data-i18n="{{ ui.ico_yes.key }}">{{ ui.ico_yes }}</p>{% endif %}
+      {% endif %}
+      {% if work_authorization %}
+      <p data-i18n="{{ work_authorization.key }}">{{ work_authorization }}</p>
+      {% endif %}
+
+    {% elif section.id == 'interests' %}
+      <ul>
+        {% for interest in interests %}
+        <li data-i18n="{{ interest.key }}">{{ interest }}</li>
+        {% endfor %}
+      </ul>
+
+    {% elif section.id == 'testimonials' %}
+      {% for item in testimonials %}
+      <blockquote>
+        <span data-i18n="{{ item.quote.key }}">{{ item.quote }}</span><br>
+        <span>— {{ item.attribution }}</span>
+      </blockquote>
+      {% endfor %}
+
+    {% elif section.id == 'contact' %}
+      <form class="contact-form" action="mailto:{{ meta.contact.email }}" method="POST" enctype="text/plain" style="max-width:400px;margin:auto;">
+        <label for="contact-name" style="display:block;margin-bottom:4px;" data-i18n="{{ ui.contact_name.key }}">{{ ui.contact_name }}</label>
+        <input id="contact-name" name="name" type="text" required style="width:100%;padding:8px;margin-bottom:8px;border-radius:6px;border:1px solid #ccc;">
+        <label for="contact-email" style="display:block;margin-bottom:4px;" data-i18n="{{ ui.contact_email.key }}">{{ ui.contact_email }}</label>
+        <input id="contact-email" name="email" type="email" required style="width:100%;padding:8px;margin-bottom:8px;border-radius:6px;border:1px solid #ccc;">
+        <label for="contact-message" style="display:block;margin-bottom:4px;" data-i18n="{{ ui.contact_message.key }}">{{ ui.contact_message }}</label>
+        <textarea id="contact-message" name="message" rows="4" required style="width:100%;padding:8px;margin-bottom:8px;border-radius:6px;border:1px solid #ccc;"></textarea>
+        <button type="submit" style="width:100%;padding:10px;background:#3498db;color:#fff;border:none;border-radius:6px;font-size:1em;" data-i18n="{{ ui.contact_send.key }}">{{ ui.contact_send }}</button>
+      </form>
+    {% endif %}
+
+    </div>
+  </section>
+{% endfor %}
+
+  <footer class="footer">
+    <p>&copy; <span data-i18n="{{ meta.name.key }}">{{ meta.name }}</span>. <span data-i18n="{{ ui.rights.key }}">{{ ui.rights }}</span></p>
+  </footer>
+</div>
+
+<button id="backToTop" aria-label="{{ ui.back_to_top }}" data-i18n-aria="{{ ui.back_to_top.key }}">&uarr;</button>
+
+<!-- Print-friendly QR code (hidden on screen, visible in print) -->
+<div id="print-qr">
+  <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&amp;data={{ site_url }}" alt="QR code to the online CV" width="180" height="180" loading="lazy">
+  <p data-i18n="{{ ui.qr_caption.key }}">{{ ui.qr_caption }}</p>
+</div>
+
+{% for block in jsonld %}
+<script type="application/ld+json">
+{{ block | safe }}
+</script>
+{% endfor %}
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+<script>
+// Generated from the `cs` keys in the data file -- do not hand-edit.
+const translations = {{ translations_json | safe }};
+
+{% raw %}
+/* ------------------------------------------------------------------ *
+ * Language. Exactly one setLanguage() and exactly one toggle button.
+ * ------------------------------------------------------------------ */
+const SUPPORTED_LANGS = ['en', 'cs'];
+let currentLang = 'en';
+
+function setLanguage(lang) {
+  if (SUPPORTED_LANGS.indexOf(lang) === -1) { lang = 'en'; }
+  currentLang = lang;
+  const table = translations[lang] || {};
+  document.documentElement.lang = lang;
+  try { localStorage.setItem('cvLang', lang); } catch (e) { /* private mode */ }
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const value = table[el.getAttribute('data-i18n')];
+    if (typeof value === 'string') { el.textContent = value; }
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const value = table[el.getAttribute('data-i18n-aria')];
+    if (typeof value === 'string') { el.setAttribute('aria-label', value); }
+  });
+
+  const toggle = document.getElementById('lang-toggle');
+  if (toggle) {
+    const otherKey = lang === 'en' ? 'ui.lang_switch_to_cs' : 'ui.lang_switch_to_en';
+    toggle.textContent = table[otherKey] || (lang === 'en' ? 'Česky' : 'English');
+  }
+  syncVerboseLabel();
+}
+
+const langToggle = document.getElementById('lang-toggle');
+if (langToggle) {
+  langToggle.addEventListener('click', () => setLanguage(currentLang === 'en' ? 'cs' : 'en'));
+}
+
+/* ------------------------------------------------------------------ *
+ * Collapsible sections (click or keyboard).
+ * ------------------------------------------------------------------ */
+document.querySelectorAll('h2[aria-controls]').forEach(header => {
+  const toggleSection = () => {
+    const content = document.getElementById(header.getAttribute('aria-controls'));
+    if (!content) { return; }
+    const open = content.classList.toggle('active');
+    header.classList.toggle('active', open);
+    header.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+  header.addEventListener('click', toggleSection);
+  header.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      toggleSection();
+    }
+  });
+});
+
+/* ------------------------------------------------------------------ *
+ * Verbose mode.
+ * ------------------------------------------------------------------ */
+const verboseToggle = document.getElementById('verboseToggle');
+let verbose = false;
+
+function syncVerboseLabel() {
+  if (!verboseToggle) { return; }
+  const table = translations[currentLang] || {};
+  const key = verboseToggle.getAttribute(verbose ? 'data-i18n-on' : 'data-i18n-off');
+  verboseToggle.setAttribute('data-i18n', key);
+  if (table[key]) { verboseToggle.textContent = table[key]; }
+  verboseToggle.setAttribute('aria-pressed', verbose ? 'true' : 'false');
+}
+
+if (verboseToggle) {
+  verboseToggle.addEventListener('click', () => {
+    verbose = !verbose;
+    document.querySelectorAll('.concise').forEach(el => el.classList.toggle('active', !verbose));
+    document.querySelectorAll('.verbose').forEach(el => el.classList.toggle('active', verbose));
+    document.querySelectorAll('.mermaid-diagram').forEach(el => { el.style.display = verbose ? 'block' : 'none'; });
+    syncVerboseLabel();
+  });
+}
+
+/* ------------------------------------------------------------------ *
+ * Theme.
+ * ------------------------------------------------------------------ */
+const themeSelect = document.getElementById('themeSelect');
+if (themeSelect) {
+  let storedTheme = null;
+  try { storedTheme = localStorage.getItem('cvTheme'); } catch (e) { /* private mode */ }
+  if (storedTheme) {
+    themeSelect.value = storedTheme;
+    document.body.className = storedTheme;
+  }
+  themeSelect.addEventListener('change', event => {
+    document.body.className = event.target.value;
+    try { localStorage.setItem('cvTheme', event.target.value); } catch (e) { /* private mode */ }
+  });
+}
+
+/* ------------------------------------------------------------------ *
+ * Scroll progress bar and back-to-top.
+ * ------------------------------------------------------------------ */
+const progressBar = document.querySelector('.progress-bar');
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  if (progressBar) {
+    progressBar.style.width = (docHeight > 0 ? (scrollTop / docHeight) * 100 : 0) + '%';
+  }
+  if (backToTop) {
+    backToTop.style.display = scrollTop > 100 ? 'block' : 'none';
+  }
+}, { passive: true });
+if (backToTop) {
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+}
+
+/* ------------------------------------------------------------------ *
+ * Mermaid.
+ * ------------------------------------------------------------------ */
+if (window.mermaid && typeof window.mermaid.initialize === 'function') {
+  window.mermaid.initialize({ startOnLoad: true });
+}
+
+/* Boot. */
+let bootLang = 'en';
+try { bootLang = localStorage.getItem('cvLang') || 'en'; } catch (e) { /* private mode */ }
+setLanguage(bootLang);
+{% endraw %}
+</script>
+</body>
+</html>

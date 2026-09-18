@@ -1,0 +1,118 @@
+# Variant: Poland B2B — the Kraków / Katowice contracting market.
+#
+# Readers: Aptiv, Nokia, Motorola Solutions, Cisco, Comarch, EPAM, Sii,
+# Ericsson, ABB, Hitachi Energy, ING Hubs, Siemens Digital Industries,
+# Rockwell Automation, Future Processing. Demand there skews embedded,
+# automotive, telecom and industrial automation rather than AI tooling, so
+# every control below is set to surface C++, embedded/real-time and
+# safety-critical verification first and to keep the MCP/agentic-AI work
+# from leading.
+#
+# This file is a *rendering overlay*: it only selects, orders and emphasises
+# what data/cv.yaml already says. It states no facts of its own, and the
+# positioning below is achieved purely by emphasis and selection.
+extends: ../cv.yaml
+
+name: pl-b2b
+description: English-language C++/embedded contractor CV for the Polish B2B market — safety-critical verification, real-time systems, Linux and networking.
+
+# English only. These employers run English-language delivery teams and the
+# candidate has no Polish; `cs` would be actively wrong here. (en/cs are the
+# only values build.py accepts.)
+locale: en
+
+# Section list and order.
+#
+# `preferred_roles` sits immediately under the profile and does the job a
+# skills table would: it is the only block whose entries this overlay can
+# bold (see emphasize_tags), so the C++/embedded/RTOS and Linux/networking
+# roles are what a screener's eye lands on first, with the AI/MCP role last
+# and unbolded.
+#
+# `availability` is non-negotiable for this market: B2B/contract readiness
+# (independent contractor, own company number, EU citizenship so no work
+# permit is needed) is the first commercial question a Polish B2B
+# counterparty asks. It renders the availability line plus the work
+# authorization line from data/cv.yaml.
+#
+# `skills` is deliberately ABSENT, and that was the hardest call here. It is
+# a full-page-wide grid of five groups; measured against this data it cannot
+# coexist with four-plus employers at three highlights each inside two
+# pages (tested: skills + 4 roles = 3 pages, skills + 3 roles = 2 pages).
+# Given a choice between the keyword grid and keeping BOTH the C++/embedded
+# employer history (Thermo Fisher, Honeywell) and the Linux/networking one
+# (Trusted Network Solutions), the employers win: the same technologies are
+# named inside the role summaries and highlights, which also evidence them.
+# `open_source`, `education` and `interests` are dropped for the same
+# budget reason (adding even one project pushed this to three pages).
+sections:
+  - summary
+  - preferred_roles
+  - experience
+  - availability
+  - languages
+
+# Emphasis, not new text. These tags do two things: they bold the matching
+# preferred roles, and — because experience_detail is `compact` — they decide
+# WHICH three highlights survive per role. Chosen to pull the embedded,
+# real-time and safety-critical work to the surface, with Linux/networking
+# right behind it.
+#
+# Resulting highlight selection (the point of the whole list):
+#   resideo      -> instrument layer with CAN bus and Modbus I/O; 259/271
+#                   (95.6%) state-transition conformance; 25+ firmware
+#                   defects investigated against C/C++ sources.
+#   thermofisher -> C++ HAL and IPC; embedded FPGA work over gRPC;
+#                   data-acquisition pipeline and error handling.
+#   honeywell    -> job-based real-time execution; test-interference
+#                   management for system safety; four diagnostic test modes
+#                   with timeout and precondition handling.
+#   tns          -> proxy and certificate infrastructure; Suricata/nftables;
+#                   DNS resolution and client authentication.
+#
+# Note what is deliberately NOT emphasised:
+#   * `hil` and `verification` — both highly relevant, but nearly every
+#     Resideo highlight carries them, so emphasising them would spend all
+#     three slots on the earliest (Python test-pipeline) bullets. Leaving
+#     them out promotes the bus/instrument, conformance-metric and firmware
+#     bullets instead: the same safety-critical verification story told in
+#     embedded terms, which is what this market reads. The verification
+#     framing itself is carried by `safety-critical` and by the Honeywell
+#     entry.
+#   * `ai`, `mcp`, `agentic-ai` — omitted so the AI/LLM preferred role and
+#     the MCP highlights stay unbolded and below the C++ material. They are
+#     not hidden: the profile summary still mentions them, and concealing
+#     recent work would be worse than de-emphasising it.
+emphasize_tags:
+  - cpp
+  - embedded
+  - rtos
+  - safety-critical
+  - linux
+  - networking
+  - security
+
+# `compact` = the top three highlights per role. `full` runs to four pages
+# with these five roles; `minimal` would strip every highlight — and with no
+# highlights to rank, emphasize_tags would have almost nothing left to act
+# on, which would throw away this variant's only positioning mechanism.
+experience_detail: compact
+
+# Two pages is the Polish market norm and the build fails if the PDF exceeds
+# it. Written as a ceiling rather than an exact [2, 2] so the variant stays
+# valid if data/cv.yaml is trimmed later.
+page_budget: {max: 2}
+
+# `ibm` (2014-2016, enterprise ticketing and server operations) is the
+# weakest match for an embedded/telecom B2B reader and the entry that pushes
+# the PDF past two pages; everything else is kept.
+#
+# `selfemployed` is deliberately KEPT despite being a short entry: it is the
+# documented independent-contracting track record, which is exactly what a
+# B2B counterparty checks before signing with a one-person supplier.
+#
+# No open-source ids appear here because the `open_source` section is not
+# rendered in this variant; adding an exclude list for the 17 projects in
+# data/cv.yaml would be noise.
+exclude:
+  - ibm
