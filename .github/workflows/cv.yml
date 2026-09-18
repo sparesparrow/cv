@@ -17,12 +17,28 @@ jobs:
 
       - run: pip install pyyaml jinja2
 
-      # build.py drives Chromium directly to print the PDFs; find_chromium()
-      # picks up whichever of these names lands on PATH.
-      - name: Install Chromium
+      # build.py drives a browser directly to print the PDFs. Use the Chrome
+      # that ships on the runner image, and pin it via CV_CHROMIUM so discovery
+      # cannot pick something else up off PATH.
+      #
+      # Do NOT apt-get chromium here: on ubuntu-latest that resolves to the
+      # Canonical snap, and a confined snap cannot write to the temp directory
+      # build.py prints into, so Chromium exits having produced no PDF
+      # ("Failed to write file ...: No such file or directory").
+      - name: Locate Chrome
         run: |
-          sudo apt-get update
-          sudo apt-get install -y chromium-browser || sudo apt-get install -y chromium
+          chrome="$(command -v google-chrome || command -v google-chrome-stable || true)"
+          if [ -z "$chrome" ]; then
+            # Not on the image: pull the .deb straight from Google rather than
+            # falling back to the snap.
+            echo "No Chrome on the image; installing the Google .deb"
+            wget -q -O /tmp/chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+            sudo apt-get update
+            sudo apt-get install -y /tmp/chrome.deb
+            chrome="$(command -v google-chrome || command -v google-chrome-stable)"
+          fi
+          echo "Using $chrome ($("$chrome" --version))"
+          echo "CV_CHROMIUM=$chrome" >> "$GITHUB_ENV"
 
       # Chronology, dates present, no degree claim, no TODO(user) leak, every
       # experience entry rendered, and each variant PDF within its page budget.
