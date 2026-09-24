@@ -278,12 +278,12 @@
  <header class="header" aria-label="Header">
  <img src="sparesparrow.png" alt="Photo of Vojtěch Špaček" class="profile-photo" style="width:120px;height:120px;border-radius:50%;margin-bottom:10px;object-fit:cover;" />
  <h1 data-translate-key="name">Vojtěch Špaček</h1>
- <p data-translate-key="roles">AI/LLM Developer & Researcher | Senior C++ Engineer | Cybersecurity & Linux Specialist | MCP Server Architect</p>
+ <p data-translate-key="roles">AI/LLM Integration Engineer (MCP) | Safety-Critical Embedded &amp; HIL Verification | Senior C++ &amp; Python | Linux &amp; Networking</p>
  <p>
    <i class="fab fa-github" aria-label="GitHub"></i> <a href="https://github.com/sparesparrow" aria-label="GitHub profile of Vojtěch Špaček">sparesparrow</a> |
    <i class="fab fa-linkedin" aria-label="LinkedIn"></i> <a href="https://www.linkedin.com/in/sparesparrow" aria-label="LinkedIn profile of Vojtěch Špaček">LinkedIn</a> |
    <i class="fas fa-envelope"></i> <a href="mailto:sparesparrow@protonmail.ch" aria-label="Email Vojtěch Špaček">sparesparrow@protonmail.ch</a> |
-   <i class="fas fa-phone"></i> <a href="tel:+420776168749" aria-label="Phone Vojtěch Špaček">+420 776 168 749</a> |
+   <i class="fas fa-phone"></i> <a href="tel:+420703454180" aria-label="Phone Vojtěch Špaček">+420 703 454 180</a> |
    <i class="fas fa-calendar-alt"></i> <a href="https://calendly.com/dallheimal" aria-label="Schedule a call with Vojtěch Špaček">Calendly</a> |
    <i class="fas fa-comment"></i> <a href="https://signal.me/#eu/-i6EcG8dz6FtV6U2yytXPe4UESGjNMxGTw4Xf8AWbR3b5dD3lyBKd53IEKi5AJ6N" aria-label="Contact Vojtěch Špaček on Signal">Signal</a> |
    <i class="fab fa-x-twitter"></i> <a href="https://x.com/spare23sparrow" aria-label="Vojtěch Špaček on X (Twitter)">X</a> |
@@ -306,26 +306,7 @@
  <!-- Profile Summary -->
  <section>
    <h2 data-translate-key="profile_summary_title">Profile Summary</h2>
-   <p data-translate-key="profile_summary">Pragmatic programmer and creative problem solver specializing in AI/LLM development and research. Cybersecurity & Linux specialist with deep expertise in high-performance systems. Senior C++ developer with medior-level Python and JavaScript skills, and junior proficiency in Rust/Qt. Passionate about transforming traditional software development through AI integration, advanced prompt engineering, and building scalable LLM-powered workflows. Expert in Model Context Protocol (MCP) servers, natural language-driven development, and creating robust CI/CD pipelines that enable AI-powered applications at scale.</p>
- </section>
-
- <!-- Testimonials -->
- <section>
-   <h2>Testimonials</h2>
-   <div class="content">
-     <blockquote>
-       "Vojtěch consistently delivers high-quality, maintainable code and is a driving force for innovation in our team."<br>
-       <span>- Senior Software Engineer, Thermo Fisher Scientific</span>
-     </blockquote>
-     <blockquote>
-       "His expertise in AI and open source is matched only by his collaborative spirit and technical leadership."
-       <br><span>- Lead Developer, Open Source Project</span>
-     </blockquote>
-     <blockquote>
-       "A rare blend of systems thinking and hands-on engineering. Vojtěch is a go-to for complex challenges."
-       <br><span>- Engineering Manager, Honeywell</span>
-     </blockquote>
-   </div>
+   <p data-translate-key="profile_summary">AI/LLM integration engineer who brings agentic-AI tooling (Model Context Protocol) into safety-critical engineering. Most recently sole owner of the hardware-in-the-loop verification suite and automated bench for a safety-certified gas furnace ignition controller (UL/CSA, ANSI Z21.20, NFPA 54), raising measured conformance to 259 of 271 tracked state transitions (95.6%). Senior C++ and Python engineer with a decade across aerospace (Honeywell), scientific instruments (Thermo Fisher Scientific) and network security (Kernun firewall). Author of MCP-Prompts, published to npm, Docker Hub and the MCP server directories.</p>
  </section>
 
  <!-- Download as PDF Button -->
@@ -352,53 +333,11 @@
              <p>I'm fascinated by neuroscience, brain-machine interfaces (BMI/Neuralink), machine learning, and music. I'm currently producing a <a href="https://www.youtube.com/playlist?list=PLaWOvDBjg6WiUcQm-yEP1RskMfPeWMKTL">Czech audiobook - TTS narration of Mises' Human Action</a>.</p>
          </div>
          <div class="lang-cz" style="display: none;">
-             <p></p>Vytvářím <a href="https://www.youtube.com/playlist?list=PLaWOvDBjg6WiUcQm-yEP1RskMfPeWMKTL">audioknihu</a> - český překlad Misesova Lidskho jednání</p>
+             <p>Vytvářím <a href="https://www.youtube.com/playlist?list=PLaWOvDBjg6WiUcQm-yEP1RskMfPeWMKTL">audioknihu</a> – český překlad Misesova Lidského jednání.</p>
          </div>
      </div>
-     <button id="lang-button" onclick="switchLanguage()" lang="en" aria-label="Switch language">Česky</button>
     </div>
 
- <script>
-     var currentLang = 'en';
-
-     function switchLanguage() {
-         if (currentLang === 'en') {
-             setLanguage('cz');
-             currentLang = 'cz';
-             document.getElementById('lang-button').textContent = 'English';
-         } else {
-             setLanguage('en');
-             currentLang = 'en';
-             document.getElementById('lang-button').textContent = 'Czech';
-         }
-     }
-
-     function setLanguage(lang) {
-         var enDivs = document.querySelectorAll('.lang-en');
-         var czDivs = document.querySelectorAll('.lang-cz');
-         enDivs.forEach(function(div) {
-             div.style.display = lang === 'en' ? 'block' : 'none';
-         });
-         czDivs.forEach(function(div) {
-             div.style.display = lang === 'cz' ? 'block' : 'none';
-         });
-     }
-
-     function toggleParagraph(button) {
-         var paragraph = button.parentElement;
-         var enDiv = paragraph.querySelector('.lang-en');
-         var czDiv = paragraph.querySelector('.lang-cz');
-         if (enDiv.style.display === 'block') {
-             enDiv.style.display = 'none';
-             czDiv.style.display = 'block';
-             button.textContent = 'To English';
-         } else {
-             enDiv.style.display = 'block';
-             czDiv.style.display = 'none';
-             button.textContent = 'To Czech';
-         }
-     }
- </script>
  </section>
 
  <!-- GitHub Projects -->
@@ -408,7 +347,7 @@
  <div class="project-card">
  <h3><i class="fas fa-book"></i><a href="https://github.com/sparesparrow/human-action" target="_blank" rel="noopener">human-action</a></h3>
  <p class="concise active">Audiobook generation pipeline with Elevenlabs Python SDK and voice synthesis for producing high-fidelity Czech audiobooks of complex texts like Ludwig von Mises' "Human Action".</p>
- <p class="verbose">Comprehensive system for AI-powered audiobook production using ElevenLabs voice synthesis technology. Processes complex academic texts and converts them to high-quality audio narration, making dense economic and philosophical works accessible to wider audiences. Reduces manual narration time by 90% through automated voice synthesis while maintaining natural intonation and pronunciation.</p>
+ <p class="verbose">Comprehensive system for AI-powered audiobook production using ElevenLabs voice synthesis technology. Processes complex academic texts and converts them to high-quality audio narration, making dense economic and philosophical works accessible to wider audiences. Automates narration through voice synthesis while maintaining natural intonation and pronunciation.</p>
  <ul>
  <li><i class="fab fa-python"></i> Python</li>
  <li><i class="fas fa-cogs"></i> FastAPI</li>
@@ -594,7 +533,7 @@
    <h3><i class="fab fa-github"></i> <a href="https://github.com/sparesparrow/mcp-prompts" target="_blank" rel="noopener">mcp-prompts</a></h3>
    <ul>
      <li>Core contributor: Implemented hexagonal architecture, boosting maintainability and extensibility.</li>
-     <li>Wrote integration tests, increasing code coverage by 25% and reducing bug reports by 30%.</li>
+     <li>Wrote the integration test suite.</li>
      <li>See merged PRs: <a href="https://github.com/sparesparrow/mcp-prompts/pulls?q=is%3Apr+author%3Asparesparrow+is%3Amerged" target="_blank" rel="noopener">#all</a></li>
    </ul>
  </div>
@@ -602,7 +541,7 @@
    <h3><i class="fab fa-github"></i> <a href="https://github.com/sparesparrow/podman-desktop-extension-mcp" target="_blank" rel="noopener">podman-desktop-extension-mcp</a></h3>
    <ul>
      <li>Developed Podman Desktop extension for secure MCP server management, enabling rootless runtimes and encrypted credential storage.</li>
-     <li>Improved real-time health monitoring, reducing incident response time by 40%.</li>
+     <li>Implemented real-time health monitoring.</li>
    </ul>
  </div>
  </section>
@@ -611,6 +550,23 @@
  <section>
  <h2>Work Experience</h2>
  <div class="content">
+<div class="job-card">
+<h3><i class="fas fa-briefcase"></i>Test Automation Engineer (Python, C#) | CoolPeople (for Resideo / Ademco) | 01/2026 – 09/2026</h3>
+<p>Hardware-in-the-loop verification of a safety-certified two-stage gas furnace ignition controller (UL/CSA, ANSI Z21.20, NFPA 54), as sole owner of the verification test suite and of the automated bench that drives it.</p>
+<ul>
+<li>Raised measured conformance to 259 of 271 tracked state transitions (95.6%) and closed a ~148-case gap in which stimulus windows were never actually measured</li>
+<li>Designed an eight-gate Arrange/Act/Assert validation pipeline in Python covering preconditions, stimulus timing, state sequence, alarms, signal history, cross-layer consistency, timer accuracy and requirement traceability</li>
+<li>Built a data-driven generator expanding a YAML catalogue of 270+ transitions, 38 states and 33 events into ~290 executable tests</li>
+<li>Engineered the bench device layer with one thread per instrument on a shared monotonic clock: pyvisa/USBTMC/SCPI AC source, CAN serial-bus monitoring, Modbus relay and probe I/O</li>
+<li>Delivered an unattended nightly pipeline with crash recovery, Excel evidence workbooks, bilingual HTML dashboards and Mermaid failure graphs, cutting report generation from 15.7 s to 1.6 s</li>
+<li>Diagnosed a leaked USB handle misreported as a hardware fault for months, restoring a blocked test family; investigated 25+ firmware and harness defects against the C/C++ sources</li>
+<li>Built an agentic AI harness of specialised agents, skills, policy hooks and Model Context Protocol servers, adopted as a daily part of the delivery workflow</li>
+</ul>
+<div class="verbose">
+<h4>New Skills Learned:</h4>
+<p>Hardware-in-the-Loop Test Design, Safety-Certified Product Verification (UL/CSA, ANSI Z21.20, NFPA 54), pyvisa / USBTMC / SCPI Instrument Control, Modbus I/O, CAN Serial-Bus Diagnostics, Deterministic Multi-Threaded Device Ownership, Test-Evidence &amp; Traceability Reporting, Model Context Protocol Server Development, Agentic Workflow Design</p>
+</div>
+</div>
  <div class="job-card">
  <h3><i class="fas fa-briefcase"></i>Software Developer (C++) | Ixperta (for Thermo Fisher Scientific) | 2023 – 2024</h3>
  <p>Developed high-performance server-side applications for electron microscopy systems using C++. Implemented FPGA-based data processing pipelines with gRPC and networked hardware communication. Designed backend logic for WPF applications using C# and .NET. Created vscode-automation extension for enterprise-grade VSCode integration with TICS code quality analysis and OpenAI API for automated violation detection and AI-powered remediation.</p>
@@ -686,16 +642,16 @@
      <div class="skill-bar-inner" style="width:95%"></div>
    </div>
  </div>
+ <div class="skill" aria-label="Python Senior skill level">
+   <span>Python</span>
+   <div class="skill-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" tabindex="0">
+     <div class="skill-bar-inner" style="width:90%"></div>
+   </div>
+ </div>
  </div>
 
  <h3><i class="fas fa-star-half-alt"></i>Medior Level</h3>
  <div class="skills">
- <div class="skill" aria-label="Python Medior skill level">
-   <span>Python</span>
-   <div class="skill-bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" tabindex="0">
-     <div class="skill-bar-inner" style="width:85%"></div>
-   </div>
- </div>
  <div class="skill" aria-label="JavaScript Medior skill level">
    <span>JavaScript</span>
    <div class="skill-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" tabindex="0">
@@ -704,15 +660,15 @@
  </div>
  </div>
 
- <h3><i class="far fa-star"></i>Junior Level</h3>
+ <h3><i class="far fa-star"></i>Working Knowledge</h3>
  <div class="skills">
- <div class="skill" aria-label="Rust Junior skill level">
+ <div class="skill" aria-label="Rust working knowledge">
    <span>Rust</span>
    <div class="skill-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" tabindex="0">
      <div class="skill-bar-inner" style="width:60%"></div>
    </div>
  </div>
- <div class="skill" aria-label="Qt/QML Junior skill level">
+ <div class="skill" aria-label="Qt/QML working knowledge">
    <span>Qt/QML</span>
    <div class="skill-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100" tabindex="0">
      <div class="skill-bar-inner" style="width:55%"></div>
@@ -760,7 +716,7 @@
  <section>
  <h2>Education</h2>
  <div class="content">
- <p><strong>Masaryk University - Faculty of Informatics</strong><br>Informatics - Computer Systems and Data Processing, Bachelor's Degree, 2012 – 2014<br><em>Learned programming, Linux, Networking</em></p>
+ <p><strong>Masaryk University - Faculty of Informatics</strong><br>Computer Science coursework — no degree awarded<br><em>Learned programming, Linux, Networking</em></p>
  <p><strong>Coursera.org, DeepLearning.ai</strong><br><a href="https://www.coursera.org/specializations/deep-learning">Deep Learning Specialization</a> (four Machine Learning courses from Andrew Ng), Data Analysis, Prompt Engineering, Building LLM agents</p>
  <p><strong>Design Patterns & Software Architecture</strong><br><a href="https://refactoring.guru/">Design Patterns (refactoring.guru)</a>, <a href="https://www.hackthebox.com/">Hack The Box</a> cybersecurity training</p>
  <p><strong>Professional Development Books</strong><br><a href="https://www.audible.com/pd/Software-Engineering-at-Google-Audiobook/B08VLS9Y95">Software Engineering at Google</a>, <a href="https://www.audible.com/pd/The-Pragmatic-Programmer-20th-Anniversary-Edition-2nd-Edition-Audiobook/B0833FMYH9">The Pragmatic Programmer</a>, <a href="https://www.audible.com/pd/Clean-Architecture-Audiobook/B08X8L9MJZ">Clean Architecture</a></p>
@@ -817,14 +773,10 @@
      "https://x.com/spare23sparrow",
      "https://www.youtube.com/playlist?list=PLaWOvDBjg6WiUcQm-yEP1RskMfPeWMKTL"
    ],
-   "jobTitle": "Software Developer",
+   "jobTitle": "AI/LLM Integration Engineer (MCP) — Safety-Critical Embedded & HIL Verification",
    "worksFor": {
      "@type": "Organization",
      "name": "Freelance / Open Source"
-   },
-   "alumniOf": {
-     "@type": "CollegeOrUniversity",
-     "name": "Masaryk University"
    },
    "email": "sparesparrow@protonmail.ch"
  }
@@ -834,7 +786,7 @@
    "@context": "https://schema.org/",
    "@type": "ResumeAction",
    "name": "Vojtěch Špaček Resume",
-   "description": "Resume of Vojtěch Špaček, Software Developer specializing in high-performance systems, AI, and open-source innovation.",
+   "description": "Resume of Vojtěch Špaček — AI/LLM integration engineer bringing agentic-AI (Model Context Protocol) tooling into safety-critical embedded and hardware-in-the-loop verification.",
    "url": "https://sparesparrow.github.io/cv/"
  }
  </script>
@@ -853,36 +805,40 @@
  }
  </style>
  <script>
- // Language toggle logic
+ // Language toggle. One table, one setLanguage(): it fills every
+ // [data-translate-key] element and shows the matching .lang-en / .lang-cz
+ // blocks, so the header toggle switches the whole bilingual page at once.
  const translations = {
    en: {
      name: "Vojtěch Špaček",
-     roles: "Software Developer | Systems Engineer | AI Specialist | Technical Writer",
+     roles: "AI/LLM Integration Engineer (MCP) | Safety-Critical Embedded & HIL Verification | Senior C++ & Python | Linux & Networking",
      profile_summary_title: "Profile Summary",
-     profile_summary: "Results-driven software developer with 6+ years of experience in high-performance systems, AI, and open-source innovation. Proven track record of delivering robust solutions in C++, TypeScript, and Linux environments. Passionate about building accessible, scalable technology that empowers users and organizations.",
-     // ... all other keys ...
+     profile_summary: "AI/LLM integration engineer who brings agentic-AI tooling (Model Context Protocol) into safety-critical engineering. Most recently sole owner of the hardware-in-the-loop verification suite and automated bench for a safety-certified gas furnace ignition controller (UL/CSA, ANSI Z21.20, NFPA 54), raising measured conformance to 259 of 271 tracked state transitions (95.6%). Senior C++ and Python engineer with a decade across aerospace (Honeywell), scientific instruments (Thermo Fisher Scientific) and network security (Kernun firewall). Author of MCP-Prompts, published to npm, Docker Hub and the MCP server directories.",
+     contact_title: "Contact"
    },
    cz: {
      name: "Vojtěch Špaček",
-     roles: "Vývojář softwaru | Systémový inženýr | AI specialista | Technický autor",
+     roles: "Integrační inženýr AI/LLM (MCP) | Bezpečnostně kritický embedded vývoj a HIL verifikace | Senior C++ a Python | Linux a sítě",
      profile_summary_title: "Profilový souhrn",
-     profile_summary: "Výsledky-orientovaný vývojář softwaru s více než 6 lety zkušeností v oblasti vysoce výkonných systémů, AI a open-source inovací. Osvědčené výsledky v dodávání robustních řešení v prostředí C++, TypeScript a Linux. Nadšený pro budování přístupných, škálovatelných technologií, které posilují uživatele a organizace.",
-     // ... all other keys ...
+     profile_summary: "Integrační inženýr AI/LLM, který přináší agentní AI nástroje (Model Context Protocol) do vývoje bezpečnostně kritických systémů. Naposledy jediný vlastník verifikační sady typu hardware-in-the-loop a automatizovaného testovacího standu pro bezpečnostně certifikovanou řídicí jednotku zapalování plynové teplovzdušné jednotky (UL/CSA, ANSI Z21.20, NFPA 54); naměřenou shodu zvýšil na 259 z 271 sledovaných přechodů (95,6 %). Senior C++ a Python inženýr s desetiletou praxí v letectví (Honeywell), vědeckých přístrojích (Thermo Fisher Scientific) a síťové bezpečnosti (firewall Kernun). Autor projektu MCP-Prompts publikovaného na npm, Docker Hub a v adresářích MCP serverů.",
+     contact_title: "Kontakt"
    }
  };
  function setLanguage(lang) {
-   localStorage.setItem('cvLang', lang);
-   document.documentElement.lang = lang;
+   try { localStorage.setItem('cvLang', lang); } catch (e) {}
+   document.documentElement.lang = lang === 'cz' ? 'cs' : 'en';
    document.querySelectorAll('[data-translate-key]').forEach(el => {
      const key = el.getAttribute('data-translate-key');
-     if (translations[lang][key]) {
-       el.textContent = translations[lang][key];
-     }
+     if (translations[lang][key]) el.textContent = translations[lang][key];
    });
+   document.querySelectorAll('.lang-en').forEach(el => { el.style.display = lang === 'en' ? 'block' : 'none'; });
+   document.querySelectorAll('.lang-cz').forEach(el => { el.style.display = lang === 'cz' ? 'block' : 'none'; });
  }
  const langToggle = document.getElementById('lang-toggle');
- let currentLang = localStorage.getItem('cvLang') || 'en';
+ let currentLang = 'en';
+ try { currentLang = localStorage.getItem('cvLang') || 'en'; } catch (e) {}
  setLanguage(currentLang);
+ langToggle.textContent = currentLang === 'en' ? 'Česky' : 'English';
  langToggle.addEventListener('click', () => {
    currentLang = currentLang === 'en' ? 'cz' : 'en';
    setLanguage(currentLang);

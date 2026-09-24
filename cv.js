@@ -1,5 +1,7 @@
 // JavaScript for /cv/index.html modularized
-mermaid.initialize({ startOnLoad: true });
+// Guarded: if the Mermaid CDN script fails to load, an unguarded call throws
+// here and every handler below (themes, verbose mode, back-to-top) is lost.
+if (window.mermaid) mermaid.initialize({ startOnLoad: true });
 // Collapsible Sections
 document.querySelectorAll('h2').forEach(header => {
   header.addEventListener('click', () => {
