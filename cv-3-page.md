@@ -1,6 +1,6 @@
 # Vojtěch Špaček
-**Links:** [GitHub](https://github.com/sparesparrow) | [LinkedIn](https://linkedin.com/in/vojtěch-špaček-b22a211a3) | [X/Twitter](https://x.com/spare23sparrow)
-**Contact:** sparesparrow@protonmail.ch | +420776168749 | [Schedule a call](https://calendly.com/dallheimal)
+**Links:** [GitHub](https://github.com/sparesparrow) | [LinkedIn](https://www.linkedin.com/in/sparesparrow) | [X/Twitter](https://x.com/spare23sparrow)
+**Contact:** sparesparrow@protonmail.ch | +420 605 963 739 | [Schedule a call](https://calendly.com/dallheimal)
 
 #### [sparesparrow](https://github.com/sparesparrow) - Whoami 
 - Pragmatic **Programmer**, Creative **Problem Solver**,
